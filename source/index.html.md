@@ -135,9 +135,14 @@ This endpoint retrieves a specific kitten.
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Parameter | Default | Description
+--------- | ------- | -----------
+include_cats | false | If set to true, the result will also include cats.
+available | true | If set to false, the result will include kittens that have already been adopted.
+available | true | If set to false, the result will include kittens that have already been adopted.
+available | true | If set to false, the result will include kittens that have already been adopted.
+available | true | If set to false, the result will include kittens that have already been adopted.
+available | true | If set to false, the result will include kittens that have already been adopted.
 
 
 > Response:
@@ -170,19 +175,23 @@ ID | The ID of the kitten to retrieve
 
 ### 响应数据
 
-Parameter | Description
+Parameter | Type |Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
-ID | The ID of the kitten to retrieve
-ID | The ID of the kitten to retrieve
-ID | The ID of the kitten to retrieve
-ID | The ID of the kitten to retrieve
-ID | The ID of the kitten to retrieve
-ID | The ID of the kitten to retrieve
-ID | The ID of the kitten to retrieve
-ID | The ID of the kitten to retrieve
-ID | The ID of the kitten to retrieve
-ID | The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
+ID |String |The ID of the kitten to retrieve
 
 
 ## Delete a Specific Kitten
