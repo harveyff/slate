@@ -138,7 +138,8 @@ available | true | If set to false, the result will include kittens that have al
 available | true | If set to false, the result will include kittens that have already been adopted.
 
 
->> Response:
+> Response:
+
 ```json
 [{
 	"name": "ETH",
