@@ -163,6 +163,23 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the kitten to retrieve
 
+### 响应数据
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the kitten to retrieve
+ID | The ID of the kitten to retrieve
+ID | The ID of the kitten to retrieve
+ID | The ID of the kitten to retrieve
+ID | The ID of the kitten to retrieve
+ID | The ID of the kitten to retrieve
+ID | The ID of the kitten to retrieve
+ID | The ID of the kitten to retrieve
+ID | The ID of the kitten to retrieve
+ID | The ID of the kitten to retrieve
+ID | The ID of the kitten to retrieve
+
+
 ## Delete a Specific Kitten
 
 ```shell
