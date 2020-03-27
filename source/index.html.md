@@ -57,6 +57,23 @@ curl "http://example.com/api/kittens"
 
 > The above command returns JSON structured like this:
 
+
+
+This endpoint retrieves all kittens.
+
+### HTTP Request
+
+`GET http://example.com/api/kittens`
+
+### 请求参数
+
+Parameter | Default | Description
+--------- | ------- | -----------
+include_cats | false | If set to true, the result will also include cats.
+available | true | If set to false, the result will include kittens that have already been adopted.
+
+> Response:
+ 
 ```json
 [
   {
@@ -76,19 +93,6 @@ curl "http://example.com/api/kittens"
 ]
 ```
 
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### 请求参数
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
 ### 响应数据
 
 Parameter | Default | Description
@@ -98,17 +102,6 @@ available | true | If set to false, the result will include kittens that have al
 available | true | If set to false, the result will include kittens that have already been adopted.
 available | true | If set to false, the result will include kittens that have already been adopted.
 available | true | If set to false, the result will include kittens that have already been adopted.
-available | true | If set to false, the result will include kittens that have already been adopted.
-available | true | If set to false, the result will include kittens that have already been adopted.
-available | true | If set to false, the result will include kittens that have already been adopted.
-available | true | If set to false, the result will include kittens that have already been adopted.
-available | true | If set to false, the result will include kittens that have already been adopted.
-available | true | If set to false, the result will include kittens that have already been adopted.
-available | true | If set to false, the result will include kittens that have already been adopted.
-available | true | If set to false, the result will include kittens that have already been adopted.
-available | true | If set to false, the result will include kittens that have already been adopted.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
@@ -177,21 +170,11 @@ available | true | If set to false, the result will include kittens that have al
 
 Parameter | Type |Description
 --------- | -----------
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
-ID |String |The ID of the kitten to retrieve
+available | String | If set to false, the result will include have already been adopted.
+available | String | If set to false, the result will include kittens that have already been adopted.
+available | Int | If set to false, the result wil.
+available | Int | If set to false, the result will incluy been adopted.
+
 
 
 ## Delete a Specific Kitten
