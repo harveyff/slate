@@ -1,12 +1,12 @@
 ---
-title: API Reference
+title: BitExchange API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+  - <a href='https://www.byte-trade.com'>Exchange</a>
+  - <a href='https://explorer.byte-trade.com'>Explorer</a>
 
 includes:
   - errors
@@ -22,28 +22,6 @@ We have language bindings in Shell, Ruby, Python, and JavaScript! You can view c
 
 This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
-# Authentication
-
-> To authorize, use this code:
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-ByteTrade uses API keys to allow access to the API. You can register a new ByteTrade API key at our [developer portal](http://example.com/developers).
-
-ByteTrade expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
 
 # APIs
 
@@ -117,33 +95,76 @@ limits | Object | If set to false, the result will incluy been adopted.
 
 
 
-## Delete a Specific Kitten
+## 交易市场信息
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
+curl "https://api-v2.byte-trade.com/symbols"
 ```
-
 
 > The above command returns JSON structured like this:
 
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
 
-This endpoint deletes a specific kitten.
+
+This endpoint retrieves a specific kitten.
+
 
 ### HTTP Request
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://api-v2.bytetrade.com/symbols`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+Parameter | Default | Description
+--------- | ------- | -----------
+include_cats | false | If set to true, the result will also include cats.
+
+
+> Response:
+
+```json
+[{
+	"symbol": "122406567911",
+	"name": "BTC/USDT",
+	"base": "32",
+	"quote": "57",
+	"marketStatus": 0,
+	"baseName": "BTC",
+	"quoteName": "USDT",
+	"active": true,
+	"maker": "0.0008",
+	"taker": "0.0008",
+	"precision": {
+		"amount": 6,
+		"price": 2
+	},
+	"limits": {
+		"amount": {
+			"min": "0.000001",
+			"max": "-1"
+		},
+		"price": {
+			"min": "0.01",
+			"max": "-1"
+		}
+	}
+}]
+```
+
+### 响应数据
+
+Parameter | Type |Description
+--------- | ------- | -----------
+symbol | String | If set to false, the result will include have already been adopted.
+name | String | If set to false, the result will include kittens that have already been adopted.
+base | String | If set to false, the result wil.
+quote | String | If set to false, the result will incluy been adopted.
+marketStatus | Int | If set to false, the result will incluy been adopted.
+baseName | String | If set to false, the result will incluy been adopted.
+quoteName | String | If set to false, the result will incluy been adopted.
+active | Boolean | If set to false, the result will incluy been adopted.
+maker | String | If set to false, the result will incluy been adopted.
+taker | String | If set to false, the result will incluy been adopted.
+precision | Object | If set to false, the result will incluy been adopted.
+limits | Object | If set to false, the result will incluy been adopted.
+
 
