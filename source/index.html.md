@@ -169,11 +169,18 @@ available | true | If set to false, the result will include kittens that have al
 ### 响应数据
 
 Parameter | Type |Description
---------- | -----------
-available | String | If set to false, the result will include have already been adopted.
-available | String | If set to false, the result will include kittens that have already been adopted.
-available | Int | If set to false, the result wil.
-available | Int | If set to false, the result will incluy been adopted.
+--------- | ------- | -----------
+name | String | If set to false, the result will include have already been adopted.
+code | String | If set to false, the result will include kittens that have already been adopted.
+type | Int | If set to false, the result wil.
+fullname | Int | If set to false, the result will incluy been adopted.
+active | Int | If set to false, the result will incluy been adopted.
+basePrecision | Int | If set to false, the result will incluy been adopted.
+transferPrecision | Int | If set to false, the result will incluy been adopted.
+externalPrecision | Int | If set to false, the result will incluy been adopted.
+fee | Int | If set to false, the result will incluy been adopted.
+limits | Object | If set to false, the result will incluy been adopted.
+
 
 
 
