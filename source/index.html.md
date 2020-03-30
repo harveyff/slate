@@ -302,8 +302,118 @@ type |String|false | step0|深度的价格聚合度，step0时无聚合，step1\
 
 Parameter | Type |Description
 --------- | ------- | -----------
-bids | Array | [[price,amount]]
-asks | Array | [[price,amount]]
+bids | Array | 当前最新的卖单价和卖单量[[price,amount]]
+asks | Array | 当前最新的买单价和买单量[[price,amount]]
 timestamp | String | 
 datetime | String | 
 
+
+
+## K线数据(蜡烛图)
+
+```shell
+curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/klines"
+```
+
+> The above command returns JSON structured like this:
+
+查询单个symbol的市场深度行情
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/klines?symbol=68719476706`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |Long| true | NA|交易对symbol|
+timeframe |String| true | |K线类型		|1m, 5m,15m,30m,1h,4h,1d,5d,1w,1M
+since |Long| false |NA |K线开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
+limit |Int| false |100 |返回K线的条数|[1,500]
+
+
+> Response:
+
+```json
+[
+    [
+      1559574540000,    
+      "0.030753",
+      "0.030778",
+      "0.030752",
+      "0.030778",
+      "30.716"   
+    ]
+]
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ | Long | UTC timestamp in milliseconds,
+ | String | (O)pen price, String
+ | String | (H)ighest price
+ | String | (L)owest price
+ | String | (C)losing price
+ | String | (L)owest price
+ | String | (V)olume (in terms of the base currency)
+
+## 市场最新交易
+
+```shell
+curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/trades"
+```
+
+> The above command returns JSON structured like this:
+
+查询单个symbol的市场深度行情
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/klines?symbol=68719476706`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |Long| true | NA|交易对symbol|
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
+limit |Int| false |100 |返回交易的条数|[1,500]
+
+
+> Response:
+
+```json
+[
+    {
+      "id": "6863a873ed87443bfc8bd759451d5c9ec4a2dafc",
+      "txid":"909108605661dfd3e6d85ae2a9faceb524dce733"
+      "order":"c3f463ccdd2afba372c78d3eb02d60e6913c1020
+      "timestamp": 1559633809458,              
+      "datetime": "2019-06-04T07:36:49.458Z",  
+      "symbol": "68719476706",                 
+      "name": "ETH/BTC",                       
+      "side": "buy",                           
+      "price": "0.031118",                     
+      "amount": "0.2379",                      
+      "cost": "0.0074029722"                   
+    }
+]
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ id| String | string trade id,
+ txid| String | transaction id in bytetrade
+ timestamp| Lo | Unix timestamp in milliseconds
+ datetime| String | ISO8601 datetime with milliseconds
+ symbol| String | symbol
+ name| String | symbol name
+ side| String | direction of the trade, "buy" or "sell"
+ price| String | price in quote currency
+ amount| String | amount of base currency
+ cost| String |  amount of quote currency
