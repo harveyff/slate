@@ -162,3 +162,74 @@ precision | Object | If set to false, the result will incluy been adopted.
 limits | Object | If set to false, the result will incluy been adopted.
 
 
+
+
+## 市场行情
+
+```shell
+curl "https://api-v2.byte-trade.com/tickers "
+```
+
+> The above command returns JSON structured like this:
+
+
+
+查询全部symbol或单个symbol的24小时的价格变化
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/tickers `
+
+### URL Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+symbol | false | 交易对symbol
+
+
+> Response:
+
+```json
+[
+      {
+        "symbol": "68719476706",                 // unique id, unique
+        "name": "ETH/BTC",                       // string symbol of the market, non-unique
+        "base": "2",                             // base coin id
+        "quote": "32",                           // quote coin id
+        "timestamp": 1559124034283,              // int (64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
+        "datetime": "2019-05-29T10:00:34.283Z",  // ISO8601 datetime string with milliseconds
+        "high": "0.031526",                        // highest price
+        "low": "0.030771",                         // lowest price
+        "open": "0.031009",                        // opening price
+        "close": "0.031035",                       // price of last trade (closing price for current period)
+        "last": "0.031035",                        // same as `close`, duplicated for convenience
+        "change": "2.6e-05",                       // absolute change, `last - open`
+        "percentage": "0.084",                     // relative change, `(change/open) * 100`
+        "baseVolume": "209771.771",                // volume of base currency traded for last 24 hours
+        "quoteVolume": "6519.97393184"             // volume of quote currency traded for last 24 hours
+      }
+]...]
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+symbol | String | unique id, unique.
+name | String | string symbol of the market, non-unique.
+base | String | base coin id.
+quote | String | quote coin id.
+timestamp | Long |int (64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970).
+datetime | Date | ISO8601 datetime string with milliseconds.
+high | String | highest price.
+low | String | lowest price.
+open | String | opening price.
+close | String | price of last trade (closing price for current period).
+last | String | same as `close`, duplicated for convenience.
+change | String | absolute change, `last - open`.
+percentage | String | relative change, `(change/open) * 100`.
+baseVolume | String | volume of base currency traded for last 24 hours.
+quoteVolume | String | volume of quote currency traded for last 24 hours.
+
+
+
