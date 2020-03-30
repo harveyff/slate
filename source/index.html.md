@@ -215,21 +215,21 @@ symbol |Long| false | NA|交易对symbol|
 
 Parameter | Type |Description
 --------- | ------- | -----------
-symbol | String | unique id, unique.
-name | String | string symbol of the market, non-unique.
-base | String | base coin id.
-quote | String | quote coin id.
-timestamp | Long |int (64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970).
-datetime | Date | ISO8601 datetime string with milliseconds.
-high | String | highest price.
-low | String | lowest price.
-open | String | opening price.
-close | String | price of last trade (closing price for current period).
-last | String | same as `close`, duplicated for convenience.
-change | String | absolute change, `last - open`.
-percentage | String | relative change, `(change/open) * 100`.
-baseVolume | String | volume of base currency traded for last 24 hours.
-quoteVolume | String | volume of quote currency traded for last 24 hours.
+symbol | String | unique id, unique
+name | String | string symbol of the market, non-unique
+base | String | base asset id
+quote | String | quote asset id
+timestamp | Long |(64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
+datetime | Date | ISO8601 datetime string with milliseconds
+high | String | highest price
+low | String | lowest price
+open | String | opening price
+close | String | price of last trade (closing price for current period)
+last | String | same as `close`, duplicated for convenience
+change | String | absolute change, `last - open`
+percentage | String | relative change, `(change/open) * 100`
+baseVolume | String | volume of base currency traded for last 24 hours
+quoteVolume | String | volume of quote currency traded for last 24 hours
 
 
 
@@ -389,16 +389,16 @@ limit |Int| false |100 |返回交易的条数|[1,500]
 [
     {
       "id": "6863a873ed87443bfc8bd759451d5c9ec4a2dafc",
-      "txid":"909108605661dfd3e6d85ae2a9faceb524dce733"
-      "order":"c3f463ccdd2afba372c78d3eb02d60e6913c1020
-      "timestamp": 1559633809458,              
-      "datetime": "2019-06-04T07:36:49.458Z",  
-      "symbol": "68719476706",                 
-      "name": "ETH/BTC",                       
-      "side": "buy",                           
-      "price": "0.031118",                     
-      "amount": "0.2379",                      
-      "cost": "0.0074029722"                   
+      "txid":"909108605661dfd3e6d85ae2a9faceb524dce733",
+      "order":"c3f463ccdd2afba372c78d3eb02d60e6913c1020,
+      "timestamp": 1559633809458,
+      "datetime": "2019-06-04T07:36:49.458Z",
+      "symbol": "68719476706",
+      "name": "ETH/BTC",
+      "side": "buy",
+      "price": "0.031118",
+      "amount": "0.2379",
+      "cost": "0.0074029722"
     }
 ]
 ```
@@ -407,13 +407,405 @@ limit |Int| false |100 |返回交易的条数|[1,500]
 
 Parameter | Type |Description
 --------- | ------- | -----------
- id| String | string trade id,
+ id| String |  trade id
  txid| String | transaction id in bytetrade
- timestamp| Lo | Unix timestamp in milliseconds
+ timestamp| Long | Unix timestamp in milliseconds
  datetime| String | ISO8601 datetime with milliseconds
- symbol| String | symbol
+ symbol| String | symbol id
  name| String | symbol name
  side| String | direction of the trade, "buy" or "sell"
  price| String | price in quote currency
  amount| String | amount of base currency
  cost| String |  amount of quote currency
+
+
+
+## 获取用户balance
+
+```shell
+curl -d "userid=test" "https://api-v2.byte-trade.com/balance"
+```
+
+> The above command returns JSON structured like this:
+
+查询单个symbol的市场深度行情
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/balance?userid=test`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userid |String| true | NA|用户id|
+
+
+
+> Response:
+
+```json
+[
+    {
+      "code": "32",  
+      "name": "BTC", 
+      "free": "0.23",
+      "used": "0.03",
+      "total": "0.26"
+    }
+]
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ code| String | asset id
+ name| String | asset name
+ free| Long | money available for trading
+ used| String | money on hold, locked, frozen or pending
+ total| String | total balance (free + used)
+
+
+
+## 获取用户的所有订单
+
+```shell
+curl -d "userid=test" "https://api-v2.byte-trade.com/orders/all"
+```
+
+> The above command returns JSON structured like this:
+
+查询单个用户的所有订单
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/orders/all?userid=test`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userid |String| true | NA|用户id|
+symbol |Long| false | NA|交易对symbol|
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
+limit |Int| false |100 |返回订单的条数|[1,500]
+
+
+
+> Response:
+
+```json
+[{
+	"id": "3b50925018eef574e7b113a49aa515dc7249fe28",
+	"txid": "d8b5cfcdf55f52c11fd85d6573d0b6c753cd7e35",
+	"timestamp": 1585205369822,
+	"userid": "harvey1712",
+	"datetime": "2020-03-26T06:49:29.822Z",
+	"lastTradeTimestamp": 1585205369822,
+	"status": "closed",
+	"symbol": "122406567923",
+	"type": "market",
+	"side": "sell",
+	"price": "0",
+	"amount": "0.004",
+	"filled": "0.004",
+	"remaining": "0",
+	"cost": "0.000004012",
+	"average": "0.001003",
+	"fee": {
+		"cost": "0.0000000016048",
+		"rate": "0.0004",
+		"code": 57,
+		"name": "USDT"
+	},
+	"name": "BHT/USDT"
+}]
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ id| String | order id
+ txid| String | transaction id in bytetrade
+ timestamp| Long | Unix timestamp in milliseconds
+ datetime| String | ISO8601 datetime with milliseconds
+ lastTradeTimestamp| Long | Unix timestamp of the most recent trade on this order
+ status| String |order status(open/closed/cancelled)
+ symbol| String |symbol id
+ name| String |symbol name
+ type| String |order type(market/limit)
+ side| String |order side(sell/buy)
+ price| String | float price in quote currency
+ average| String |
+ amount| String |ordered amount of base currency
+ filled| String |filled amount of base currency
+ remaining| String |remaining amount to fill
+ cost| String |"filled" * "price" (filling price used where available)
+ fee| Object |-
+ 
+ * fee
+ Parameter | Type |Description
+ --------- | ------- | -----------
+  code| String | which currency the fee is (usually quote)
+  name| String | 
+  cost| String | the fee amount in that currency
+  rate| String | the fee rate (if available)
+
+
+## 获取用户的委托订单
+
+```shell
+curl -d "userid=test" "https://api-v2.byte-trade.com/orders/open"
+```
+
+> The above command returns JSON structured like this:
+
+查询单个用户的委托订单
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/orders/open?userid=test`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userid |String| true | NA|用户id|
+symbol |Long| false | NA|交易对symbol|
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
+limit |Int| false |100 |返回订单的条数|[1,500]
+
+
+
+> Response:
+
+```json
+[{
+	"id": "3b50925018eef574e7b113a49aa515dc7249fe28",
+	"txid": "d8b5cfcdf55f52c11fd85d6573d0b6c753cd7e35",
+	"timestamp": 1585205369822,
+	"userid": "harvey1712",
+	"datetime": "2020-03-26T06:49:29.822Z",
+	"lastTradeTimestamp": 1585205369822,
+	"status": "closed",
+	"symbol": "122406567923",
+	"type": "market",
+	"side": "sell",
+	"price": "0",
+	"amount": "0.004",
+	"filled": "0.004",
+	"remaining": "0",
+	"cost": "0.000004012",
+	"average": "0.001003",
+	"fee": {
+		"cost": "0.0000000016048",
+		"rate": "0.0004",
+		"code": 57,
+		"name": "USDT"
+	},
+	"name": "BHT/USDT"
+}]
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ id| String | order id
+ txid| String | transaction id in bytetrade
+ timestamp| Long | Unix timestamp in milliseconds
+ datetime| String | ISO8601 datetime with milliseconds
+ lastTradeTimestamp| Long | Unix timestamp of the most recent trade on this order
+ status| String |order status(open/closed/cancelled)
+ symbol| String |symbol id
+ name| String |symbol name
+ type| String |order type(market/limit)
+ side| String |order side(sell/buy)
+ price| String | float price in quote currency
+ average| String |
+ amount| String |ordered amount of base currency
+ filled| String |filled amount of base currency
+ remaining| String |remaining amount to fill
+ cost| String |"filled" * "price" (filling price used where available)
+ fee| Object |-
+ 
+ * fee
+ Parameter | Type |Description
+ --------- | ------- | -----------
+  code| String | which currency the fee is (usually quote)
+  name| String | 
+  cost| String | the fee amount in that currency
+  rate| String | the fee rate (if available)
+
+
+
+## 获取用户的已成交订单
+
+```shell
+curl -d "userid=test" "https://api-v2.byte-trade.com/orders/closed"
+```
+
+> The above command returns JSON structured like this:
+
+查询单个用户的已成交订单
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/orders/closed?userid=test`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userid |String| true | NA|用户id|
+symbol |Long| false | NA|交易对symbol|
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
+limit |Int| false |100 |返回订单的条数|[1,500]
+
+
+
+> Response:
+
+```json
+[{
+	"id": "3b50925018eef574e7b113a49aa515dc7249fe28",
+	"txid": "d8b5cfcdf55f52c11fd85d6573d0b6c753cd7e35",
+	"timestamp": 1585205369822,
+	"userid": "harvey1712",
+	"datetime": "2020-03-26T06:49:29.822Z",
+	"lastTradeTimestamp": 1585205369822,
+	"status": "closed",
+	"symbol": "122406567923",
+	"type": "market",
+	"side": "sell",
+	"price": "0",
+	"amount": "0.004",
+	"filled": "0.004",
+	"remaining": "0",
+	"cost": "0.000004012",
+	"average": "0.001003",
+	"fee": {
+		"cost": "0.0000000016048",
+		"rate": "0.0004",
+		"code": 57,
+		"name": "USDT"
+	},
+	"name": "BHT/USDT"
+}]
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ id| String | order id
+ txid| String | transaction id in bytetrade
+ timestamp| Long | Unix timestamp in milliseconds
+ datetime| String | ISO8601 datetime with milliseconds
+ lastTradeTimestamp| Long | Unix timestamp of the most recent trade on this order
+ status| String |order status(open/closed/cancelled)
+ symbol| String |symbol id
+ name| String |symbol name
+ type| String |order type(market/limit)
+ side| String |order side(sell/buy)
+ price| String | float price in quote currency
+ average| String |
+ amount| String |ordered amount of base currency
+ filled| String |filled amount of base currency
+ remaining| String |remaining amount to fill
+ cost| String |"filled" * "price" (filling price used where available)
+ fee| Object |-
+ 
+ * fee
+ Parameter | Type |Description
+ --------- | ------- | -----------
+  code| String | which currency the fee is (usually quote)
+  name| String | 
+  cost| String | the fee amount in that currency
+  rate| String | the fee rate (if available)
+
+
+
+## 用户成交明细
+
+```shell
+curl -d "userid=test" "https://api-v2.byte-trade.com/orders/trades"
+```
+
+> The above command returns JSON structured like this:
+
+查询单个用户的成交明细
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/orders/trades?userid=test`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userid |String| true | NA|用户id|
+symbol |Long| false | NA|交易对symbol|
+orderid |String| false | NA|order id|
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
+limit |Int| false |100 |返回订单的条数|[1,500]
+
+
+
+> Response:
+
+```json
+[
+    {
+        "id":           "3b185509047d385381fa1ec4d975ebb0d41c97c3", 
+        "txid":         "909108605661dfd3e6d85ae2a9faceb524dce733", 
+        "timestamp":    1502962946216,                              
+        "datetime":     "2017-08-17 12:42:48.000",                  
+        "symbol":       "4294967297",                               
+        "name":         "ETH/BTC",                                  
+        "order":        "d891f26f8cbc08e27434eb9ab9fb937ee1e7e438", 
+        "side":         "sell",                                     
+        "type":         "limit",                                    
+        "takerOrMaker": "taker",                                    
+        "price":        "0.00007412",                               
+        "amount":       "27.29041663",                              
+        "cost":         "0.0020227656806156",                       
+        "fee":          {                                           
+            "cost":  "0.0000016182125445",                          
+            "code": "32",                                           
+            "name": "BTC",
+            "rate": 0.002,                                          
+        }
+    }
+
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ id| String | order id
+ txid| String | transaction id in bytetrade
+ timestamp| Long | Unix timestamp in milliseconds
+ datetime| String | ISO8601 datetime with milliseconds
+ symbol| String |symbol id
+ name| String |symbol name
+ order| String |order id
+ type| String |order type(market/limit)
+ side| String |order side(sell/buy)
+ price| String | float price in quote currency
+ average| String |
+ amount| String |ordered amount of base currency
+ takerOrMaker| String |taker/marker
+ cost| String |"filled" * "price" (filling price used where available)
+ fee| Object |-
+ 
+ * fee
+ Parameter | Type |Description
+ --------- | ------- | -----------
+  code| String | which currency the fee is (usually quote)
+  name| String | 
+  cost| String | the fee amount in that currency
+  rate| String | the fee rate (if available)
