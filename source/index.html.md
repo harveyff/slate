@@ -12,7 +12,7 @@ includes:
 search: true
 ---
 
-# Introduction
+# 说明
 
 Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoints。
 
