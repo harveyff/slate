@@ -14,14 +14,14 @@ search: true
 
 # Introduction
 
-Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoints。
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+We have language bindings in Shell, You can view code examples in the dark area to the right.
 
 
-# APIs
+
+
+# 基础信息
 
 ## Get all Supported Currencies
 
@@ -162,7 +162,7 @@ precision | Object | If set to false, the result will incluy been adopted.
 limits | Object | If set to false, the result will incluy been adopted.
 
 
-
+# 市场信息
 
 ## 市场行情
 
@@ -329,8 +329,8 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |Long| true | NA|交易对symbol|
 timeframe |String| true | |K线类型		|1m, 5m,15m,30m,1h,4h,1d,5d,1w,1M
-since |Long| false |NA |K线开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
-limit |Int| false |100 |返回K线的条数|[1,500]
+since |Long| false |NA |K线开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 > Response:
@@ -379,8 +379,8 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/trades"
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |Long| true | NA|交易对symbol|
-since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
-limit |Int| false |100 |返回交易的条数|[1,500]
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 > Response:
@@ -466,7 +466,7 @@ Parameter | Type |Description
  used| String | money on hold, locked, frozen or pending
  total| String | total balance (free + used)
 
-
+# 用户订单
 
 ## 获取用户的所有订单
 
@@ -488,8 +488,8 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|用户id|
 symbol |Long| false | NA|交易对symbol|
-since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
-limit |Int| false |100 |返回订单的条数|[1,500]
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 
@@ -575,8 +575,8 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|用户id|
 symbol |Long| false | NA|交易对symbol|
-since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
-limit |Int| false |100 |返回订单的条数|[1,500]
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 
@@ -663,8 +663,8 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|用户id|
 symbol |Long| false | NA|交易对symbol|
-since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
-limit |Int| false |100 |返回订单的条数|[1,500]
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 
@@ -752,8 +752,8 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 userid |String| true | NA|用户id|
 symbol |Long| false | NA|交易对symbol|
 orderid |String| false | NA|order id|
-since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个kline	|
-limit |Int| false |100 |返回订单的条数|[1,500]
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 
@@ -782,7 +782,7 @@ limit |Int| false |100 |返回订单的条数|[1,500]
             "rate": 0.002,                                          
         }
     }
-
+]
 ```
 
 ### Response Content
@@ -813,3 +813,221 @@ Parameter | Type |Description
   name| String | 
   cost| String | the fee amount in that currency
   rate| String | the fee rate (if available)
+
+# 充值提现
+
+## 获取用户充提地址
+
+```shell
+curl -d "userid=test" "https://api-v2.byte-trade.com/depositaddress"
+```
+
+> The above command returns JSON structured like this:
+
+查询单个用户的成交明细
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/depositaddress?userid=test`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userid |String| true | NA|用户id|
+code |Int| false | NA|currency的code	|
+
+
+> Response:
+
+```json
+[
+    {
+        "code": "2",                                                 // currency code
+        "name": "ETH",
+        "chainType":"ethereum",                                    // 充值链类型，当前支持ethereum/naka/cmt/bitcoin
+        "address": "0x10c03cde1395e8e1e7626b890384c9897f7f597b",   // address in terms of requested currency
+        "tag": ""                                                  // tag / memo / paymentId for particular currencies (XRP, XMR, ...)
+    }
+]
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ code| String | asset id
+ name| String | asset name
+ chainType| String | chain type
+ address| String |  address in terms of requested currency
+ tag| String |
+
+
+
+## 获取用户提现记录
+
+```shell
+curl -d "userid=test" "https://api-v2.byte-trade.com/withdrawals"
+```
+
+> The above command returns JSON structured like this:
+
+查询单个用户的提现记录
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/withdrawals?userid=test`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userid |String| true | NA|用户id|
+code |Int| false | NA|currency的code	|
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+limit |Int| false |100 |返回数据的条数|[1,500]
+
+
+
+> Response:
+
+```json
+[
+    {
+      "id": "e523e01b778e377c9bbc3a883305409c3774efb1",                             
+      "txid": "0xc42f1611d795cb5a9bda63af4a9fd28c7958a18d908bf1750ccfea9ace88d48f",                                                                   // 对应外部链上的转账信息，当前从listWithdraws没有找到这个，但是从区块浏览器中可以看到，需要确认下如何获取
+      "timestamp": 1553134089103,                                                  
+      "datetime": "2019-03-21T02:08:09.103Z",                                      
+      "address": "0x32d74896f05204d1b6ae7b0a3cebd7fc0cd8f9c7",                   
+      "tag": "",                                                                  
+      "type": "withdrawal",                         
+      "amount": 10,                                       
+      "code": "3",     
+      "name": "KCASH",                                                         
+      "status": "succeed",                              
+      "updated": 1553134584448,                          
+      "fee": {                                   
+        "code": "3",    
+        "name": "KCASH",                      
+        "cost": "0",                            
+        "rate": "0"
+      }
+    }
+]
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ id| String | 
+ txid| String | 
+ timestamp| String | 
+ datetime| String | 
+ address| String |
+ tag| String |
+ amount| String |
+ code| String |
+ name| String |
+ status| String |
+ updated| String |
+ fee| Object |
+ * fee
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+  code| String | which currency the fee is (usually quote)
+  name| String | 
+  cost| String | the fee amount in that currency
+  rate| String | the fee rate (if available)
+
+
+## 获取用户充值记录
+
+```shell
+curl -d "userid=test" "https://api-v2.byte-trade.com/deposits"
+```
+
+> The above command returns JSON structured like this:
+
+查询单个用户的充值记录
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/deposits?userid=test`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userid |String| true | NA|用户id|
+code |Int| false | NA|currency的code	|
+since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+limit |Int| false |100 |返回数据的条数|[1,500]
+
+
+
+> Response:
+
+```json
+[
+    {
+      "id": "e523e01b778e377c9bbc3a883305409c3774efb1",                             
+      "txid": "0xc42f1611d795cb5a9bda63af4a9fd28c7958a18d908bf1750ccfea9ace88d48f",                                                                   // 对应外部链上的转账信息，当前从listWithdraws没有找到这个，但是从区块浏览器中可以看到，需要确认下如何获取
+      "timestamp": 1553134089103,                                                  
+      "datetime": "2019-03-21T02:08:09.103Z",                                      
+      "address": "0x32d74896f05204d1b6ae7b0a3cebd7fc0cd8f9c7",                   
+      "tag": "",                                                                  
+      "type": "withdrawal",                         
+      "amount": 10,                                       
+      "code": "3",     
+      "name": "KCASH",                                                         
+      "status": "succeed",                              
+      "updated": 1553134584448,                          
+      "fee": {                                   
+        "code": "3",    
+        "name": "KCASH",                      
+        "cost": "0",                            
+        "rate": "0"
+      }
+    }
+]
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ id| String | 
+ txid| String | 
+ timestamp| String | 
+ datetime| String | 
+ address| String |
+ tag| String |
+ amount| String |
+ code| String |
+ name| String |
+ status| String |
+ updated| String |
+ fee| Object |
+ * fee
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+  code| String | which currency the fee is (usually quote)
+  name| String | 
+  cost| String | the fee amount in that currency
+  rate| String | the fee rate (if available)
+
+
+## 充值提现状态说明
+
+* 提现状态
+
+Parameter | Type |Description
+--------- | ------- | -----------
+
+* 充值状态
+
+Parameter | Type |Description
+--------- | ------- | -----------
