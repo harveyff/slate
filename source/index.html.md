@@ -546,6 +546,7 @@ Parameter | Type |Description
  fee| Object |-
  
  * fee
+ 
  Parameter | Type |Description
  --------- | ------- | -----------
   code| String | which currency the fee is (usually quote)
@@ -632,6 +633,7 @@ Parameter | Type |Description
  fee| Object |-
  
  * fee
+ 
  Parameter | Type |Description
  --------- | ------- | -----------
   code| String | which currency the fee is (usually quote)
@@ -719,6 +721,7 @@ Parameter | Type |Description
  fee| Object |-
  
  * fee
+ 
  Parameter | Type |Description
  --------- | ------- | -----------
   code| String | which currency the fee is (usually quote)
@@ -803,6 +806,7 @@ Parameter | Type |Description
  fee| Object |-
  
  * fee
+ 
  Parameter | Type |Description
  --------- | ------- | -----------
   code| String | which currency the fee is (usually quote)
