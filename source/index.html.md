@@ -1022,12 +1022,32 @@ Parameter | Type |Description
 
 ## 充值提现状态说明
 
-* 提现状态
+* Withdraw Status
 
-Parameter | Type |Description
---------- | ------- | -----------
+Parameter  |Description
+---------  | -----------
+3|Fee_Paid              
+2|Fee_send failed       
+4|Fee_failed                
+13|Unloking         
+14|Unlock_failed        
+5|Executing             
+8|Succeed                
+6|Withdraw_failed      
+7|Failed                       
+101|Below_the_minimum 
 
-* 充值状态
+* Deposits Status
 
-Parameter | Type |Description
---------- | ------- | -----------
+Parameter  |Description
+---------  | -----------
+3|Fee_Paid              
+2|Fee_send_failed       
+4|Fee_failed                
+5|Locking               
+8|Lock_succeed       
+6|Lock_send_failed     
+7|Lock_failed              
+9|Failed                      
+10|Succeed        
+31|Below_the_minimum 
