@@ -1026,28 +1026,28 @@ Parameter | Type |Description
 
 Parameter  |Description
 ---------  | -----------
-3|Fee_Paid              
-2|Fee_send failed       
-4|Fee_failed                
-13|Unloking         
-14|Unlock_failed        
-5|Executing             
-8|Succeed                
-6|Withdraw_failed      
-7|Failed                       
-101|Below_the_minimum 
+3|FEE_PAID              
+2|FEE_SEND_FAILED       
+4|FEE_FAILED                
+13|UNLOKING         
+14|UNLOCK_FAILED        
+5|EXECUTING             
+8|SUCCEED                
+6|WITHDRAW_FAILED      
+7|FAILED                       
+101|BELOW_THE_MINIMUM 
 
 * Deposits Status
 
 Parameter  |Description
 ---------  | -----------
-3|Fee_Paid              
-2|Fee_send_failed       
-4|Fee_failed                
-5|Locking               
-8|Lock_succeed       
-6|Lock_send_failed     
-7|Lock_failed              
-9|Failed                      
-10|Succeed        
-31|Below_the_minimum 
+3|FEE_PAID              
+2|FEE_SEND_FAILED       
+4|FEE_FAILED                
+5|LOCKING               
+8|LOCK_SUCCEED       
+6|LOCK_SEND_FAILED     
+7|LOCK_FAILED              
+9|FAILED                      
+10|SUCCEED        
+31|BELOW_THE_MINIMUM 
