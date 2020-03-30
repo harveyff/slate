@@ -6,8 +6,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://www.byte-trade.com'>Exchange</a>
-  - <a href='https://explorer.byte-trade.com'>Explorer</a>
-
 includes:
   - errors
 
@@ -25,7 +23,7 @@ This example API documentation page was created with [Slate](https://github.com/
 
 # APIs
 
-## 交易品种信息
+## Get all Supported Currencies
 
 ```shell
 curl "https://api-v2.byte-trade.com/currencies"
@@ -42,11 +40,9 @@ This endpoint retrieves a specific kitten.
 
 `GET https://api-v2.bytetrade.com/currencies`
 
-### URL Parameters
+### Request Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
+No parameter is needed for this endpoint.
 
 
 > Response:
@@ -77,7 +73,7 @@ include_cats | false | If set to true, the result will also include cats.
 }...]
 ```
 
-### 响应数据
+### Response Content
 
 Parameter | Type |Description
 --------- | ------- | -----------
@@ -95,7 +91,7 @@ limits | Object | If set to false, the result will incluy been adopted.
 
 
 
-## 交易市场信息
+## Get all Supported Symbols
 
 ```shell
 curl "https://api-v2.byte-trade.com/symbols"
@@ -112,11 +108,9 @@ This endpoint retrieves a specific kitten.
 
 `GET https://api-v2.bytetrade.com/symbols`
 
-### URL Parameters
+### Request Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
+No parameter is needed for this endpoint.
 
 
 > Response:
@@ -150,7 +144,7 @@ include_cats | false | If set to true, the result will also include cats.
 }]
 ```
 
-### 响应数据
+### Response Content
 
 Parameter | Type |Description
 --------- | ------- | -----------
