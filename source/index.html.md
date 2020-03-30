@@ -167,7 +167,7 @@ limits | Object | If set to false, the result will incluy been adopted.
 ## 市场行情
 
 ```shell
-curl "https://api-v2.byte-trade.com/tickers "
+curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/tickers"
 ```
 
 > The above command returns JSON structured like this:
@@ -178,13 +178,13 @@ curl "https://api-v2.byte-trade.com/tickers "
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/tickers `
+`GET https://api-v2.bytetrade.com/tickers`
 
 ### URL Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-symbol | false | 交易对symbol
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |Long| false | NA|交易对symbol|
 
 
 > Response:
@@ -192,21 +192,21 @@ symbol | false | 交易对symbol
 ```json
 [
       {
-        "symbol": "68719476706",                 // unique id, unique
-        "name": "ETH/BTC",                       // string symbol of the market, non-unique
-        "base": "2",                             // base coin id
-        "quote": "32",                           // quote coin id
-        "timestamp": 1559124034283,              // int (64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
-        "datetime": "2019-05-29T10:00:34.283Z",  // ISO8601 datetime string with milliseconds
-        "high": "0.031526",                        // highest price
-        "low": "0.030771",                         // lowest price
-        "open": "0.031009",                        // opening price
-        "close": "0.031035",                       // price of last trade (closing price for current period)
-        "last": "0.031035",                        // same as `close`, duplicated for convenience
-        "change": "2.6e-05",                       // absolute change, `last - open`
-        "percentage": "0.084",                     // relative change, `(change/open) * 100`
-        "baseVolume": "209771.771",                // volume of base currency traded for last 24 hours
-        "quoteVolume": "6519.97393184"             // volume of quote currency traded for last 24 hours
+        "symbol": "68719476706",                 
+        "name": "ETH/BTC",                       
+        "base": "2",                             
+        "quote": "32",                          
+        "timestamp": 1559124034283,            
+        "datetime": "2019-05-29T10:00:34.283Z",  
+        "high": "0.031526",                        
+        "low": "0.030771",                      
+        "open": "0.031009",                     
+        "close": "0.031035",                    
+        "last": "0.031035",                     
+        "change": "2.6e-05",                    
+        "percentage": "0.084",                  
+        "baseVolume": "209771.771",             
+        "quoteVolume": "6519.97393184"          
       }
 ]...]
 ```
@@ -232,4 +232,78 @@ baseVolume | String | volume of base currency traded for last 24 hours.
 quoteVolume | String | volume of quote currency traded for last 24 hours.
 
 
+
+## 深度
+
+```shell
+curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/depth"
+```
+
+> The above command returns JSON structured like this:
+
+
+
+查询单个symbol的市场深度行情
+
+### HTTP Request
+
+`GET https://api-v2.bytetrade.com/depth?symbol=68719476706`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |Long| true | NA|交易对symbol|
+limit |Int| false |20 |asks或bids个数|[1,100]
+type |String|false | step0|深度的价格聚合度，step0时无聚合，step1\2\3\4\5分别代表聚合度为报价精度*10\100\1000\10000\100000|step0|step0，step1，step2，step3，step4，step5
+
+
+> Response:
+
+```json
+{
+      "bids": [
+        [
+          "0.031138",  
+          "0.05"       
+        ],
+        [
+          "0.031137",
+          "1.94"
+        ],
+        [
+          "0.031136",
+          "0.236"
+        ]
+       ],
+      "asks": [
+        [
+          "0.031147",
+          "14.237"
+        ],
+        [
+          "0.031149",
+          "0.033"
+        ],
+        [
+          "0.03115",
+          "0.417"
+        ],
+        [
+          "0.031151",
+          "0.755"
+        ],
+    "timestamp": 1559549045008,
+    "datetime": "2019-06-03T08:04:05.008Z"
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+bids | Array | [[price,amount]]
+asks | Array | [[price,amount]]
+timestamp | String | 
+datetime | String | 
 
