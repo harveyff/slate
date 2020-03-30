@@ -7,7 +7,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
   - <a href='https://www.byte-trade.com'>Exchange</a>
 includes:
-  - head
   - errors
 
 search: true
