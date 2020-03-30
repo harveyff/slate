@@ -1,5 +1,5 @@
 ---
-title: BitExchange API Reference
+title: ByteTrade API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -843,11 +843,11 @@ code |Int| false | NA|currency的code	|
 ```json
 [
     {
-        "code": "2",                                                 // currency code
+        "code": "2",                                            
         "name": "ETH",
-        "chainType":"ethereum",                                    // 充值链类型，当前支持ethereum/naka/cmt/bitcoin
-        "address": "0x10c03cde1395e8e1e7626b890384c9897f7f597b",   // address in terms of requested currency
-        "tag": ""                                                  // tag / memo / paymentId for particular currencies (XRP, XMR, ...)
+        "chainType":"ethereum",                                 
+        "address": "0x10c03cde1395e8e1e7626b890384c9897f7f597b",
+        "tag": ""                                               
     }
 ]
 ```
@@ -895,7 +895,7 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 [
     {
       "id": "e523e01b778e377c9bbc3a883305409c3774efb1",                             
-      "txid": "0xc42f1611d795cb5a9bda63af4a9fd28c7958a18d908bf1750ccfea9ace88d48f",                                                                   // 对应外部链上的转账信息，当前从listWithdraws没有找到这个，但是从区块浏览器中可以看到，需要确认下如何获取
+      "txid": "0xc42f1611d795cb5a9bda63af4a9fd28c7958a18d908bf1750ccfea9ace88d48f
       "timestamp": 1553134089103,                                                  
       "datetime": "2019-03-21T02:08:09.103Z",                                      
       "address": "0x32d74896f05204d1b6ae7b0a3cebd7fc0cd8f9c7",                   
@@ -973,7 +973,7 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 [
     {
       "id": "e523e01b778e377c9bbc3a883305409c3774efb1",                             
-      "txid": "0xc42f1611d795cb5a9bda63af4a9fd28c7958a18d908bf1750ccfea9ace88d48f",                                                                   // 对应外部链上的转账信息，当前从listWithdraws没有找到这个，但是从区块浏览器中可以看到，需要确认下如何获取
+      "txid": "0xc42f1611d795cb5a9bda63af4a9fd28c7958a18d908bf1750ccfea9ace88d48f", 
       "timestamp": 1553134089103,                                                  
       "datetime": "2019-03-21T02:08:09.103Z",                                      
       "address": "0x32d74896f05204d1b6ae7b0a3cebd7fc0cd8f9c7",                   
