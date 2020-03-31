@@ -31,7 +31,6 @@ We have language bindings in Shell, You can view code examples in the dark area 
 curl "https://api-v2.byte-trade.com/currencies"
 ```
 
-> The above command returns JSON structured like this:
 
 
 
@@ -98,9 +97,6 @@ limits | Object | If set to false, the result will incluy been adopted.
 ```shell
 curl "https://api-v2.byte-trade.com/symbols"
 ```
-
-> The above command returns JSON structured like this:
-
 
 
 This endpoint retrieves a specific kitten.
@@ -172,9 +168,6 @@ limits | Object | If set to false, the result will incluy been adopted.
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/tickers"
 ```
 
-> The above command returns JSON structured like this:
-
-
 
 查询全部symbol或单个symbol的24小时的价格变化
 
@@ -240,10 +233,6 @@ quoteVolume | String | volume of quote currency traded for last 24 hours
 ```shell
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/depth"
 ```
-
-> The above command returns JSON structured like this:
-
-
 
 查询单个symbol的市场深度行情
 
@@ -317,8 +306,6 @@ datetime | String |
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/klines"
 ```
 
-> The above command returns JSON structured like this:
-
 查询单个symbol的市场深度行情
 
 ### HTTP Request
@@ -367,8 +354,6 @@ Parameter | Type |Description
 ```shell
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/trades"
 ```
-
-> The above command returns JSON structured like this:
 
 查询单个symbol的市场深度行情
 
@@ -428,8 +413,6 @@ Parameter | Type |Description
 curl -d "userid=test" "https://api-v2.byte-trade.com/balance"
 ```
 
-> The above command returns JSON structured like this:
-
 查询单个symbol的市场深度行情
 
 ### HTTP Request
@@ -475,8 +458,6 @@ Parameter | Type |Description
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/orders/all"
 ```
-
-> The above command returns JSON structured like this:
 
 查询单个用户的所有订单
 
@@ -562,8 +543,6 @@ Parameter | Type |Description
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/orders/open"
 ```
-
-> The above command returns JSON structured like this:
 
 查询单个用户的委托订单
 
@@ -651,8 +630,6 @@ Parameter | Type |Description
 curl -d "userid=test" "https://api-v2.byte-trade.com/orders/closed"
 ```
 
-> The above command returns JSON structured like this:
-
 查询单个用户的已成交订单
 
 ### HTTP Request
@@ -739,8 +716,6 @@ Parameter | Type |Description
 curl -d "userid=test" "https://api-v2.byte-trade.com/orders/trades"
 ```
 
-> The above command returns JSON structured like this:
-
 查询单个用户的成交明细
 
 ### HTTP Request
@@ -824,8 +799,6 @@ Parameter | Type |Description
 curl -d "userid=test" "https://api-v2.byte-trade.com/depositaddress"
 ```
 
-> The above command returns JSON structured like this:
-
 查询单个用户的成交明细
 
 ### HTTP Request
@@ -871,8 +844,6 @@ Parameter | Type |Description
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/withdrawals"
 ```
-
-> The above command returns JSON structured like this:
 
 查询单个用户的提现记录
 
@@ -951,8 +922,6 @@ Parameter | Type |Description
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/deposits"
 ```
-
-> The above command returns JSON structured like this:
 
 查询单个用户的充值记录
 
@@ -1070,8 +1039,6 @@ Parameter  |Description
    };
 ```
 
-> The above command returns JSON structured like this:
-
 订阅单个市场的最新成交
 
 ### Params
@@ -1116,8 +1083,6 @@ Parameter | Type |Description
        webSocket.send(JSON.stringify(params));
    };
 ```
-
-> The above command returns JSON structured like this:
 
 订阅单个或多个市场的24成交涨跌
 
@@ -1170,8 +1135,6 @@ Parameter | Type |Description
    };
 ```
 
-> The above command returns JSON structured like this:
-
 订阅单个市场的K线数据
 
 ### Params
@@ -1217,8 +1180,6 @@ Parameter | Type |Description
        webSocket.send(JSON.stringify(params));
    };
 ```
-
-> The above command returns JSON structured like this:
 
 订阅单个市场的K线数据
 
@@ -1267,8 +1228,6 @@ bids | Array | 当前最新的卖单价和卖单量[[price,amount]]
        webSocket.send(JSON.stringify(params));
    };
 ```
-
-> The above command returns JSON structured like this:
 
 用户鉴权，用户必须完成鉴权，才可以使用用户资产和用户余额的订阅
 
@@ -1383,8 +1342,6 @@ market_id | String |
        webSocket.send(JSON.stringify(params));
    };
 ```
-
-> The above command returns JSON structured like this:
 
 订阅用户一个或多个资产的余额变化
 <aside class="warning">
