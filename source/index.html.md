@@ -197,7 +197,7 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/tickers"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| false | NA|交易对symbol|
+symbol |Long| false | NA|symbol id|
 
 
 > Response:
@@ -262,7 +262,7 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/depth"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| true | NA|交易对symbol|
+symbol |Long| true | NA|symbol id|
 limit |Int| false |20 |asks或bids个数|[1,100]
 type |String|false | step0|深度的价格聚合度，step0时无聚合，step1\2\3\4\5分别代表聚合度为报价精度*10\100\1000\10000\100000|step0|step0，step1，step2，step3，step4，step5
 
@@ -334,7 +334,7 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/klines"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| true | NA|交易对symbol|
+symbol |Long| true | NA|symbol id|
 timeframe |String| true | |K线类型		|1m, 5m,15m,30m,1h,4h,1d,5d,1w,1M
 since |Long| false |NA |K线开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
@@ -383,7 +383,7 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/trades"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| true | NA|交易对symbol|
+symbol |Long| true | NA|symbol id|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
 
@@ -442,7 +442,7 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/balance"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|用户id|
+userid |String| true | NA|user id|
 
 
 
@@ -486,8 +486,8 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/all"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|用户id|
-symbol |Long| false | NA|交易对symbol|
+userid |String| true | NA|user id|
+symbol |Long| false | NA|symbol id|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
 
@@ -571,8 +571,8 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/open"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|用户id|
-symbol |Long| false | NA|交易对symbol|
+userid |String| true | NA|user id|
+symbol |Long| false | NA|symbol id|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
 
@@ -657,8 +657,8 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/closed"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|用户id|
-symbol |Long| false | NA|交易对symbol|
+userid |String| true | NA|user id|
+symbol |Long| false | NA|symbol id|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
 
@@ -743,8 +743,8 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/trades"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|用户id|
-symbol |Long| false | NA|交易对symbol|
+userid |String| true | NA|user id|
+symbol |Long| false | NA|symbol id|
 orderid |String| false | NA|order id|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
@@ -826,7 +826,7 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/depositaddress"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|用户id|
+userid |String| true | NA|user id|
 code |Int| false | NA|currency的code	|
 
 
@@ -872,7 +872,7 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/withdrawals"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|用户id|
+userid |String| true | NA|user id|
 code |Int| false | NA|currency的code	|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
@@ -950,7 +950,7 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/deposits"
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|用户id|
+userid |String| true | NA|user id|
 code |Int| false | NA|currency的code	|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
