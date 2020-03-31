@@ -3,6 +3,7 @@ title: ByteTrade API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
+  - javascript
 
 toc_footers:
   - <a href='https://www.byte-trade.com'>Exchange</a>
