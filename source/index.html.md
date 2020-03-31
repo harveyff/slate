@@ -78,16 +78,23 @@ No parameter is needed for this endpoint.
 
 Parameter | Type |Description
 --------- | ------- | -----------
-name | String | If set to false, the result will include have already been adopted.
-code | String | If set to false, the result will include kittens that have already been adopted.
-type | Int | If set to false, the result wil.
-fullname | Int | If set to false, the result will incluy been adopted.
-active | Int | If set to false, the result will incluy been adopted.
-basePrecision | Int | If set to false, the result will incluy been adopted.
-transferPrecision | Int | If set to false, the result will incluy been adopted.
-externalPrecision | Int | If set to false, the result will incluy been adopted.
-fee | Int | If set to false, the result will incluy been adopted.
-limits | Object | If set to false, the result will incluy been adopted.
+name | String | asset name
+code | String | asset id
+type | Int | chain type
+fullname | asset fullname
+active | Int |
+basePrecision | Int |  在ByteTrade链上，1个BTC将表示为1000000000000000000的整数
+transferPrecision | Int | 在ByteTrade链上，进行转账时，转账数量转成链上的整数后，最后8位(basePrecision-transferPrecision)为0,即至少转100000000的整数倍
+externalPrecision | Int | 在BTC的链上，最小单位为0.00000001
+fee | String | withdraw fee, only valid for BTC
+limits | Object | 
+
+ * limits
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+ deposit| Object | 充值的最小值和最大值，-1代表不限
+ withdraw| Object | 提现的最小值和最大值，-1代表不限
 
 
 
@@ -146,18 +153,34 @@ No parameter is needed for this endpoint.
 
 Parameter | Type |Description
 --------- | ------- | -----------
-symbol | String | If set to false, the result will include have already been adopted.
-name | String | If set to false, the result will include kittens that have already been adopted.
-base | String | If set to false, the result wil.
-quote | String | If set to false, the result will incluy been adopted.
-marketStatus | Int | If set to false, the result will incluy been adopted.
-baseName | String | If set to false, the result will incluy been adopted.
-quoteName | String | If set to false, the result will incluy been adopted.
-active | Boolean | If set to false, the result will incluy been adopted.
-maker | String | If set to false, the result will incluy been adopted.
-taker | String | If set to false, the result will incluy been adopted.
-precision | Object | If set to false, the result will incluy been adopted.
-limits | Object | If set to false, the result will incluy been adopted.
+symbol | String |market symbol, unique
+name | String | market symbol name, non-unique
+base | String | base asset currency
+quote | String | quote asset currency
+marketStatus | Int | market status,0 is closed,1 is open
+baseName | String | base asset name
+quoteName | String | quote asset code
+active | Boolean | 
+maker | String | maker fee
+taker | String | taker fee
+precision | Object |
+
+ * precision
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+ amount| Int | 交易时，amount的精度，代表小数点后的最大位数
+ price| Int | 交易时，price的精度，代表小数点后的最大位数
+
+
+limits | Object |
+
+ * limits
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+ amount| String | 限制base的最小值和最大值(当订单为限价买卖单或订单为市价卖单);限制quote的最小值和最大值(当订单为市价买单)
+ price| String | 限制quote的最小值和最大值(当订单为限价买卖单或订单为市价卖单);限制base的最小值和最大值(当订单为市价买单)
 
 
 # 市场信息
