@@ -81,7 +81,7 @@ Parameter | Type |Description
 name | String | asset name
 code | String | asset id
 type | Int | chain type
-fullname | asset fullname
+fullname |String| asset fullname
 active | Int |
 basePrecision | Int |  在ByteTrade链上，1个BTC将表示为1000000000000000000的整数
 transferPrecision | Int | 在ByteTrade链上，进行转账时，转账数量转成链上的整数后，最后8位(basePrecision-transferPrecision)为0,即至少转100000000的整数倍
@@ -164,6 +164,7 @@ active | Boolean |
 maker | String | maker fee
 taker | String | taker fee
 precision | Object |
+limits | Object |
 
  * precision
  
@@ -171,9 +172,6 @@ precision | Object |
  --------- | ------- | -----------
  amount| Int | 交易时，amount的精度，代表小数点后的最大位数
  price| Int | 交易时，price的精度，代表小数点后的最大位数
-
-
-limits | Object |
 
  * limits
  
@@ -429,6 +427,7 @@ Parameter | Type |Description
  cost| String |  amount of quote currency
 
 
+# 用户信息
 
 ## 获取用户balance
 
@@ -473,8 +472,6 @@ Parameter | Type |Description
  free| Long | money available for trading
  used| String | money on hold, locked, frozen or pending
  total| String | total balance (free + used)
-
-# 用户订单
 
 ## 获取用户的所有订单
 
