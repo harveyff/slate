@@ -1059,7 +1059,7 @@ Parameter  |Description
 
 # Websocket
 
-## 订阅市场最新成交
+## 市场最新成交
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
@@ -1073,12 +1073,11 @@ Parameter  |Description
 
 订阅单个市场的最新成交
 
-### Request Parameters
+### Params
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-method |String| true |NA|deals.subscribe|
-params |Array| true |NA|symbol id|
+symbol |String| true |NA|symbol id|
 
 > Response:
 
@@ -1100,7 +1099,7 @@ params |Array| true |NA|symbol id|
 
 Parameter | Type |Description
 --------- | ------- | -----------
- method| String | Subscribe method
+ method| String | subscribe method
  price| String | deal price
  time| Double | deal time
  id| String | deal id
@@ -1109,15 +1108,324 @@ Parameter | Type |Description
 
 ## 24小时成交涨跌
 
-## Kline
+```javascript
+   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   webSocket.onopen = function(event) {
+       var params={id: 12345, method: 'today.update', params: ['4294967329','4294967297']};
+       webSocket.send(JSON.stringify(params));
+   };
+```
+
+> The above command returns JSON structured like this:
+
+订阅单个或多个市场的24成交涨跌
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |String| true |NA|symbol id|
+
+> Response:
+
+```json
+{
+	"method": "today.update",
+	"params": [4294967329, {
+		"volume": "998178.85873774",
+		"deal": "53.6595488505712682",
+		"open": "0.00005326",
+		"change": "1.02327327",
+		"high": "0.00005501",
+		"last": "0.00005452",
+		"low": "0.00005309"
+	}],
+	"id": null
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ method| String | subscribe method
+ volume| String | volume currency traded for last 24 hours
+ deal| String | deal currency traded for last 24 hours
+ open| String | opening price
+ change| String | relative change
+ high| String | highest price
+ last| String | same as `close`, duplicated for convenience
+ low| String | lowest price
+
+
+## K线数据
+
+
+```javascript
+   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   webSocket.onopen = function(event) {
+       var params={id: 12345, method: 'kline.subscribe', params: ['4294967329',60]};
+       webSocket.send(JSON.stringify(params));
+   };
+```
+
+> The above command returns JSON structured like this:
+
+订阅单个市场的K线数据
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |String| true |NA|symbol id|
+period |Int| true |NA|k线周期|需要换算成秒。1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
+
+
+> Response:
+
+```json
+{
+	"method": "kline.update",
+	"params": [
+		[1585638600, "0.0000546", "0.00005458", "0.00005477", "0.00005458", "1573.6132", "0.086050753577", "CMT/ETH", 4294967329]
+	],
+	"id": null
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ | Long | UTC timestamp in milliseconds,
+ | String | (O)pen price, String
+ | String | (H)ighest price
+ | String | (L)owest price
+ | String | (C)losing price
+ | String | (L)owest price
+ | String | (V)olume (in terms of the base currency)
+
+
 
 ## 市场深度
 
+```javascript
+   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   webSocket.onopen = function(event) {
+       var params={id: 12345, method: 'depth.subscribe', params: ['4294967329',10,"0.001"]};
+       webSocket.send(JSON.stringify(params));
+   };
+```
+
+> The above command returns JSON structured like this:
+
+订阅单个市场的K线数据
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |String| true |NA|symbol id|
+limit |Int| true |NA|条数|
+step |String| true |NA|深度聚合度| 0(不聚合)/0.1/0.001/0.0001/0.00001
+
+
+> Response:
+
+```json
+{
+	"method": "depth.update",
+	"params": [true, {
+		"asks": [
+			["0.00006", "5994.292598"],
+			["0.00007", "2855.568381"]
+		],
+		"bids": [
+			["0.00005", "8365.835532"],
+			["0.00004", "7496.585197"]
+		]
+	}, "4294967329"],
+	"id": null
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+asks | Array | 当前最新的买单价和买单量[[price,amount]]
+bids | Array | 当前最新的卖单价和卖单量[[price,amount]]
+ 
+ 
 ## 用户鉴权
 
+```javascript
+   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   webSocket.onopen = function(event) {
+       var params={id: 12345, method: 'server.sign', params: ['test']};
+       webSocket.send(JSON.stringify(params));
+   };
+```
+
+> The above command returns JSON structured like this:
+
+用户鉴权，用户必须完成鉴权，才可以使用用户资产和用户余额的订阅
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userid |String| true |NA|user id|
+
+
+
+> Response:
+
+```json
+{
+	"error": null,
+	"result": {
+		"status": "success"
+	},
+	"id": 12345
+}```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+status | String | server status
+ 
+ 
 ## 用户订单
 
+```javascript
+   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   webSocket.onopen = function(event) {
+       var params={id: 12345, method: 'order.subscribe', params: ['122406567923']};
+       webSocket.send(JSON.stringify(params));
+   };
+```
+
+> The above command returns JSON structured like this:
+
+订阅用户订单，只会推送订阅后的订单数据。
+<aside class="warning">
+必须先完成用户鉴权
+</aside>
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |String| true |NA|symbol id|
+
+
+
+> Response:
+
+```json
+{
+	"method": "order.update",
+	"params": [1, {
+		"use_btt_as_fee": 0,
+		"deal_fee": "0",
+		"taker_fee": "0.0004",
+		"price": "0.000918",
+		"source": "",
+		"deal_money": "0",
+		"deal_stock": "0",
+		"id": "3eef56799c81dfd0cf59eb49d65339d6435909e7",
+		"left": "22",
+		"mtime": 1585640948.3282981,
+		"type": 1,
+		"market": "BHT/USDT",
+		"tid": "db91c645b609e1733e43f5b00a99db5dbbca6d9d",
+		"freeze_btt_fee": 0.0,
+		"amount": "22",
+		"user": "test",
+		"side": 2,
+		"ctime": 1585640948.3282981,
+		"maker_fee": "0.0004",
+		"dapp": "Sagittarius",
+		"market_id": 122406567923
+	}],
+	"id": null
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+id | String | 
+tid | String | 
+user | String | 
+deal_money | String | 
+deal_stock | String | 
+price | String | 
+left | String | 
+type | int | 
+side | int | 
+amount | String | 
+ctime | String | 
+maker_fee | String | 
+dapp | String | 
+market_id | String |
+ 
+ 
 ## 用户余额
 
+```javascript
+   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   webSocket.onopen = function(event) {
+       var params={id: 12345, method: 'asset.subscribe2', params: [2,3]};
+       webSocket.send(JSON.stringify(params));
+   };
+```
+
+> The above command returns JSON structured like this:
+
+订阅用户一个或多个资产的余额变化
+<aside class="warning">
+必须先完成用户鉴权
+</aside>
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+asset |Int| true |NA|asset id|
+
+
+
+> Response:
+
+```json
+{
+	"method": "asset.update",
+	"params": [{
+		"2": ["0.001644065", "0.0026325", "0"]
+	}, "harvey1712", 2],
+	"id": null
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ | String | available
+ | String | frozen
+ | String | pledge
+
+
+
 ## 取消订阅
+与订阅类型，只是将"method"里的"subscribe"改为"unsubscribe",如取消最新成交
+```javascript
+   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   webSocket.onopen = function(event) {
+       var params={id: 12345, method: 'deals.unsubscribe', params: []};
+       webSocket.send(JSON.stringify(params));
+   };
+```
 
