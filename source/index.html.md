@@ -1416,7 +1416,7 @@ status | String | server status
 
 
 ## 取消订阅
-与订阅类型，只是将"method"里的"subscribe"改为"unsubscribe",如取消最新成交
+与订阅类型，只是将"method"里的"subscribe"改为"unsubscribe"，如取消最新成交：
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
