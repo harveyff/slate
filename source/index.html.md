@@ -31,10 +31,7 @@ We have language bindings in Shell, You can view code examples in the dark area 
 curl "https://api-v2.byte-trade.com/currencies"
 ```
 
-
-
-
-This endpoint retrieves a specific kitten.
+This endpoint returns all ByteTrade's supported trading currencies.
 
 
 ### HTTP Request
@@ -106,7 +103,7 @@ curl "https://api-v2.byte-trade.com/symbols"
 ```
 
 
-This endpoint retrieves a specific kitten.
+This endpoint returns all ByteTrade's supported trading symbol.
 
 
 ### HTTP Request
