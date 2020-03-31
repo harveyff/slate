@@ -1060,7 +1060,7 @@ Parameter  |Description
 
 ## 订阅市场最新成交
 
-```JavaScript
+```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'deals.subscribe', params: ['122406567911']};
@@ -1072,6 +1072,12 @@ Parameter  |Description
 
 订阅单个市场的最新成交
 
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+method |String| true |NA|deals.subscribe|
+params |Array| true |NA|symbol id|
 
 > Response:
 
