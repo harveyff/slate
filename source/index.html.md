@@ -1376,6 +1376,44 @@ Parameter | Type |Description
  | String | pledge
 
 
+## 心跳检测
+
+```javascript
+   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   webSocket.onopen = function(event) {
+       var params={id: 12345, method: 'server.ping', params: []};
+       webSocket.send(JSON.stringify(params));
+   };
+```
+
+Websocket默认1小时断开连接，如果需要持续接收数据，请保持心跳。
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userid |String| true |NA|user id|
+
+
+
+> Response:
+
+```json
+{
+	"error": null,
+	"result": {
+		"status": "success"
+	},
+	"id": 12345
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+status | String | server status
+
 
 ## 取消订阅
 与订阅类型，只是将"method"里的"subscribe"改为"unsubscribe",如取消最新成交
