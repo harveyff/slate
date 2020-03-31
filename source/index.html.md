@@ -1185,6 +1185,8 @@ Parameter | Type |Description
  | String | (C)losing price
  | String | (L)owest price
  | String | (V)olume (in terms of the base currency)
+ | String | symbol name
+ | Long | symbol id
 
 
 
