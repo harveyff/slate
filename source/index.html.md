@@ -904,7 +904,8 @@ limit |Int| false |100 |返回数据的条数|[1,500]
       "amount": 10,                                       
       "code": "3",     
       "name": "KCASH",                                                         
-      "status": "succeed",                              
+      "status": "SUCCEED",    
+      "statusCode": 8,                                   
       "updated": 1553134584448,                          
       "fee": {                                   
         "code": "3",    
@@ -920,7 +921,7 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 
 Parameter | Type |Description
 --------- | ------- | -----------
- id| String | 
+ id| String | withdraw id
  txid| String | 
  timestamp| String | 
  datetime| String | 
@@ -929,7 +930,8 @@ Parameter | Type |Description
  amount| String |
  code| String |
  name| String |
- status| String |
+ status| String |Description of withdrawal status
+ statusCode| Int |Code value of withdrawal status
  updated| String |
  fee| Object |
  * fee
@@ -978,11 +980,12 @@ limit |Int| false |100 |返回数据的条数|[1,500]
       "datetime": "2019-03-21T02:08:09.103Z",                                      
       "address": "0x32d74896f05204d1b6ae7b0a3cebd7fc0cd8f9c7",                   
       "tag": "",                                                                  
-      "type": "withdrawal",                         
+      "type": "deposit",                         
       "amount": 10,                                       
       "code": "3",     
       "name": "KCASH",                                                         
       "status": "succeed",                              
+      "statusCode": 10,                              
       "updated": 1553134584448,                          
       "fee": {                                   
         "code": "3",    
@@ -1007,7 +1010,8 @@ Parameter | Type |Description
  amount| String |
  code| String |
  name| String |
- status| String |
+ status| String |Description of deposit status
+ statusCode| Int |Code value of deposit status
  updated| String |
  fee| Object |
  * fee
@@ -1051,3 +1055,47 @@ Parameter  |Description
 9|FAILED                      
 10|SUCCEED        
 31|BELOW_THE_MINIMUM 
+
+# Websocket
+
+## 订阅市场最新成交
+
+```JavaScript
+   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   webSocket.onopen = function(event) {
+       var params={id: 12345, method: 'deals.subscribe', params: ['122406567911']};
+       webSocket.send(JSON.stringify(params));
+   };
+```
+
+> The above command returns JSON structured like this:
+
+订阅单个市场的最新成交
+
+
+> Response:
+
+```json
+{
+	"method": "deals.update",
+	"params": ["122406567911", [{
+		"price": "6397.86",
+		"time": 1585634793.734211,
+		"id": "25f82ee8592fa8a0a806da8b5ad65b92fc0dc6a0",
+		"type": "buy",
+		"amount": "0.000023"
+	}]],
+	"id": null
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ method| String | Subscribe method
+ price| String | deal price
+ time| Double | deal time
+ id| String | deal id
+ type| String | deal type(buy/sell)
+ amount| String | deal amount
