@@ -1288,7 +1288,8 @@ userid |String| true |NA|user id|
 		"status": "success"
 	},
 	"id": 12345
-}```
+}
+```
 
 ### Response Content
 
@@ -1330,24 +1331,24 @@ symbol |String| true |NA|symbol id|
 		"use_btt_as_fee": 0,
 		"deal_fee": "0",
 		"taker_fee": "0.0004",
-		"price": "0.000918",
+		"price": "0.000918", // float price in quote currency
 		"source": "",
-		"deal_money": "0",
-		"deal_stock": "0",
-		"id": "3eef56799c81dfd0cf59eb49d65339d6435909e7",
-		"left": "22",
+		"deal_money": "0", //
+		"deal_stock": "0", //
+		"id": "3eef56799c81dfd0cf59eb49d65339d6435909e7",// order id
+		"left": "22",//amount not deal
 		"mtime": 1585640948.3282981,
-		"type": 1,
-		"market": "BHT/USDT",
-		"tid": "db91c645b609e1733e43f5b00a99db5dbbca6d9d",
+		"type": 1,// order type(market/limit)
+		"side": 2,// order side(sell/buy)
+		"market": "BHT/USDT",//symbol name
+		"tid": "db91c645b609e1733e43f5b00a99db5dbbca6d9d",// transaction id in bytetrade
 		"freeze_btt_fee": 0.0,
-		"amount": "22",
-		"user": "test",
-		"side": 2,
+		"amount": "22",// order amount
+		"user": "test",// user id
 		"ctime": 1585640948.3282981,
-		"maker_fee": "0.0004",
-		"dapp": "Sagittarius",
-		"market_id": 122406567923
+		"maker_fee": "0.0004",// fee rate
+		"dapp": "Sagittarius",//dapp id
+		"market_id": 122406567923//symbol id
 	}],
 	"id": null
 }
