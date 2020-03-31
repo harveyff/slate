@@ -6,7 +6,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='https://www.byte-trade.com'>Exchange</a>
+  - <a href='#'>English</a>
+  - <a href='#'>中文</a>
 includes:
   - errors
 
@@ -1308,7 +1309,6 @@ status | String | server status
    };
 ```
 
-> The above command returns JSON structured like this:
 
 订阅用户订单，只会推送订阅后的订单数据。
 <aside class="warning">
