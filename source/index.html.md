@@ -1073,7 +1073,7 @@ Parameter  |Description
 
 订阅单个市场的最新成交
 
-### URL Parameters
+### Request Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
@@ -1106,3 +1106,18 @@ Parameter | Type |Description
  id| String | deal id
  type| String | deal type(buy/sell)
  amount| String | deal amount
+
+## 24小时成交涨跌
+
+## Kline
+
+## 市场深度
+
+## 用户鉴权
+
+## 用户订单
+
+## 用户余额
+
+## 取消订阅
+
