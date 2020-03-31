@@ -13,3 +13,4 @@ Error Code | Meaning
 500 | Internal Server Error 
 501 | Request Error 
 503 | Service Unavailable 
+
