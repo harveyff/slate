@@ -15,7 +15,14 @@ search: true
 Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoints.
 
 At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a JavaScript / Python / PHP library,if you use these languages, you can use them easily,it supports more interfaces, such as withdraw.
-                                                                                                                                                                       
+
+## Access URLs
+* REST API
+  `https://api-v2.byte-trade.com`
+  
+* Websocket Feed       
+  `https://api.byte-trade.com/ws/`                                                                                                                                                             
+                                                                                                                                                               #
 # Basic Information
 
 ## Get all Supported Currencies
@@ -918,7 +925,7 @@ Parameter | Type |Description
  code| string | asset id
  name| string | asset name
  status| string |description of withdrawal status
- statusCode| int |code value of withdrawal [status](# Withdraw Status)
+ statusCode| int |code value of withdrawal [status](#deposit-withdraw-status)
  updated| string |
  fee| object |
  * fee
@@ -952,8 +959,6 @@ code |int| false | NA|currency的code	|
 since |long| false |NA |start time(utc milliseconds),If this value is not set,get 
  the limit records forward from the current moment by default	|
 limit |int| false |100 |number of returned data|[1,500]
-
-
 
 > Response:
 
@@ -997,7 +1002,7 @@ Parameter | Type |Description
  code| string | asset id
  name| string | asset name
  status| string | cescription of deposit status
- statusCode| int | code value of deposit [status](# Deposit Status)
+ statusCode| int | code value of deposit [status](#deposit-withdraw-status)
  updated| string |
  fee| object |
  * fee
@@ -1047,7 +1052,7 @@ Code  |Description
 ## Market Trades
 
 ```shell
-      {id: 12345, method: 'deals.subscribe', params: ['122406567911']}
+    {id: 12345, method: 'deals.subscribe', params: ['122406567911']}
 ```
 
 This topic sends the latest trades in a single market.
@@ -1088,11 +1093,7 @@ Parameter | Type |Description
 ## Last 24h Market Summary
 
 ```shell
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
-   webSocket.onopen = function(event) {
-       var params={id: 12345, method: 'today.update', params: ['4294967329','4294967297']};
-       webSocket.send(JSON.stringify(params));
-   };
+    {id: 12345, method: 'today.update', params: ['4294967329','4294967297']}
 ```
 
 This topic sends the rise or fall of 24-hour deals in a single or multiple markets.
@@ -1137,13 +1138,8 @@ Parameter | Type |Description
 
 ## Kline Data
 
-
-```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
-   webSocket.onopen = function(event) {
-       var params={id: 12345, method: 'kline.subscribe', params: ['4294967329',60]};
-       webSocket.send(JSON.stringify(params));
-   };
+```shell
+    {id: 12345, method: 'kline.subscribe', params: ['4294967329',60]}
 ```
 
 This topic sends the Kline data of a single market.
@@ -1186,12 +1182,8 @@ period |int| true |NA|kline period|need to be converted into seconds。1min, 5mi
 
 ## Market Depth
 
-```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
-   webSocket.onopen = function(event) {
-       var params={id: 12345, method: 'depth.subscribe', params: ['4294967329',10,"0.001"]};
-       webSocket.send(JSON.stringify(params));
-   };
+```shell
+    {id: 12345, method: 'depth.subscribe', params: ['4294967329',10,"0.001"]}
 ```
 
 This topic sends the latest market by price order book.
@@ -1234,12 +1226,8 @@ bids | Array | current latest sell order price and order amount[[price,amount]]
  
 ## User Auth
 
-```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
-   webSocket.onopen = function(event) {
-       var params={id: 12345, method: 'server.sign', params: ['test']};
-       webSocket.send(JSON.stringify(params));
-   };
+```shell
+    {id: 12345, method: 'server.sign', params: ['test']}
 ```
 
 User appraises right,users must complete authentication before they can use subscriptions for user assets and user balances.
@@ -1273,12 +1261,8 @@ status | string | server status
  
 ## User Order
 
-```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
-   webSocket.onopen = function(event) {
-       var params={id: 12345, method: 'order.subscribe', params: ['122406567923']};
-       webSocket.send(JSON.stringify(params));
-   };
+```shell
+    {id: 12345, method: 'order.subscribe', params: ['122406567923']}
 ```
 
 This topic sends user orders, only the order data after the subscription is pushed.
@@ -1347,12 +1331,8 @@ market_id | string | symbol id
  
 ## User Balance
 
-```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
-   webSocket.onopen = function(event) {
-       var params={id: 12345, method: 'asset.subscribe2', params: [2,3]};
-       webSocket.send(JSON.stringify(params));
-   };
+```shell
+    {id: 12345, method: 'asset.subscribe2', params: [2,3]}
 ```
 
 This topic sends the changes in the balance of one or more assets of the user.
@@ -1391,12 +1371,8 @@ Parameter | Type |Description
 
 ## Heartbeat Detection
 
-```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
-   webSocket.onopen = function(event) {
-       var params={id: 12345, method: 'server.ping', params: []};
-       webSocket.send(JSON.stringify(params));
-   };
+```shell
+    {id: 12345, method: 'server.ping', params: []}
 ```
 
 Websocket will disconnect by default for 1 hour. If need to continuously receive data, please keep the heartbeat.
@@ -1439,6 +1415,16 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
    };
 ```
 
+
+# Transaction
+
+## Create Order
+
+The following shows the process of create order by the JS library.
+
+```javascript
+
+```  
 
 
 # Error Http Status
