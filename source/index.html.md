@@ -18,9 +18,7 @@ Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoi
 We have language bindings in Shell, You can view code examples in the dark area to the right.
 
 
-
-
-# Basic information
+# Basic Information
 
 ## Get all Supported Currencies
 
