@@ -1,6 +1,6 @@
-# 错误状态
+# Error http status
 
-API接口返回的HTTP错误代码含义:
+The ByteTrade API uses the following error codes:
 
 状态码 | 含义
 ---------- | -------
