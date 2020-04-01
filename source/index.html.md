@@ -7,9 +7,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://doc.byte-trade.com'>English</a>
-  - <a href='https://doc.byte-trade.com/index-cn.html'>中文</a>
-includes:
-  - errors
 
 search: true
 ---
@@ -36,7 +33,7 @@ This endpoint returns all ByteTrade's supported trading currencies.
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/currencies`
+`GET https://api-v2.byte-trade.com/currencies`
 
 ### Request Parameters
 
@@ -75,23 +72,23 @@ No parameter is needed for this endpoint.
 
 Parameter | Type |Description
 --------- | ------- | -----------
-name | String | asset name
-code | String | asset id
-type | Int | chain type
-fullname |String| asset fullname
-active | Int |
-basePrecision | Int |  On ByteTrade blockchain, 1 BTC will be represented as an integer of 1000000000000000000
-transferPrecision | Int | On ByteTrade blockchain, when transferring, after the amount of transfer is converted to an integer on the chain, and the last 8 bits (basePrecision-transferPrecision) are 0, so need to transfer at least a multiple of 100000000
-externalPrecision | Int | On BTC blockchain, the minimum unit is 0.00000001
-fee | String | withdraw fee, only valid for BTC
-limits | Object | 
+name | string | asset name
+code | string | asset id
+type | int | chain type
+fullname |string| asset fullname
+active | int |
+basePrecision | int |  On ByteTrade blockchain, 1 BTC will be represented as an integer of 1000000000000000000
+transferPrecision | int | On ByteTrade blockchain, when transferring, after the amount of transfer is converted to an integer on the chain, and the last 8 bits (basePrecision-transferPrecision) are 0, so need to transfer at least a multiple of 100000000
+externalPrecision | int | On BTC blockchain, the minimum unit is 0.00000001
+fee | string | withdraw fee, only valid for BTC
+limits | object | 
 
  * limits
  
  Parameter | Type |Description
  --------- | ------- | -----------
- deposit| Object | Minimum and maximum of deposit, -1 means unlimited
- withdraw| Object | The minimum and maximum of withdrawal, -1 means unlimited
+ deposit| object | Minimum and maximum of deposit, -1 means unlimited
+ withdraw| object | The minimum and maximum of withdrawal, -1 means unlimited
 
 
 
@@ -108,7 +105,7 @@ This endpoint returns all ByteTrade's supported trading symbol.
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/symbols`
+`GET https://api-v2.byte-trade.com/symbols`
 
 ### Request Parameters
 
@@ -150,54 +147,54 @@ No parameter is needed for this endpoint.
 
 Parameter | Type |Description
 --------- | ------- | -----------
-symbol | String |market symbol, unique
-name | String | market symbol name, non-unique
-base | String | base asset currency
-quote | String | quote asset currency
-marketStatus | Int | market status,0 is closed,1 is open
-baseName | String | base asset name
-quoteName | String | quote asset code
+symbol | string |market symbol, unique
+name | string | market symbol name, non-unique
+base | string | base asset currency
+quote | string | quote asset currency
+marketStatus | int | market status,0 is closed,1 is open
+baseName | string | base asset name
+quoteName | string | quote asset code
 active | Boolean | 
-maker | String | maker fee
-taker | String | taker fee
-precision | Object |
-limits | Object |
+maker | string | maker fee
+taker | string | taker fee
+precision | object |
+limits | object |
 
  * precision
  
  Parameter | Type |Description
  --------- | ------- | -----------
- amount| Int |When trading, the precision of amount represents the maximum number of digits after the decimal point
- price| Int | When trading, the precision of price represents the maximum number of digits after the decimal point
+ amount| int |When trading, the precision of amount represents the maximum number of digits after the decimal point
+ price| int | When trading, the precision of price represents the maximum number of digits after the decimal point
 
  * limits
  
  Parameter | Type |Description
  --------- | ------- | -----------
- amount| String | Limit the minimum and maximum of the base (when the order is a limit buy or sell order or the market sell order); limit the minimum and maximum of the quote (when the order is a market buy order)
- price| String | Limit the minimum and maximum of the quote (when the order is a limit buy or sell order or a market sell order); limit the minimum and maximum of the base (when the order is a market buy order)
+ amount| string | Limit the minimum and maximum of the base (when the order is a limit buy or sell order or the market sell order); limit the minimum and maximum of the quote (when the order is a market buy order)
+ price| string | Limit the minimum and maximum of the quote (when the order is a limit buy or sell order or a market sell order); limit the minimum and maximum of the base (when the order is a market buy order)
 
 
 # Market information
 
-## Market condition
+## Get the Last 24h Market Summary
 
 ```shell
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/tickers"
 ```
 
+This endpoint retrieves the summary of trading in the market for the last 24 hours.
 
-Query the 24-hour price change of all symbols or a single symbol
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/tickers`
+`GET https://api-v2.byte-trade.com/tickers`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| false | NA|symbol id|
+symbol |long| false | NA|symbol id|
 
 
 > Response:
@@ -228,25 +225,25 @@ symbol |Long| false | NA|symbol id|
 
 Parameter | Type |Description
 --------- | ------- | -----------
-symbol | String | unique id, unique
-name | String | string symbol of the market, non-unique
-base | String | base asset id
-quote | String | quote asset id
-timestamp | Long |(64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
+symbol | string | unique id, unique
+name | string | string symbol of the market, non-unique
+base | string | base asset id
+quote | string | quote asset id
+timestamp | long |(64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
 datetime | Date | ISO8601 datetime string with milliseconds
-high | String | highest price
-low | String | lowest price
-open | String | opening price
-close | String | price of last trade (closing price for current period)
-last | String | same as `close`, duplicated for convenience
-change | String | absolute change, `last - open`
-percentage | String | relative change, `(change/open) * 100`
-baseVolume | String | volume of base currency traded for last 24 hours
-quoteVolume | String | volume of quote currency traded for last 24 hours
+high | string | highest price
+low | string | lowest price
+open | string | opening price
+close | string | price of last trade (closing price for current period)
+last | string | same as `close`, duplicated for convenience
+change | string | absolute change, `last - open`
+percentage | string | relative change, `(change/open) * 100`
+baseVolume | string | volume of base currency traded for last 24 hours
+quoteVolume | string | volume of quote currency traded for last 24 hours
 
 
 
-## Depth
+## Get Market Depth
 
 ```shell
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/depth"
@@ -256,15 +253,15 @@ Query the market depth of a single symbol
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/depth?symbol=68719476706`
+`GET https://api-v2.byte-trade.com/depth?symbol=68719476706`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| true | NA|symbol id|
-limit |Int| false |20 |numbre of asks or bids|[1,100]
-type |String|false | step0|depth's price aggregation degree , no aggregation at step0, a step1 \ 2 \ 3 \ 4 \ 5 respectively represents the aggregation degree as the quote precision *10\100\1000\10000\100000|step0|step0，step1，step2，step3，step4，step5
+symbol |long| true | NA|symbol id|
+limit |int| false |20 |numbre of asks or bids|[1,100]
+type |string|false | step0|depth's price aggregation degree , no aggregation at step0, a step1 \ 2 \ 3 \ 4 \ 5 respectively represents the aggregation degree as the quote precision *10\100\1000\10000\100000|step0|step0，step1，step2，step3，step4，step5
 
 
 > Response:
@@ -313,12 +310,12 @@ Parameter | Type |Description
 --------- | ------- | -----------
 bids | Array | Current latest sell order price and sell order amount[[price,amount]]
 asks | Array | Current latest buy order price and buy order amount[[price,amount]]
-timestamp | String | 
-datetime | String | 
+timestamp | string | 
+datetime | string | 
 
 
 
-## K-line data (candle chart)
+## Get Kline(Candles)
 
 ```shell
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/klines"
@@ -328,16 +325,16 @@ Query the market depth of a single symbol
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/klines?symbol=68719476706`
+`GET https://api-v2.byte-trade.com/klines?symbol=68719476706`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| true | NA|symbol id|
-timeframe |String| true | |K-line type		|1m, 5m,15m,30m,1h,4h,1d,5d,1w,1M
-since |Long| false |NA |start time of K line  (utc milliseconds)，If this value is not set，get limit records forward from the current moment by default	|
-limit |Int| false |100 |Number of returned data|[1,500]
+symbol |long| true | NA|symbol id|
+timeframe |string| true | |K-line type		|1m, 5m,15m,30m,1h,4h,1d,5d,1w,1M
+since |long| false |NA |start time of K line  (utc milliseconds)，If this value is not set，get limit records forward from the current moment by default	|
+limit |int| false |100 |Number of returned data|[1,500]
 
 
 > Response:
@@ -359,13 +356,13 @@ limit |Int| false |100 |Number of returned data|[1,500]
 
 Parameter | Type |Description
 --------- | ------- | -----------
- | Long | UTC timestamp in milliseconds,
- | String | (O)pen price, String
- | String | (H)ighest price
- | String | (L)owest price
- | String | (C)losing price
- | String | (L)owest price
- | String | (V)olume (in terms of the base currency)
+ | long | UTC timestamp in milliseconds,
+ | string | (O)pen price, string
+ | string | (H)ighest price
+ | string | (L)owest price
+ | string | (C)losing price
+ | string | (L)owest price
+ | string | (V)olume (in terms of the base currency)
 
 ## Latest market transactions
 
@@ -377,16 +374,16 @@ Query the market trades of a single symbol
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/klines?symbol=68719476706`
+`GET https://api-v2.byte-trade.com/klines?symbol=68719476706`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| true | NA|symbol id|
-since |Long| false |NA |start time (utc milliseconds)，If this value is not set，get 
+symbol |long| true | NA|symbol id|
+since |long| false |NA |start time (utc milliseconds)，If this value is not set，get 
  the limit records forward from the current moment by default	|
-limit |Int| false |100 |Number of returned data|[1,500]
+limit |int| false |100 |Number of returned data|[1,500]
 
 
 > Response:
@@ -413,16 +410,16 @@ limit |Int| false |100 |Number of returned data|[1,500]
 
 Parameter | Type |Description
 --------- | ------- | -----------
- id| String |  trade id
- txid| String | transaction id in ByteTrade
- timestamp| Long | Unix timestamp in milliseconds
- datetime| String | ISO8601 datetime with milliseconds
- symbol| String | symbol id
- name| String | symbol name
- side| String | direction of the trade, "buy" or "sell"
- price| String | price in quote currency
- amount| String | amount of base currency
- cost| String |  amount of quote currency
+ id| string |  trade id
+ txid| string | transaction id in ByteTrade
+ timestamp| long | Unix timestamp in milliseconds
+ datetime| string | ISO8601 datetime with milliseconds
+ symbol| string | symbol id
+ name| string | symbol name
+ side| string | direction of the trade, "buy" or "sell"
+ price| string | price in quote currency
+ amount| string | amount of base currency
+ cost| string |  amount of quote currency
 
 
 # User Information
@@ -437,13 +434,13 @@ Query the balance of a user
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/balance?userid=test`
+`GET https://api-v2.byte-trade.com/balance?userid=test`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|user id|
+userid |string| true | NA|user id|
 
 
 
@@ -465,11 +462,11 @@ userid |String| true | NA|user id|
 
 Parameter | Type |Description
 --------- | ------- | -----------
- code| String | asset id
- name| String | asset name
- free| Long | money available for trading
- used| String | money on hold, locked, frozen or pending
- total| String | total balance (free + used)
+ code| string | asset id
+ name| string | asset name
+ free| long | money available for trading
+ used| string | money on hold, locked, frozen or pending
+ total| string | total balance (free + used)
 
 ## Get all orders of user
 
@@ -481,17 +478,17 @@ Query all orders of a single user
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/orders/all?userid=test`
+`GET https://api-v2.byte-trade.com/orders/all?userid=test`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|user id|
-symbol |Long| false | NA|symbol id|
-since |Long| false |NA |start time(utc milliseconds)，If this value is not set，get 
+userid |string| true | NA|user id|
+symbol |long| false | NA|symbol id|
+since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
  the limit records forward from the current moment by default |
-limit |Int| false |100 |Number of returned data|[1,500]
+limit |int| false |100 |Number of returned data|[1,500]
 
 
 
@@ -529,32 +526,32 @@ limit |Int| false |100 |Number of returned data|[1,500]
 
 Parameter | Type |Description
 --------- | ------- | -----------
- id| String | order id
- txid| String | transaction id in ByteTrade
- timestamp| Long | Unix timestamp in milliseconds
- datetime| String | ISO8601 datetime with milliseconds
- lastTradeTimestamp| Long | Unix timestamp of the most recent trade on this order
- status| String |order status(open/closed/cancelled)
- symbol| String |symbol id
- name| String |symbol name
- type| String |order type(market/limit)
- side| String |order side(sell/buy)
- price| String | float price in quote currency
- average| String |
- amount| String |ordered amount of base currency
- filled| String |filled amount of base currency
- remaining| String |remaining amount to fill
- cost| String |"filled" * "price" (filling price used where available)
- fee| Object |-
+ id| string | order id
+ txid| string | transaction id in ByteTrade
+ timestamp| long | Unix timestamp in milliseconds
+ datetime| string | ISO8601 datetime with milliseconds
+ lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
+ status| string |order status(open/closed/cancelled)
+ symbol| string |symbol id
+ name| string |symbol name
+ type| string |order type(market/limit)
+ side| string |order side(sell/buy)
+ price| string | float price in quote currency
+ average| string |
+ amount| string |ordered amount of base currency
+ filled| string |filled amount of base currency
+ remaining| string |remaining amount to fill
+ cost| string |"filled" * "price" (filling price used where available)
+ fee| object |-
  
  * fee
  
  Parameter | Type |Description
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+  code| string | which currency the fee is (usually quote)
+  name| string | 
+  cost| string | the fee amount in that currency
+  rate| string | the fee rate (if available)
 
 
 ## Get order of user
@@ -567,17 +564,17 @@ Query order of single user
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/orders/open?userid=test`
+`GET https://api-v2.byte-trade.com/orders/open?userid=test`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|user id|
-symbol |Long| false | NA|symbol id|
-since |Long| false |NA |start time(utc milliseconds)，If this value is not set，get 
+userid |string| true | NA|user id|
+symbol |long| false | NA|symbol id|
+since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
  the limit records forward from the current moment by default	|
-limit |Int| false |100 |Number of returned data|[1,500]
+limit |int| false |100 |Number of returned data|[1,500]
 
 
 
@@ -615,32 +612,32 @@ limit |Int| false |100 |Number of returned data|[1,500]
 
 Parameter | Type |Description
 --------- | ------- | -----------
- id| String | order id
- txid| String | transaction id in ByteTrade
- timestamp| Long | Unix timestamp in milliseconds
- datetime| String | ISO8601 datetime with milliseconds
- lastTradeTimestamp| Long | Unix timestamp of the most recent trade on this order
- status| String |order status(open/closed/cancelled)
- symbol| String |symbol id
- name| String |symbol name
- type| String |order type(market/limit)
- side| String |order side(sell/buy)
- price| String | float price in quote currency
- average| String |
- amount| String |ordered amount of base currency
- filled| String |filled amount of base currency
- remaining| String |remaining amount to fill
- cost| String |"filled" * "price" (filling price used where available)
- fee| Object |-
+ id| string | order id
+ txid| string | transaction id in ByteTrade
+ timestamp| long | Unix timestamp in milliseconds
+ datetime| string | ISO8601 datetime with milliseconds
+ lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
+ status| string |order status(open/closed/cancelled)
+ symbol| string |symbol id
+ name| string |symbol name
+ type| string |order type(market/limit)
+ side| string |order side(sell/buy)
+ price| string | float price in quote currency
+ average| string |
+ amount| string |ordered amount of base currency
+ filled| string |filled amount of base currency
+ remaining| string |remaining amount to fill
+ cost| string |"filled" * "price" (filling price used where available)
+ fee| object |-
  
  * fee
  
  Parameter | Type |Description
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+  code| string | which currency the fee is (usually quote)
+  name| string | 
+  cost| string | the fee amount in that currency
+  rate| string | the fee rate (if available)
 
 
 
@@ -654,17 +651,17 @@ Query the completed orders of a single user
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/orders/closed?userid=test`
+`GET https://api-v2.byte-trade.com/orders/closed?userid=test`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|user id|
-symbol |Long| false | NA|symbol id|
-since |Long| false |NA |start time(utc milliseconds)，If this value is not set，get 
+userid |string| true | NA|user id|
+symbol |long| false | NA|symbol id|
+since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
  the limit records forward from the current moment by default	|
-limit |Int| false |100 |Number of returned data|[1,500]
+limit |int| false |100 |Number of returned data|[1,500]
 
 
 
@@ -702,32 +699,32 @@ limit |Int| false |100 |Number of returned data|[1,500]
 
 Parameter | Type |Description
 --------- | ------- | -----------
- id| String | order id
- txid| String | transaction id in ByteTrade
- timestamp| Long | Unix timestamp in milliseconds
- datetime| String | ISO8601 datetime with milliseconds
- lastTradeTimestamp| Long | Unix timestamp of the most recent trade on this order
- status| String |order status(open/closed/cancelled)
- symbol| String |symbol id
- name| String |symbol name
- type| String |order type(market/limit)
- side| String |order side(sell/buy)
- price| String | float price in quote currency
- average| String |
- amount| String |ordered amount of base currency
- filled| String |filled amount of base currency
- remaining| String |remaining amount to fill
- cost| String |"filled" * "price" (filling price used where available)
- fee| Object |-
+ id| string | order id
+ txid| string | transaction id in ByteTrade
+ timestamp| long | Unix timestamp in milliseconds
+ datetime| string | ISO8601 datetime with milliseconds
+ lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
+ status| string |order status(open/closed/cancelled)
+ symbol| string |symbol id
+ name| string |symbol name
+ type| string |order type(market/limit)
+ side| string |order side(sell/buy)
+ price| string | float price in quote currency
+ average| string |
+ amount| string |ordered amount of base currency
+ filled| string |filled amount of base currency
+ remaining| string |remaining amount to fill
+ cost| string |"filled" * "price" (filling price used where available)
+ fee| object |-
  
  * fee
  
  Parameter | Type |Description
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+  code| string | which currency the fee is (usually quote)
+  name| string | 
+  cost| string | the fee amount in that currency
+  rate| string | the fee rate (if available)
 
 
 
@@ -741,18 +738,18 @@ Query the transaction details of a single user
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/orders/trades?userid=test`
+`GET https://api-v2.byte-trade.com/orders/trades?userid=test`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|user id|
-symbol |Long| false | NA|symbol id|
-orderid |String| false | NA|order id|
-since |Long| false |NA |start time(utc milliseconds)，If this value is not set，get 
+userid |string| true | NA|user id|
+symbol |long| false | NA|symbol id|
+orderid |string| false | NA|order id|
+since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
  the limit records forward from the current moment by default	|
-limit |Int| false |100 |Number of returned data|[1,500]
+limit |int| false |100 |Number of returned data|[1,500]
 
 
 
@@ -788,34 +785,34 @@ limit |Int| false |100 |Number of returned data|[1,500]
 
 Parameter | Type |Description
 --------- | ------- | -----------
- id| String | order id
- txid| String | transaction id in ByteTrade
- timestamp| Long | Unix timestamp in milliseconds
- datetime| String | ISO8601 datetime with milliseconds
- symbol| String |symbol id
- name| String |symbol name
- order| String |order id
- type| String |order type(market/limit)
- side| String |order side(sell/buy)
- price| String | float price in quote currency
- average| String |
- amount| String |ordered amount of base currency
- takerOrMaker| String |taker/marker
- cost| String |"filled" * "price" (filling price used where available)
- fee| Object |-
+ id| string | order id
+ txid| string | transaction id in ByteTrade
+ timestamp| long | Unix timestamp in milliseconds
+ datetime| string | ISO8601 datetime with milliseconds
+ symbol| string |symbol id
+ name| string |symbol name
+ order| string |order id
+ type| string |order type(market/limit)
+ side| string |order side(sell/buy)
+ price| string | float price in quote currency
+ average| string |
+ amount| string |ordered amount of base currency
+ takerOrMaker| string |taker/marker
+ cost| string |"filled" * "price" (filling price used where available)
+ fee| object |-
  
  * fee
  
  Parameter | Type |Description
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+  code| string | which currency the fee is (usually quote)
+  name| string | 
+  cost| string | the fee amount in that currency
+  rate| string | the fee rate (if available)
 
 # Deposit and Withdraw
 
-## Get deposit address of user
+## Get deposit address
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/depositaddress"
@@ -825,14 +822,14 @@ Get the deposit address of a user
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/depositaddress?userid=test`
+`GET https://api-v2.byte-trade.com/depositaddress?userid=test`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|user id|
-code |Int| false | NA|code of currency	|
+userid |string| true | NA|user id|
+code |int| false | NA|code of currency	|
 
 
 > Response:
@@ -853,35 +850,35 @@ code |Int| false | NA|code of currency	|
 
 Parameter | Type |Description
 --------- | ------- | -----------
- code| String | asset id
- name| String | asset name
- chainType| String | chain type
- address| String |  address in terms of requested currency
- tag| String |
+ code| string | asset id
+ name| string | asset name
+ chainType| string | chain type
+ address| string |  address in terms of requested currency
+ tag| string |
 
 
 
-## Get withdrawal records of user
+## Get withdraw history
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/withdrawals"
 ```
 
-Query the withdrawal records of a single user
+Get the withdrawal history of a user
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/withdrawals?userid=test`
+`GET https://api-v2.byte-trade.com/withdrawals?userid=test`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|user id|
-code |Int| false | NA|currency的code	|
-since |Long| false |NA |start time(utc milliseconds)，If this value is not set，get 
+userid |string| true | NA|user id|
+code |int| false | NA|currency的code	|
+since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
  the limit records forward from the current moment by default	|
-limit |Int| false |100 |Number of returned data|[1,500]
+limit |int| false |100 |Number of returned data|[1,500]
 
 
 
@@ -917,50 +914,50 @@ limit |Int| false |100 |Number of returned data|[1,500]
 
 Parameter | Type |Description
 --------- | ------- | -----------
- id| String | withdraw id
- txid| String | 
- timestamp| String | 
- datetime| String | 
- address| String |
- tag| String |
- amount| String |
- code| String |
- name| String |
- status| String |Description of withdrawal status
- statusCode| Int |Code value of withdrawal status
- updated| String |
- fee| Object |
+ id| string | withdraw id
+ txid| string | transaction id in ByteTrade
+ timestamp| string | creation time (ms)
+ datetime| string | ISO format time
+ address| string | withdraw address
+ tag| string |
+ amount| string | withdraw amount
+ code| string | asset id
+ name| string | asset name
+ status| string |description of withdrawal status
+ statusCode| int |code value of withdrawal status
+ updated| string |
+ fee| object |
  * fee
  
  Parameter | Type |Description
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+  code| string | which currency the fee is (usually quote)
+  name| string | 
+  cost| string | the fee amount in that currency
+  rate| string | the fee rate (if available)
 
 
-## Get deposit history of user
+## Get deposit history
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/deposits"
 ```
 
-Query the deposit record of a single user
+Get the deposit record of a user
 
 ### HTTP Request
 
-`GET https://api-v2.bytetrade.com/deposits?userid=test`
+`GET https://api-v2.byte-trade.com/deposits?userid=test`
 
 ### URL Parameters
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true | NA|user id|
-code |Int| false | NA|currency的code	|
-since |Long| false |NA |start time(utc milliseconds)，If this value is not set，get 
+userid |string| true | NA|user id|
+code |int| false | NA|currency的code	|
+since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
  the limit records forward from the current moment by default	|
-limit |Int| false |100 |Number of returned data|[1,500]
+limit |int| false |100 |Number of returned data|[1,500]
 
 
 
@@ -996,27 +993,27 @@ limit |Int| false |100 |Number of returned data|[1,500]
 
 Parameter | Type |Description
 --------- | ------- | -----------
- id| String | 
- txid| String | 
- timestamp| String | 
- datetime| String | 
- address| String |
- tag| String |
- amount| String |
- code| String |
- name| String |
- status| String |Description of deposit status
- statusCode| Int |Code value of deposit status
- updated| String |
- fee| Object |
+ id| string | deposit id
+ txid| string |  transaction id in ByteTrade
+ timestamp| string | creation time (ms)
+ datetime| string | ISO format time
+ address| string | deposit address
+ tag| string |
+ amount| string | deposit amount
+ code| string | asset id
+ name| string | asset name
+ status| string | cescription of deposit status
+ statusCode| int | code value of deposit status
+ updated| string |
+ fee| object |
  * fee
  
  Parameter | Type |Description
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+  code| string | which currency the fee is (usually quote)
+  name| string | 
+  cost| string | the fee amount in that currency
+  rate| string | the fee rate (if available)
 
 
 ## Deposit/withdrawal status description
@@ -1024,36 +1021,36 @@ Parameter | Type |Description
 * Withdraw Status
 
 Parameter  |Description
----------  | -----------
-3|FEE_PAID              
+---------  | -----------    
 2|FEE_SEND_FAILED       
-4|FEE_FAILED                
-13|UNLOKING         
-14|UNLOCK_FAILED        
-5|EXECUTING             
-8|SUCCEED                
+3|FEE_PAID 
+4|FEE_FAILED                      
+5|EXECUTING
 6|WITHDRAW_FAILED      
-7|FAILED                       
+7|FAILED  
+8|SUCCEED                            
+13|UNLOKING         
+14|UNLOCK_FAILED  
 101|BELOW_THE_MINIMUM 
 
 * Deposits Status
 
 Parameter  |Description
 ---------  | -----------
-3|FEE_PAID              
-2|FEE_SEND_FAILED       
+2|FEE_SEND_FAILED  
+3|FEE_PAID                   
 4|FEE_FAILED                
-5|LOCKING               
-8|LOCK_SUCCEED       
+5|LOCKING
 6|LOCK_SEND_FAILED     
-7|LOCK_FAILED              
+7|LOCK_FAILED     
+8|LOCK_SUCCEED                
 9|FAILED                      
 10|SUCCEED        
 31|BELOW_THE_MINIMUM 
 
 # Websocket
 
-## Latest market transactions
+## Get market trades
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
@@ -1063,13 +1060,13 @@ Parameter  |Description
    };
 ```
 
-Subscribe to the latest transaction in a single market
+Subscribe to the latest trades in a single market
 
 ### Params
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |String| true |NA|symbol id|
+symbol |string| true |NA|symbol id|
 
 > Response:
 
@@ -1091,12 +1088,12 @@ symbol |String| true |NA|symbol id|
 
 Parameter | Type |Description
 --------- | ------- | -----------
- method| String | subscribe method
- price| String | deal price
+ method| string | subscribe method
+ price| string | deal price
  time| Double | deal time
- id| String | deal id
- type| String | deal type(buy/sell)
- amount| String | deal amount
+ id| string | deal id
+ type| string | deal type(buy/sell)
+ amount| string | deal amount
 
 ## the rise or fall of 24-hour deals
 
@@ -1114,7 +1111,7 @@ Subscribe to the rise or fall of 24-hour deals in a single or multiple markets
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |String| true |NA|symbol id|
+symbol |string| true |NA|symbol id|
 
 > Response:
 
@@ -1138,14 +1135,14 @@ symbol |String| true |NA|symbol id|
 
 Parameter | Type |Description
 --------- | ------- | -----------
- method| String | subscribe method
- volume| String | volume currency traded for last 24 hours
- deal| String | deal currency traded for last 24 hours
- open| String | opening price
- change| String | relative change
- high| String | highest price
- last| String | same as `close`, duplicated for convenience
- low| String | lowest price
+ method| string | subscribe method
+ volume| string | volume currency traded for last 24 hours
+ deal| string | deal currency traded for last 24 hours
+ open| string | opening price
+ change| string | relative change
+ high| string | highest price
+ last| string | same as `close`, duplicated for convenience
+ low| string | lowest price
 
 
 ## K-line data
@@ -1165,8 +1162,8 @@ Subscribe to K-line data of a single market
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |String| true |NA|symbol id|
-period |Int| true |NA|k-line period|need to be converted into seconds。1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
+symbol |string| true |NA|symbol id|
+period |int| true |NA|k-line period|need to be converted into seconds。1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
 
 
 > Response:
@@ -1183,17 +1180,17 @@ period |Int| true |NA|k-line period|need to be converted into seconds。1min, 5m
 
 ### Response Content
 
-Parameter | Type |Description
---------- | ------- | -----------
- | Long | UTC timestamp in milliseconds,
- | String | (O)pen price, String
- | String | (H)ighest price
- | String | (L)owest price
- | String | (C)losing price
- | String | (L)owest price
- | String | (V)olume (in terms of the base currency)
- | String | symbol name
- | Long | symbol id
+  Type |Description
+  ------- | -----------
+  long | UTC timestamp in milliseconds,
+  string | (O)pen price, string
+  string | (H)ighest price
+  string | (L)owest price
+  string | (C)losing price
+  string | (L)owest price
+  string | (V)olume (in terms of the base currency)
+  string | symbol name
+  long | symbol id
 
 
 
@@ -1213,9 +1210,9 @@ Subscribe to K-line data of a single market
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |String| true |NA|symbol id|
-limit |Int| true |NA|Number|
-step |String| true |NA|depth aggregation degree| 0(no aggregation)/0.1/0.001/0.0001/0.00001
+symbol |string| true |NA|symbol id|
+limit |int| true |NA|Number|
+step |string| true |NA|depth aggregation degree| 0(no aggregation)/0.1/0.001/0.0001/0.00001
 
 
 > Response:
@@ -1261,7 +1258,7 @@ User appraises right，users must complete authentication before they can use su
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true |NA|user id|
+userid |string| true |NA|user id|
 
 
 
@@ -1281,7 +1278,7 @@ userid |String| true |NA|user id|
 
 Parameter | Type |Description
 --------- | ------- | -----------
-status | String | server status
+status | string | server status
  
  
 ## User order
@@ -1303,7 +1300,7 @@ must complete appraises right firstly
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |String| true |NA|symbol id|
+symbol |string| true |NA|symbol id|
 
 
 
@@ -1343,20 +1340,20 @@ symbol |String| true |NA|symbol id|
 
 Parameter | Type |Description
 --------- | ------- | -----------
-id | String | order id
-tid | String | transaction id in ByteTrade
-user | String | user id
-deal_money | String | deal money
-deal_stock | String | deal stock 
-price | String | order price
-left | String | no deal amount
+id | string | order id
+tid | string | transaction id in ByteTrade
+user | string | user id
+deal_money | string | deal money
+deal_stock | string | deal stock 
+price | string | order price
+left | string | no deal amount
 type | int | order type(limit/market)
 side | int | order side(sell/buy)
-amount | String | order amount
-ctime | String | create time(second)
-maker_fee | String | marker fee
-dapp | String | dapp id
-market_id | String | symbol id
+amount | string | order amount
+ctime | string | create time(second)
+maker_fee | string | marker fee
+dapp | string | dapp id
+market_id | string | symbol id
  
  
 ## User balance
@@ -1377,7 +1374,7 @@ must complete appraises right firstly
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-asset |Int| true |NA|asset id|
+asset |int| true |NA|asset id|
 
 
 
@@ -1397,9 +1394,9 @@ asset |Int| true |NA|asset id|
 
 Parameter | Type |Description
 --------- | ------- | -----------
- | String | available
- | String | frozen
- | String | pledge
+ | string | available
+ | string | frozen
+ | string | pledge
 
 
 ## Heartbeat detection
@@ -1418,7 +1415,7 @@ Websocket will disconnect by default for 1 hour. If need to continuously receive
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-userid |String| true |NA|user id|
+userid |string| true |NA|user id|
 
 
 
@@ -1438,7 +1435,7 @@ userid |String| true |NA|user id|
 
 Parameter | Type |Description
 --------- | ------- | -----------
-status | String | server status
+status | string | server status
 
 
 ## unsubscribe
@@ -1451,4 +1448,22 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
        webSocket.send(JSON.stringify(params));
    };
 ```
+
+
+
+# Error http status
+
+The ByteTrade API uses the following error codes:
+
+Parameter | Description
+---------- | -------
+400 | Bad Request
+403 | Forbidden
+404 | Not Found
+405 | Method Not Allowed 
+406 | Not Acceptable
+429 | Too Many Requests
+500 | Internal Server Error 
+501 | Request Error 
+503 | Service Unavailable 
 

@@ -83,7 +83,7 @@ jQuery.fn.highlight = function (words, options) {
     var settings = { className: 'highlight', element: 'span', caseSensitive: false, wordsOnly: false };
     jQuery.extend(settings, options);
     
-    if (words.constructor === String) {
+    if (words.constructor === string) {
         words = [words];
     }
     words = jQuery.grep(words, function(word, i){
