@@ -6,8 +6,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='#'>English</a>
-  - <a href='#'>中文</a>
+  - <a href='https://doc.byte-trade.com'>English</a>
+  - <a href='https://doc.byte-trade.com/cn'>中文</a>
 includes:
   - errors
 
