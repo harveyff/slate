@@ -261,7 +261,7 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |long| true | NA|symbol id|
 limit |int| false |20 |numbre of asks or bids|[1,100]
-type |string|false | step0|depth's price aggregation degree , no aggregation at step0, a step1 \ 2 \ 3 \ 4 \ 5 respectively represents the aggregation degree as the quote precision *10\100\1000\10000\100000|step0|step0，step1，step2，step3，step4，step5
+type |string|false | step0|depth's price aggregation degree,no aggregation at step0,a step1/2/3/4/5 respectively represents the aggregation degree as the quote precision *10\100\1000\10000\100000|step0/step1/step2/step3/step4/step5
 
 
 > Response:
@@ -308,8 +308,8 @@ type |string|false | step0|depth's price aggregation degree , no aggregation at 
 
 Parameter | Type |Description
 --------- | ------- | -----------
-bids | Array | Current latest sell order price and sell order amount[[price,amount]]
-asks | Array | Current latest buy order price and buy order amount[[price,amount]]
+bids | Array | Current latest sell order price and sell order amount: [ [ price,amount ] ]
+asks | Array | Current latest buy order price and buy order amount: [ [ price,amount ] ]
 timestamp | string | 
 datetime | string | 
 
@@ -332,9 +332,9 @@ Query the market depth of a single symbol
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |long| true | NA|symbol id|
-timeframe |string| true | |K-line type		|1m, 5m,15m,30m,1h,4h,1d,5d,1w,1M
-since |long| false |NA |start time of K line  (utc milliseconds)，If this value is not set，get limit records forward from the current moment by default	|
-limit |int| false |100 |Number of returned data|[1,500]
+timeframe |string| true | |K-line type|1m/5m/15m/30m/1h/4h/1d/5d/1w/1M
+since |long| false |NA |start time of Kline(ms)，If this value is not ，get limit records forward from the current moment by default	|
+limit |int| false |100 |number of returned data|[1,500]
 
 
 > Response:
@@ -354,15 +354,15 @@ limit |int| false |100 |Number of returned data|[1,500]
 
 ### Response Content
 
-Parameter | Type |Description
---------- | ------- | -----------
- | long | UTC timestamp in milliseconds,
- | string | (O)pen price, string
- | string | (H)ighest price
- | string | (L)owest price
- | string | (C)losing price
- | string | (L)owest price
- | string | (V)olume (in terms of the base currency)
+ Type |Description
+ ------- | -----------
+ long | UTC timestamp in milliseconds,
+ string | (O)pen price, string
+ string | (H)ighest price
+ string | (L)owest price
+ string | (C)losing price
+ string | (L)owest price
+ string | (V)olume (in terms of the base currency)
 
 ## Latest market transactions
 
@@ -381,9 +381,8 @@ Query the market trades of a single symbol
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |long| true | NA|symbol id|
-since |long| false |NA |start time (utc milliseconds)，If this value is not set，get 
- the limit records forward from the current moment by default	|
-limit |int| false |100 |Number of returned data|[1,500]
+since |long| false |NA |start time (ms),If this value is not set,get the limit records forward from the current moment by default	|
+limit |int| false |100 |number of returned data|[1,500]
 
 
 > Response:
@@ -465,7 +464,7 @@ Parameter | Type |Description
  code| string | asset id
  name| string | asset name
  free| long | money available for trading
- used| string | money on hold, locked, frozen or pending
+ used| string | money on hold,locked,frozen or pending
  total| string | total balance (free + used)
 
 ## Get all orders of user
@@ -486,9 +485,8 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |string| true | NA|user id|
 symbol |long| false | NA|symbol id|
-since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
- the limit records forward from the current moment by default |
-limit |int| false |100 |Number of returned data|[1,500]
+since |long| false |NA |start time(ms),If this value is not set,get the limit records forward from the current moment by default |
+limit |int| false |100 |number of returned data|[1,500]
 
 
 
@@ -572,9 +570,8 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |string| true | NA|user id|
 symbol |long| false | NA|symbol id|
-since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
- the limit records forward from the current moment by default	|
-limit |int| false |100 |Number of returned data|[1,500]
+since |long| false |NA |start time(ms),If this value is not set,get the limit records forward from the current moment by default	|
+limit |int| false |100 |number of returned data|[1,500]
 
 
 
@@ -659,9 +656,8 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |string| true | NA|user id|
 symbol |long| false | NA|symbol id|
-since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
- the limit records forward from the current moment by default	|
-limit |int| false |100 |Number of returned data|[1,500]
+since |long| false |NA |start time(ms),If this value is not se,get the limit records forward from the current moment by default	|
+limit |int| false |100 |number of returned data|[1,500]
 
 
 
@@ -747,9 +743,8 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 userid |string| true | NA|user id|
 symbol |long| false | NA|symbol id|
 orderid |string| false | NA|order id|
-since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
- the limit records forward from the current moment by default	|
-limit |int| false |100 |Number of returned data|[1,500]
+since |long| false |NA |start time(ms),If this value is not set,get the limit records forward from the current moment by default	|
+limit |int| false |100 |number of returned data|[1,500]
 
 
 
@@ -876,9 +871,8 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |string| true | NA|user id|
 code |int| false | NA|currency的code	|
-since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
- the limit records forward from the current moment by default	|
-limit |int| false |100 |Number of returned data|[1,500]
+since |long| false |NA |start time(ms),If this value is not set,get the limit records forward from the current moment by default	|
+limit |int| false |100 |number of returned data|[1,500]
 
 
 
@@ -957,7 +951,7 @@ userid |string| true | NA|user id|
 code |int| false | NA|currency的code	|
 since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
  the limit records forward from the current moment by default	|
-limit |int| false |100 |Number of returned data|[1,500]
+limit |int| false |100 |number of returned data|[1,500]
 
 
 
@@ -1163,7 +1157,7 @@ Subscribe to K-line data of a single market
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |string| true |NA|symbol id|
-period |int| true |NA|k-line period|need to be converted into seconds。1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
+period |int| true |NA|kline period|need to be converted into seconds。1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
 
 
 > Response:
@@ -1211,7 +1205,7 @@ Subscribe to K-line data of a single market
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |string| true |NA|symbol id|
-limit |int| true |NA|Number|
+limit |int| true |NA||
 step |string| true |NA|depth aggregation degree| 0(no aggregation)/0.1/0.001/0.0001/0.00001
 
 
