@@ -175,7 +175,7 @@ limits | object |
  price| string | Limit the minimum and maximum of the quote (when the order is a limit buy or sell order or a market sell order); limit the minimum and maximum of the base (when the order is a market buy order)
 
 
-# Market information
+# Market Data
 
 ## Get the Last 24h Market Summary
 
@@ -249,7 +249,7 @@ quoteVolume | string | volume of quote currency traded for last 24 hours
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/depth"
 ```
 
-Query the market depth of a single symbol
+This endpoint retrieves the current order book of a specific pair.
 
 ### HTTP Request
 
@@ -321,7 +321,7 @@ datetime | string |
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/klines"
 ```
 
-Query the market depth of a single symbol
+This endpoint retrieves all klines in a specific range.
 
 ### HTTP Request
 
@@ -333,7 +333,7 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |long| true | NA|symbol id|
 timeframe |string| true | |K-line type|1m/5m/15m/30m/1h/4h/1d/5d/1w/1M
-since |long| false |NA |start time of Kline(ms)，If this value is not ，get limit records forward from the current moment by default	|
+since |long| false |NA |start time of Kline(ms),If this value is not ,get limit records forward from the current moment by default	|
 limit |int| false |100 |number of returned data|[1,500]
 
 
@@ -364,13 +364,13 @@ limit |int| false |100 |number of returned data|[1,500]
  string | (L)owest price
  string | (V)olume (in terms of the base currency)
 
-## Latest market transactions
+## Get the Last Trade
 
 ```shell
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/trades"
 ```
 
-Query the market trades of a single symbol
+This endpoint retrieves market last trades of a single symbol.
 
 ### HTTP Request
 
@@ -421,15 +421,15 @@ Parameter | Type |Description
  cost| string |  amount of quote currency
 
 
-# User Information
+# Account
 
-## Get user balance
+## Get Account Balance
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/balance"
 ```
 
-Query the balance of a user
+This endpoint returns the balance of an account specified by account id.
 
 ### HTTP Request
 
@@ -467,13 +467,13 @@ Parameter | Type |Description
  used| string | money on hold,locked,frozen or pending
  total| string | total balance (free + used)
 
-## Get all orders of user
+## Get All Orders
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/orders/all"
 ```
 
-Query all orders of a single user
+This endpoint retrieves all orders of a single user.
 
 ### HTTP Request
 
@@ -552,13 +552,14 @@ Parameter | Type |Description
   rate| string | the fee rate (if available)
 
 
-## Get order of user
+## Get All Open Orders
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/orders/open"
 ```
 
-Query order of single user
+This endpoint returns all open orders which have not been filled completely.
+
 
 ### HTTP Request
 
@@ -638,13 +639,13 @@ Parameter | Type |Description
 
 
 
-## Get completed order of user
+## Get History Orders
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/orders/closed"
 ```
 
-Query the completed orders of a single user
+This endpoint retrieves history orders of a single user.
 
 ### HTTP Request
 
@@ -724,13 +725,13 @@ Parameter | Type |Description
 
 
 
-## transaction details of user 
+## Get User Trades
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/orders/trades"
 ```
 
-Query the transaction details of a single user
+This endpoint get user order trade details.
 
 ### HTTP Request
 
@@ -807,13 +808,13 @@ Parameter | Type |Description
 
 # Deposit and Withdraw
 
-## Get deposit address
+## Get Deposit Address
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/depositaddress"
 ```
 
-Get the deposit address of a user
+This endpoint retrieves deposit address of a user.
 
 ### HTTP Request
 
@@ -853,13 +854,13 @@ Parameter | Type |Description
 
 
 
-## Get withdraw history
+## Get Withdraw History
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/withdrawals"
 ```
 
-Get the withdrawal history of a user
+This endpoint retrieves withdrawal history of a user.
 
 ### HTTP Request
 
@@ -931,13 +932,13 @@ Parameter | Type |Description
   rate| string | the fee rate (if available)
 
 
-## Get deposit history
+## Get Deposit History
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/deposits"
 ```
 
-Get the deposit record of a user
+This endpoint retrieves deposit record of a user.
 
 ### HTTP Request
 
@@ -949,7 +950,7 @@ Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |string| true | NA|user id|
 code |int| false | NA|currency的code	|
-since |long| false |NA |start time(utc milliseconds)，If this value is not set，get 
+since |long| false |NA |start time(utc milliseconds),If this value is not set,get 
  the limit records forward from the current moment by default	|
 limit |int| false |100 |number of returned data|[1,500]
 
@@ -1044,7 +1045,7 @@ Parameter  |Description
 
 # Websocket
 
-## Get market trades
+## Market Trades
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
@@ -1054,7 +1055,7 @@ Parameter  |Description
    };
 ```
 
-Subscribe to the latest trades in a single market
+This topic sends the latest trades in a single market.
 
 ### Params
 
@@ -1089,7 +1090,7 @@ Parameter | Type |Description
  type| string | deal type(buy/sell)
  amount| string | deal amount
 
-## the rise or fall of 24-hour deals
+## Last 24h Market Summary
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
@@ -1099,7 +1100,7 @@ Parameter | Type |Description
    };
 ```
 
-Subscribe to the rise or fall of 24-hour deals in a single or multiple markets
+This topic sends the rise or fall of 24-hour deals in a single or multiple markets.
 
 ### Params
 
@@ -1139,7 +1140,7 @@ Parameter | Type |Description
  low| string | lowest price
 
 
-## K-line data
+## Kline Data
 
 
 ```javascript
@@ -1150,7 +1151,7 @@ Parameter | Type |Description
    };
 ```
 
-Subscribe to K-line data of a single market
+This topic sends the Kline data of a single market.
 
 ### Params
 
@@ -1188,7 +1189,7 @@ period |int| true |NA|kline period|need to be converted into seconds。1min, 5mi
 
 
 
-## Market depth
+## Market Depth
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
@@ -1198,7 +1199,7 @@ period |int| true |NA|kline period|need to be converted into seconds。1min, 5mi
    };
 ```
 
-Subscribe to K-line data of a single market
+This topic sends the latest market by price order book.
 
 ### Params
 
@@ -1236,7 +1237,7 @@ asks | Array | Current latest buy order price and order amount[[price,amount]]
 bids | Array | current latest sell order price and order amount[[price,amount]]
  
  
-## User appraises right
+## User Auth
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
@@ -1246,7 +1247,7 @@ bids | Array | current latest sell order price and order amount[[price,amount]]
    };
 ```
 
-User appraises right，users must complete authentication before they can use subscriptions for user assets and user balances
+User appraises right,users must complete authentication before they can use subscriptions for user assets and user balances.
 
 ### Params
 
@@ -1275,7 +1276,7 @@ Parameter | Type |Description
 status | string | server status
  
  
-## User order
+## User Order
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
@@ -1285,18 +1286,17 @@ status | string | server status
    };
 ```
 
+This topic sends user orders, only the order data after the subscription is pushed.
 
-When subscribing to user orders, only the order data after the subscription is pushed.
 <aside class="warning">
 must complete appraises right firstly
 </aside>
+
 ### Params
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |string| true |NA|symbol id|
-
-
 
 > Response:
 
@@ -1350,7 +1350,7 @@ dapp | string | dapp id
 market_id | string | symbol id
  
  
-## User balance
+## User Balance
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
@@ -1360,7 +1360,8 @@ market_id | string | symbol id
    };
 ```
 
-subscribe to changes in the balance of one or more assets of the user
+This topic sends the changes in the balance of one or more assets of the user.
+
 <aside class="warning">
 must complete appraises right firstly
 </aside>
@@ -1393,7 +1394,7 @@ Parameter | Type |Description
  | string | pledge
 
 
-## Heartbeat detection
+## Heartbeat Detection
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
@@ -1432,7 +1433,7 @@ Parameter | Type |Description
 status | string | server status
 
 
-## unsubscribe
+## Unsubscribe
 And subscription type, just change "subscribe" in "method" to "unsubscribe", such as canceling the latest transaction：
 
 ```javascript
