@@ -2,7 +2,7 @@
 
 API接口返回的HTTP错误代码含义:
 
-Error Code | Meaning
+状态码 | 含义
 ---------- | -------
 400 | Bad Request
 403 | Forbidden
