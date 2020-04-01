@@ -70,7 +70,7 @@
   /**
    * Print a warning message to the console.
    *
-   * @param {string} message The message to be printed.
+   * @param {String} message The message to be printed.
    * @memberOf Utils
    */
   lunr.utils.warn = (function (global) {
@@ -100,7 +100,7 @@
    *
    * Can bind a single function to many different events in one call.
    *
-   * @param {string} [eventName] The name(s) of events to bind this function to.
+   * @param {String} [eventName] The name(s) of events to bind this function to.
    * @param {Function} handler The function to call when an event is fired.
    * @memberOf EventEmitter
    */
@@ -120,7 +120,7 @@
   /**
    * Removes a handler function from a specific event.
    *
-   * @param {string} eventName The name of the event to remove this function from.
+   * @param {String} eventName The name of the event to remove this function from.
    * @param {Function} handler The function to remove from an event.
    * @memberOf EventEmitter
    */
@@ -139,7 +139,7 @@
    * Additional data can be passed to the event handler as arguments to `emit`
    * after the event name.
    *
-   * @param {string} eventName The name of the event to emit.
+   * @param {String} eventName The name of the event to emit.
    * @memberOf EventEmitter
    */
   lunr.EventEmitter.prototype.emit = function (name) {
@@ -155,7 +155,7 @@
   /**
    * Checks whether a handler has ever been stored against an event.
    *
-   * @param {string} eventName The name of the event to check.
+   * @param {String} eventName The name of the event to check.
    * @private
    * @memberOf EventEmitter
    */
@@ -173,7 +173,7 @@
    * the search index.
    *
    * @module
-   * @param {string} obj The string to convert into tokens
+   * @param {String} obj The string to convert into tokens
    * @returns {Array}
    */
   lunr.tokenizer = function (obj) {
@@ -248,7 +248,7 @@
    * added to instances of the pipeline for them to be used when running a pipeline.
    *
    * @param {Function} fn The function to check for.
-   * @param {string} label The label to register this function with
+   * @param {String} label The label to register this function with
    * @memberOf Pipeline
    */
   lunr.Pipeline.registerFunction = function (fn, label) {
@@ -282,7 +282,7 @@
    * If any function from the serialised data has not been registered then an
    * error will be thrown.
    *
-   * @param {object} serialised The serialised pipeline to load.
+   * @param {Object} serialised The serialised pipeline to load.
    * @returns {lunr.Pipeline}
    * @memberOf Pipeline
    */
@@ -438,7 +438,7 @@
    *
    * @private
    * @param {Number} The index of the node in the vector.
-   * @param {object} The data at this node in the vector.
+   * @param {Object} The data at this node in the vector.
    * @param {lunr.Vector.Node} The node directly after this node in the vector.
    * @constructor
    * @memberOf Vector
@@ -453,7 +453,7 @@
    * Inserts a new value at a position in a vector.
    *
    * @param {Number} The index at which to insert a value.
-   * @param {object} The object to insert in the vector.
+   * @param {Object} The object to insert in the vector.
    * @memberOf Vector.
    */
   lunr.Vector.prototype.insert = function (idx, val) {
@@ -576,7 +576,7 @@
    * Inserts new items into the set in the correct position to maintain the
    * order.
    *
-   * @param {object} The objects to add to this set.
+   * @param {Object} The objects to add to this set.
    * @memberOf SortedSet
    */
   lunr.SortedSet.prototype.add = function () {
@@ -606,7 +606,7 @@
    *
    * @param {Function} fn The function that is called on each element of the
    * set.
-   * @param {object} ctx An optional object that can be used as the context
+   * @param {Object} ctx An optional object that can be used as the context
    * for the function fn.
    * @returns {Array}
    * @memberOf SortedSet
@@ -622,7 +622,7 @@
    *
    * @param {Function} fn The function that is called on each element of the
    * set.
-   * @param {object} ctx An optional object that can be used as the context
+   * @param {Object} ctx An optional object that can be used as the context
    * @memberOf SortedSet
    * for the function fn.
    */
@@ -634,7 +634,7 @@
    * Returns the index at which a given element can be found in the
    * sorted set, or -1 if it is not present.
    *
-   * @param {object} elem The object to locate in the sorted set.
+   * @param {Object} elem The object to locate in the sorted set.
    * @param {Number} start An optional index at which to start searching from
    * within the set.
    * @param {Number} end An optional index at which to stop search from within
@@ -669,7 +669,7 @@
    * This function assumes that the element to search for does not already exist
    * in the sorted set.
    *
-   * @param {object} elem The elem to find the position for in the set
+   * @param {Object} elem The elem to find the position for in the set
    * @param {Number} start An optional index at which to start searching from
    * within the set.
    * @param {Number} end An optional index at which to stop search from within
@@ -811,7 +811,7 @@
    *
    * The handler can be bound to many events at the same time.
    *
-   * @param {string} [eventName] The name(s) of events to bind the function to.
+   * @param {String} [eventName] The name(s) of events to bind the function to.
    * @param {Function} handler The serialised set to load.
    * @memberOf Index
    */
@@ -823,7 +823,7 @@
   /**
    * Removes a handler from an event being emitted by the index.
    *
-   * @param {string} eventName The name of events to remove the function from.
+   * @param {String} eventName The name of events to remove the function from.
    * @param {Function} handler The serialised set to load.
    * @memberOf Index
    */
@@ -837,7 +837,7 @@
    * Issues a warning if the index being imported was serialised
    * by a different version of lunr.
    *
-   * @param {object} serialisedData The serialised set to load.
+   * @param {Object} serialisedData The serialised set to load.
    * @returns {lunr.Index}
    * @memberOf Index
    */
@@ -870,7 +870,7 @@
    * that are added after documents are added to the index will only apply to new
    * documents added to the index.
    *
-   * @param {string} fieldName The name of the field within the document that
+   * @param {String} fieldName The name of the field within the document that
    * should be indexed
    * @param {Number} boost An optional boost that can be applied to terms in this
    * field.
@@ -892,7 +892,7 @@
    * This should only be changed before adding documents to the index, changing
    * the ref property without resetting the index can lead to unexpected results.
    *
-   * @param {string} refName The property to use to uniquely identify the
+   * @param {String} refName The property to use to uniquely identify the
    * documents in the index.
    * @param {Boolean} emitEvent Whether to emit add events, defaults to true
    * @returns {lunr.Index}
@@ -914,7 +914,7 @@
    * the document has been added to. This event can be silenced by passing false
    * as the second argument to add.
    *
-   * @param {object} doc The document to add to the index.
+   * @param {Object} doc The document to add to the index.
    * @param {Boolean} emitEvent Whether or not to emit events, default true.
    * @memberOf Index
    */
@@ -966,7 +966,7 @@
    * the document has been removed from. This event can be silenced by passing false
    * as the second argument to remove.
    *
-   * @param {object} doc The document to remove from the index.
+   * @param {Object} doc The document to remove from the index.
    * @param {Boolean} emitEvent Whether to emit remove events, defaults to true
    * @memberOf Index
    */
@@ -1001,7 +1001,7 @@
    * an update event will be fired, the 'add' and 'remove' events of the underlying calls
    * are silenced.
    *
-   * @param {object} doc The document to update in the index.
+   * @param {Object} doc The document to update in the index.
    * @param {Boolean} emitEvent Whether to emit update events, defaults to true
    * @see Index.prototype.remove
    * @see Index.prototype.add
@@ -1019,14 +1019,14 @@
   /**
    * Calculates the inverse document frequency for a token within the index.
    *
-   * @param {string} token The token to calculate the idf of.
+   * @param {String} token The token to calculate the idf of.
    * @see Index.prototype.idf
    * @private
    * @memberOf Index
    */
   lunr.Index.prototype.idf = function (term) {
     var cacheKey = "@" + term
-    if (object.prototype.hasOwnProperty.call(this._idfCache, cacheKey)) return this._idfCache[cacheKey]
+    if (Object.prototype.hasOwnProperty.call(this._idfCache, cacheKey)) return this._idfCache[cacheKey]
 
     var documentFrequency = this.tokenStore.count(term),
         idf = 1
@@ -1056,8 +1056,8 @@
    * the matching document ref, as set for this index, and the similarity score
    * for this document against the query.
    *
-   * @param {string} query The query to search the index with.
-   * @returns {object}
+   * @param {String} query The query to search the index with.
+   * @returns {Object}
    * @see Index.prototype.idf
    * @see Index.prototype.documentVector
    * @memberOf Index
@@ -1099,7 +1099,7 @@
             if (pos > -1) queryVector.insert(pos, tf * idf * similarityBoost)
 
             // add all the documents that have this key into a set
-            object.keys(self.tokenStore.get(key)).forEach(function (ref) { set.add(ref) })
+            Object.keys(self.tokenStore.get(key)).forEach(function (ref) { set.add(ref) })
 
             return memo.union(set)
           }, new lunr.SortedSet)
@@ -1129,7 +1129,7 @@
    * for every token in the indexes corpus, if the document does not contain that
    * token the element will be 0.
    *
-   * @param {object} documentRef The ref to find the document with.
+   * @param {Object} documentRef The ref to find the document with.
    * @returns {lunr.Vector}
    * @private
    * @memberOf Index
@@ -1153,7 +1153,7 @@
   /**
    * Returns a representation of the index ready for serialisation.
    *
-   * @returns {object}
+   * @returns {Object}
    * @memberOf Index
    */
   lunr.Index.prototype.toJSON = function () {
@@ -1219,7 +1219,7 @@
   /**
    * Loads a previously serialised store
    *
-   * @param {object} serialisedData The serialised store to load.
+   * @param {Object} serialisedData The serialised store to load.
    * @returns {lunr.Store}
    * @memberOf Store
    */
@@ -1227,7 +1227,7 @@
     var store = new this
 
     store.length = serialisedData.length
-    store.store = object.keys(serialisedData.store).reduce(function (memo, key) {
+    store.store = Object.keys(serialisedData.store).reduce(function (memo, key) {
       memo[key] = lunr.SortedSet.load(serialisedData.store[key])
       return memo
     }, {})
@@ -1238,8 +1238,8 @@
   /**
    * Stores the given tokens in the store against the given id.
    *
-   * @param {object} id The key used to store the tokens against.
-   * @param {object} tokens The tokens to store against the key.
+   * @param {Object} id The key used to store the tokens against.
+   * @param {Object} tokens The tokens to store against the key.
    * @memberOf Store
    */
   lunr.Store.prototype.set = function (id, tokens) {
@@ -1250,8 +1250,8 @@
   /**
    * Retrieves the tokens from the store for a given key.
    *
-   * @param {object} id The key to lookup and retrieve from the store.
-   * @returns {object}
+   * @param {Object} id The key to lookup and retrieve from the store.
+   * @returns {Object}
    * @memberOf Store
    */
   lunr.Store.prototype.get = function (id) {
@@ -1261,7 +1261,7 @@
   /**
    * Checks whether the store contains a key.
    *
-   * @param {object} id The id to look up in the store.
+   * @param {Object} id The id to look up in the store.
    * @returns {Boolean}
    * @memberOf Store
    */
@@ -1272,7 +1272,7 @@
   /**
    * Removes the value for a key in the store.
    *
-   * @param {object} id The id to remove from the store.
+   * @param {Object} id The id to remove from the store.
    * @memberOf Store
    */
   lunr.Store.prototype.remove = function (id) {
@@ -1285,7 +1285,7 @@
   /**
    * Returns a representation of the store ready for serialisation.
    *
-   * @returns {object}
+   * @returns {Object}
    * @memberOf Store
    */
   lunr.Store.prototype.toJSON = function () {
@@ -1306,8 +1306,8 @@
    * implementation of the PorterStemmer taken from http://tartaurs.org/~martin
    *
    * @module
-   * @param {string} str The string to stem
-   * @returns {string}
+   * @param {String} str The string to stem
+   * @returns {String}
    * @see lunr.Pipeline
    */
   lunr.stemmer = (function(){
@@ -1526,8 +1526,8 @@
    * filter then undefined will be returned.
    *
    * @module
-   * @param {string} token The token to pass through the filter
-   * @returns {string}
+   * @param {String} token The token to pass through the filter
+   * @returns {String}
    * @see lunr.Pipeline
    */
   lunr.stopWordFilter = function (token) {
@@ -1675,8 +1675,8 @@
    * with languages with non-latin characters.
    *
    * @module
-   * @param {string} token The token to pass through the filter
-   * @returns {string}
+   * @param {String} token The token to pass through the filter
+   * @returns {String}
    * @see lunr.Pipeline
    */
   lunr.trimmer = function (token) {
@@ -1706,7 +1706,7 @@
   /**
    * Loads a previously serialised token store
    *
-   * @param {object} serialisedData The serialised token store to load.
+   * @param {Object} serialisedData The serialised token store to load.
    * @returns {lunr.TokenStore}
    * @memberOf TokenStore
    */
@@ -1725,9 +1725,9 @@
    * By default this function starts at the root of the current store, however
    * it can start at any node of any token store if required.
    *
-   * @param {string} token The token to store the doc under
-   * @param {object} doc The doc to store against the token
-   * @param {object} root An optional node at which to start looking for the
+   * @param {String} token The token to store the doc under
+   * @param {Object} doc The doc to store against the token
+   * @param {Object} root An optional node at which to start looking for the
    * correct place to enter the doc, by default the root of this lunr.TokenStore
    * is used.
    * @memberOf TokenStore
@@ -1754,8 +1754,8 @@
    * By default this function starts at the root of the current store, however
    * it can start at any node of any token store if required.
    *
-   * @param {string} token The token to check for
-   * @param {object} root An optional node at which to start
+   * @param {String} token The token to check for
+   * @param {Object} root An optional node at which to start
    * @memberOf TokenStore
    */
   lunr.TokenStore.prototype.has = function (token) {
@@ -1778,9 +1778,9 @@
    * By default this function starts at the root of the current store, however
    * it can start at any node of any token store if required.
    *
-   * @param {string} token The token to get the node for.
-   * @param {object} root An optional node at which to start.
-   * @returns {object}
+   * @param {String} token The token to get the node for.
+   * @param {Object} root An optional node at which to start.
+   * @returns {Object}
    * @see TokenStore.prototype.get
    * @memberOf TokenStore
    */
@@ -1804,9 +1804,9 @@
    * By default this function starts at the root of the current store, however
    * it can start at any node of any token store if required.
    *
-   * @param {string} token The token to get the documents for.
-   * @param {object} root An optional node at which to start.
-   * @returns {object}
+   * @param {String} token The token to get the documents for.
+   * @param {Object} root An optional node at which to start.
+   * @returns {Object}
    * @memberOf TokenStore
    */
   lunr.TokenStore.prototype.get = function (token, root) {
@@ -1814,7 +1814,7 @@
   }
 
   lunr.TokenStore.prototype.count = function (token, root) {
-    return object.keys(this.get(token, root)).length
+    return Object.keys(this.get(token, root)).length
   }
 
   /**
@@ -1823,10 +1823,10 @@
    * By default this function starts at the root of the current store, however
    * it can start at any node of any token store if required.
    *
-   * @param {string} token The token to get the documents for.
-   * @param {string} ref The ref of the document to remove from this token.
-   * @param {object} root An optional node at which to start.
-   * @returns {object}
+   * @param {String} token The token to get the documents for.
+   * @param {String} ref The ref of the document to remove from this token.
+   * @param {Object} root An optional node at which to start.
+   * @returns {Object}
    * @memberOf TokenStore
    */
   lunr.TokenStore.prototype.remove = function (token, ref) {
@@ -1845,7 +1845,7 @@
    * Find all the possible suffixes of the passed token using tokens
    * currently in the store.
    *
-   * @param {string} token The token to expand.
+   * @param {String} token The token to expand.
    * @returns {Array}
    * @memberOf TokenStore
    */
@@ -1854,9 +1854,9 @@
         docs = root.docs || {},
         memo = memo || []
 
-    if (object.keys(docs).length) memo.push(token)
+    if (Object.keys(docs).length) memo.push(token)
 
-    object.keys(root)
+    Object.keys(root)
         .forEach(function (key) {
           if (key === 'docs') return
 
@@ -1869,7 +1869,7 @@
   /**
    * Returns a representation of the token store ready for serialisation.
    *
-   * @returns {object}
+   * @returns {Object}
    * @memberOf TokenStore
    */
   lunr.TokenStore.prototype.toJSON = function () {
