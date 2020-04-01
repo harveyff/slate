@@ -18,11 +18,14 @@ At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a
 
 ## Access URLs
 * REST API
+
   `https://api-v2.byte-trade.com`
   
 * Websocket Feed       
-  `https://api.byte-trade.com/ws/`                                                                                                                                                             
-                                                                                                                                                               #
+
+  `https://api.byte-trade.com/ws/`                                                                                                                                                            
+
+
 # Basic Information
 
 ## Get all Supported Currencies
