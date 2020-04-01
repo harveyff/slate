@@ -14,10 +14,8 @@ search: true
 
 Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoints.
 
-At the same time, we have access to CCXT, you can also use CCXT more convenient interface.
-
-[CCXT](https://github.com/ccxt/ccxt)
-
+At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a JavaScript / Python / PHP library,if you use these languages, you can use them easily,it supports more interfaces, such as withdraw.
+                                                                                                                                                                       
 # Basic Information
 
 ## Get all Supported Currencies
@@ -920,7 +918,7 @@ Parameter | Type |Description
  code| string | asset id
  name| string | asset name
  status| string |description of withdrawal status
- statusCode| int |code value of withdrawal status
+ statusCode| int |code value of withdrawal [status](# Withdraw Status)
  updated| string |
  fee| object |
  * fee
@@ -999,7 +997,7 @@ Parameter | Type |Description
  code| string | asset id
  name| string | asset name
  status| string | cescription of deposit status
- statusCode| int | code value of deposit status
+ statusCode| int | code value of deposit [status](# Deposit Status)
  updated| string |
  fee| object |
  * fee
@@ -1012,11 +1010,11 @@ Parameter | Type |Description
   rate| string | the fee rate (if available)
 
 
-## Deposit/withdrawal status description
+## Deposit/Withdraw Status
 
 * Withdraw Status
 
-Parameter  |Description
+Code  |Description
 ---------  | -----------    
 2|FEE_SEND_FAILED       
 3|FEE_PAID 
@@ -1031,7 +1029,7 @@ Parameter  |Description
 
 * Deposits Status
 
-Parameter  |Description
+Code  |Description
 ---------  | -----------
 2|FEE_SEND_FAILED  
 3|FEE_PAID                   
