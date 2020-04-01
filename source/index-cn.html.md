@@ -1044,7 +1044,7 @@ limit |int| false |100 |返回数据的条数|[1,500]
 ## 市场最新成交
 
 ```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'deals.subscribe', params: ['122406567911']};
        webSocket.send(JSON.stringify(params));
@@ -1089,7 +1089,7 @@ symbol |string| true |NA|交易对id|
 ## 24小时成交涨跌
 
 ```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'today.update', params: ['4294967329','4294967297']};
        webSocket.send(JSON.stringify(params));
@@ -1140,7 +1140,7 @@ symbol |string| true |NA|交易对id|
 
 
 ```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'kline.subscribe', params: ['4294967329',60]};
        webSocket.send(JSON.stringify(params));
@@ -1188,7 +1188,7 @@ period |int| true |NA|k线周期|需要换算成秒。1min, 5min, 15min, 30min, 
 ## 市场深度
 
 ```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'depth.subscribe', params: ['4294967329',10,"0.001"]};
        webSocket.send(JSON.stringify(params));
@@ -1236,7 +1236,7 @@ bids | Array | 当前最新的卖单价和卖单量[[price,amount]]
 ## 用户鉴权
 
 ```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'server.sign', params: ['test']};
        webSocket.send(JSON.stringify(params));
@@ -1275,7 +1275,7 @@ status | string | server status
 ## 用户订单
 
 ```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'order.subscribe', params: ['122406567923']};
        webSocket.send(JSON.stringify(params));
@@ -1350,7 +1350,7 @@ market_id | string | 交易对id
 ## 用户余额
 
 ```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'asset.subscribe2', params: [2,3]};
        webSocket.send(JSON.stringify(params));
@@ -1393,7 +1393,7 @@ asset |int| true |NA|asset id|
 ## 心跳检测
 
 ```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'server.ping', params: []};
        webSocket.send(JSON.stringify(params));
@@ -1433,7 +1433,7 @@ status | string | server status
 与订阅类型,只是将"method"里的"subscribe"改为"unsubscribe",如取消最新成交：
 
 ```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'deals.unsubscribe', params: []};
        webSocket.send(JSON.stringify(params));

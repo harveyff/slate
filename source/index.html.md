@@ -1446,7 +1446,7 @@ status | string | server status
 And subscription type, just change "subscribe" in "method" to "unsubscribe", such as canceling the latest transaction：
 
 ```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'deals.unsubscribe', params: []};
        webSocket.send(JSON.stringify(params));
