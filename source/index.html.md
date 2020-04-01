@@ -25,6 +25,33 @@ At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a
 
   `https://api.byte-trade.com/ws/`                                                                                                                                                            
 
+## Rate Limiting Rule
+* Each IP is limited to 10 times per second
+
+## Request Format
+
+The API is restful and there are two method: GET and POST.
+
+* GET request: All parameters are included in URL
+* POST request: All parameters are formatted as JSON and put int the request body
+
+## Error Http Status
+
+The ByteTrade API use the following error http status:
+
+Parameter | Description
+---------- | -------
+400 | Bad Request
+403 | Forbidden
+404 | Not Found
+405 | Method Not Allowed 
+406 | Not Acceptable
+429 | Too Many Requests
+500 | Internal Server Error 
+501 | Request Error 
+503 | Service Unavailable 
+
+
 
 # Basic Information
 
@@ -1426,23 +1453,33 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 The following shows the process of create order by the JS library.
 
 ```javascript
+var tr = new bytetrade_js.TransactionBuilder();
+    var ob = {
+        fee: '3',//0.0003 *1000000000000000000
+        creator: test_userid,
+        side: 2,
+        order_type: 1,
+        market_name: 'GDX/DGT',
+        amount: '44000000000000',//0.00456*1000000000000000000
+        price: '350000000000000000',//0.00006345*1000000000000000000
+        now: Math.ceil(Date.now() / 1000),
+        expiration: Math.ceil(Date.now() / 1000) + 10,
+        use_btt_as_fee: false,
+        // freeze_btt_fee: 0,
+        // custom_no_btt_fee_rate: 8,
+        money_id: 71,
+        stock_id: 72
+    }
 
+    tr.add_type_operation("order_create3", ob);
+
+    tr.timestamp = Math.ceil(Date.now() / 1000);
+    tr.dapp="harvey1322";
+    tr.validate_type = 0;
+    tr.add_signer(bytetrade_js.PrivateKey.fromHex(test_privatekey));
+    tr.finalize();
+    console.log(bytetrade_js.hash.sha256(tr.tr_buffer).toString('hex'));
+
+    if (!tr.signed) { tr.sign(); }
+    var trObj = tr.toObject();
 ```  
-
-
-# Error Http Status
-
-The ByteTrade API uses the following error codes:
-
-Parameter | Description
----------- | -------
-400 | Bad Request
-403 | Forbidden
-404 | Not Found
-405 | Method Not Allowed 
-406 | Not Acceptable
-429 | Too Many Requests
-500 | Internal Server Error 
-501 | Request Error 
-503 | Service Unavailable 
-
