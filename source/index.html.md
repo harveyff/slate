@@ -1466,6 +1466,7 @@ Here's how to create an order through JS Library.
 
 * Post transaction to server
 
+> Here's how to build trobj with JS package:
 ```javascript
     const bytetrade_js = require('./bytetrade.min.js');
     var tr = new bytetrade_js.TransactionBuilder();
