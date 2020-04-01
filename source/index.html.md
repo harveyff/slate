@@ -3,8 +3,7 @@ title: ByteTrade API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - javascript
-
+  
 toc_footers:
   - <a href='https://doc.byte-trade.com'>English</a>
 
@@ -13,10 +12,11 @@ search: true
 
 # Description
 
-Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoints。
+Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoints.
 
-We have language bindings in Shell, You can view code examples in the dark area to the right.
+At the same time, we have access to CCXT, you can also use CCXT more convenient interface.
 
+[CCXT](https://github.com/ccxt/ccxt)
 
 # Basic Information
 
@@ -804,7 +804,7 @@ Parameter | Type |Description
   cost| string | the fee amount in that currency
   rate| string | the fee rate (if available)
 
-# Deposit and Withdraw
+# Deposit And Withdraw
 
 ## Get Deposit Address
 
@@ -851,6 +851,9 @@ Parameter | Type |Description
  tag| string |
 
 
+## Withdraw
+
+Please use [ccxt] (https://github.com/ccxt/ccxt) for user withdrawal, because we have a lot of chaintypes and assets, it is more convenient and quick to use ccxt without paying attention to these details.
 
 ## Get Withdraw History
 
@@ -1045,12 +1048,8 @@ Parameter  |Description
 
 ## Market Trades
 
-```javascript
-   const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
-   webSocket.onopen = function(event) {
-       var params={id: 12345, method: 'deals.subscribe', params: ['122406567911']};
-       webSocket.send(JSON.stringify(params));
-   };
+```shell
+      {id: 12345, method: 'deals.subscribe', params: ['122406567911']}
 ```
 
 This topic sends the latest trades in a single market.
@@ -1090,7 +1089,7 @@ Parameter | Type |Description
 
 ## Last 24h Market Summary
 
-```javascript
+```shell
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'today.update', params: ['4294967329','4294967297']};
@@ -1444,7 +1443,7 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 
 
 
-# Error http status
+# Error Http Status
 
 The ByteTrade API uses the following error codes:
 
