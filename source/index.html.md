@@ -1453,7 +1453,7 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 Here's how to create an order through JS Library.
 
 ```shell
-    curl -d "trObj="{\"timestamp\":\"2020-04-01T12:32:28\",\"expiration\":\"1970-01-01T00:00:00\",\"operations\":[[32,{\"fee\":\"300000000000000\",\"creator\":\"harvey1712\",\"side\":2,\"order_type\":1,\"market_name\":\"BHT/USDT\",\"amount\":\"15000000000000000000\",\"price\":\"930000000000000\",\"use_btt_as_fee\":false,\"freeze_btt_fee\":\"0\",\"now\":\"2020-04-01T12:32:28\",\"expiration\":\"2020-04-01T12:32:38\",\"custom_no_btt_fee_rate\":4,\"money_id\":57,\"stock_id\":44}]],\"validate_type\":0,\"dapp\":\"Sagittarius\",\"signatures\":[\"2013b87279d7c4c9adf217067092fba4b65b7d686a093a695c577b87a09be848af604968b7a594f41387c12cf72fdb98d1ce601367e5837ee1d392b0ae90d1ea52\"]} "https://api-v2.byte-trade.com/transaction/createorder"
+    curl -d "trObj="{\"timestamp\":\"2020-04-01T12:32:28\",\"expiration\":\"1970-01-01T00:00:00\",\"operations\":[[32,{\"fee\":\"300000000000000\",\"creator\":\"harvey1712\",\"side\":2,\"order_type\":1,\"market_name\":\"BHT/USDT\",\"amount\":\"15000000000000000000\",\"price\":\"930000000000000\",\"use_btt_as_fee\":false,\"freeze_btt_fee\":\"0\",\"now\":\"2020-04-01T12:32:28\",\"expiration\":\"2020-04-01T12:32:38\",\"custom_no_btt_fee_rate\":4,\"money_id\":57,\"stock_id\":44}]],\"validate_type\":0,\"dapp\":\"Sagittarius\",\"signatures\":[\"2013b87279d7c4c9adf217067092fba4b65b7d686a093a695c577b87a09be848af604968b7a594f41387c12cf72fdb98d1ce601367e5837ee1d392b0ae90d1ea52\"]}" "https://api-v2.byte-trade.com/transaction/createorder"
 ```
 
 * introduce JS library, and then create a transaction object
@@ -1494,9 +1494,10 @@ Here's how to create an order through JS Library.
     tr.add_signer(bytetrade_js.PrivateKey.fromHex(test_privatekey));
     tr.finalize();
     if (!tr.signed) { tr.sign(); }
-    var trObj = tr.toObject();
     var transactionid = tr.id();
     var orderid = bytetrade_js.hash.get_orderid_from_txid(transactionid);
+    var trObj = tr.toObject();
+  
 ```  
 
 ### Params
@@ -1512,6 +1513,9 @@ price |string||
 custom_no_btt_fee_rate |int||
 money_id |int|money id|
 stock_id |int|stock id|
+use_btt_as_fee |int||
+freeze_btt_fee |int||
+custom_no_btt_fee_rate |int||
 dapp |string|dapp id|
 
 
