@@ -455,6 +455,14 @@ Parameter | Type |Description
 
 
 # Account
+## Create Account
+
+To create an account, please click "create" in the upper right corner of [ByteTrade](https://www.byte-trade.com/) website. 
+
+<aside class="warning">
+Please save your private key after creation.
+</aside>
+
 
 ## Get Account Balance
 
@@ -1450,87 +1458,12 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 
 ## Create Order
 
-Here's how to create an order through JS Library.
 
-```shell
-    curl -d "trObj="{\"timestamp\":\"2020-04-01T12:32:28\",\"expiration\":\"1970-01-01T00:00:00\",\"operations\":[[32,{\"fee\":\"300000000000000\",\"creator\":\"harvey1712\",\"side\":2,\"order_type\":1,\"market_name\":\"BHT/USDT\",\"amount\":\"15000000000000000000\",\"price\":\"930000000000000\",\"use_btt_as_fee\":false,\"freeze_btt_fee\":\"0\",\"now\":\"2020-04-01T12:32:28\",\"expiration\":\"2020-04-01T12:32:38\",\"custom_no_btt_fee_rate\":4,\"money_id\":57,\"stock_id\":44}]],\"validate_type\":0,\"dapp\":\"Sagittarius\",\"signatures\":[\"2013b87279d7c4c9adf217067092fba4b65b7d686a093a695c577b87a09be848af604968b7a594f41387c12cf72fdb98d1ce601367e5837ee1d392b0ae90d1ea52\"]}" "https://api-v2.byte-trade.com/transaction/createorder"
-```
-
-* introduce JS library, and then create a transaction object
-
-* Assign a value to the transaction object
-
-* Sign transaction
-
-* Get orderid and transactionid
-
-* Post transaction to server
-
-> Here's how to build trobj with JS package:
-
-```javascript
-    const bytetrade_js = require('./bytetrade.min.js');
-    var tr = new bytetrade_js.TransactionBuilder();
-    var ob = {
-        fee: '300000000000000',//0.0003 BTT
-        creator: userid,
-        side: 2,
-        order_type: 1,
-        market_name: 'BHT/USDT',
-        amount: '15000000000000000000',
-        price: '930000000000000',
-        now: Math.ceil(Date.now() / 1000),
-        expiration: Math.ceil(Date.now() / 1000) + 10,
-        use_btt_as_fee: false,
-        freeze_btt_fee: 0,
-        custom_no_btt_fee_rate: 4,
-        money_id: 57,
-        stock_id: 44
-    }
-    tr.add_type_operation("order_create3", ob);
-    tr.timestamp = Math.ceil(Date.now() / 1000);
-    tr.dapp="";
-    tr.validate_type = 0;
-    tr.add_signer(bytetrade_js.PrivateKey.fromHex(test_privatekey));
-    tr.finalize();
-    if (!tr.signed) { tr.sign(); }
-    var transactionid = tr.id();
-    var orderid = bytetrade_js.hash.get_orderid_from_txid(transactionid);
-    var trObj = tr.toObject();
-  
-```  
-
-### Params
-
-Parameter |Data Type	| Description|Value Range
---------- | ------- | -----------| ------- 
-creator |string|order creator userid|
-side |int|order side,1:sell,2:buy|1,2
-order_type |int|order type,1:limit,2:market|1,2
-market_name |string|symbol name|
-amount |string||
-price |string||
-custom_no_btt_fee_rate |int||
-money_id |int|money id|
-stock_id |int|stock id|
-use_btt_as_fee |int||
-freeze_btt_fee |int||
-custom_no_btt_fee_rate |int||
-dapp |string|dapp id|
+## Order Cancel
 
 
-> Response:
+## Transfer
 
-```json
-{
-	"code": 0,
-	"id": "1585744349362229825"
-}
-```
-### Response Content
 
-Parameter | Type |Description
---------- | ------- | -----------
- id| string | order id
  
  
