@@ -1199,7 +1199,7 @@ period |int| true |NA|kline period|need to be converted into seconds。1min, 5mi
   Type |Description
   ------- | -----------
   long | UTC timestamp in milliseconds,
-  string | (O)pen price, string
+  string | (O)pen price
   string | (H)ighest price
   string | (L)owest price
   string | (C)losing price
@@ -1450,36 +1450,74 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 
 ## Create Order
 
-The following shows the process of create order by the JS library.
+Here's how to create an order through JS Library.
+
+* introduce JS library, and then create a transaction object
+
+* Assign a value to the transaction object
+
+* Sign transaction
+
+* Get orderid and transactionid
+
+* Post transaction to server
+
+### Params
+
+Parameter |Data Type	| Description|Value Range
+--------- | ------- | -----------| ------- 
+creator |string|order creator userid|
+side |int|order side,1:sell,2:buy|1,2
+order_type |int|order type,1:limit,2:market|1,2
+market_name |string|symbol name|
+amount |string||
+price |string||
+custom_no_btt_fee_rate |int||
+money_id |int|money id|
+stock_id |int|stock id|
+dapp |string|dapp id|
+
+
+> Response:
+
+```json
+{
+	"code": 0,
+	"id": "1585744349362229825"
+}
+```
 
 ```javascript
-var tr = new bytetrade_js.TransactionBuilder();
+    const bytetrade_js = require('./bytetrade.min.js');
+    var tr = new bytetrade_js.TransactionBuilder();
     var ob = {
-        fee: '3',//0.0003 *1000000000000000000
-        creator: test_userid,
+        fee: '300000000000000',//0.0003 BTT
+        creator: userid,
         side: 2,
         order_type: 1,
-        market_name: 'GDX/DGT',
-        amount: '44000000000000',//0.00456*1000000000000000000
-        price: '350000000000000000',//0.00006345*1000000000000000000
+        market_name: 'BHT/USDT',
+        amount: '15000000000000000000',
+        price: '930000000000000',
         now: Math.ceil(Date.now() / 1000),
         expiration: Math.ceil(Date.now() / 1000) + 10,
         use_btt_as_fee: false,
-        // freeze_btt_fee: 0,
-        // custom_no_btt_fee_rate: 8,
-        money_id: 71,
-        stock_id: 72
+        freeze_btt_fee: 0,
+        custom_no_btt_fee_rate: 4,
+        money_id: 57,
+        stock_id: 44
     }
-
     tr.add_type_operation("order_create3", ob);
-
     tr.timestamp = Math.ceil(Date.now() / 1000);
-    tr.dapp="harvey1322";
+    tr.dapp="";
     tr.validate_type = 0;
     tr.add_signer(bytetrade_js.PrivateKey.fromHex(test_privatekey));
     tr.finalize();
-    console.log(bytetrade_js.hash.sha256(tr.tr_buffer).toString('hex'));
-
     if (!tr.signed) { tr.sign(); }
     var trObj = tr.toObject();
+    var transactionid = tr.id();
+    var orderid = bytetrade_js.hash.get_orderid_from_txid(transactionid);
 ```  
+
+```shell
+    curl -d "trObj=..." "https://api-v2.byte-trade.com/transaction/createorder"
+```
