@@ -18,7 +18,7 @@ search: true
 
 欢迎使用ByteTrade API！您可以访问我们的API来使用ByteTrade链上相关服务。
 
-在网页右侧有shell代码示例，您可以用代码示例进行测试。
+在网页右侧有shell代码示例,您可以用代码示例进行测试。
 
 
 # 基础信息
@@ -76,18 +76,18 @@ code | string | 资产id
 type | int | 链类型
 fullname |string| 资产全名
 active | int |
-basePrecision | int |  在ByteTrade链上，1个BTC将表示为1000000000000000000的整数
-transferPrecision | int | 在ByteTrade链上，进行转账时，转账数量转成链上的整数后，最后8位(basePrecision-transferPrecision)为0,即至少转100000000的整数倍
-externalPrecision | int | 在BTC的链上，最小单位为0.00000001
-fee | string | 提现预估手续费汇率，仅适合BTC
+basePrecision | int |  在ByteTrade链上,1个BTC将表示为1000000000000000000的整数
+transferPrecision | int | 在ByteTrade链上,进行转账时,转账数量转成链上的整数后,最后8位(basePrecision-transferPrecision)为0,即至少转100000000的整数倍
+externalPrecision | int | 在BTC的链上,最小单位为0.00000001
+fee | string | 提现预估手续费汇率,仅适合BTC
 limits | object | 
 
  * limits
  
  参数名 | 类型 |说明
  --------- | ------- | -----------
- deposit| object | 充值的最小值和最大值，-1代表不限
- withdraw| object | 提现的最小值和最大值，-1代表不限
+ deposit| object | 充值的最小值和最大值,-1代表不限
+ withdraw| object | 提现的最小值和最大值,-1代表不限
 
 
 
@@ -144,11 +144,11 @@ curl "https://api-v2.byte-trade.com/symbols"
 
 参数名 | 类型 |说明
 --------- | ------- | -----------
-symbol | string |交易对id，唯一
-name | string | 交易对名称，非唯一
+symbol | string |交易对id,唯一
+name | string | 交易对名称,非唯一
 base | string | 基础货币id
 quote | string | 计价货币id
-marketStatus | int | 市场状态。0:闭市，1:开市
+marketStatus | int | 市场状态。0:闭市,1:开市
 baseName | string | 基础货币名称
 quoteName | string | 计价货币名称
 active | Boolean | 
@@ -161,8 +161,8 @@ limits | object |
  
  参数名 | 类型 |说明
  --------- | ------- | -----------
- amount| int | 交易时，amount的精度，代表小数点后的最大位数
- price| int | 交易时，price的精度，代表小数点后的最大位数
+ amount| int | 交易时,amount的精度,代表小数点后的最大位数
+ price| int | 交易时,price的精度,代表小数点后的最大位数
 
  * limits
  
@@ -258,7 +258,7 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/depth"
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |long| true | NA|交易对id|
 limit |int| false |20 |买单或卖单个数|[1,100]
-type |string|false | step0|深度的价格聚合度，step0时无聚合，step1\2\3\4\5分别代表聚合度为报价精度*10\100\1000\10000\100000|step0|step0，step1，step2，step3，step4，step5
+type |string|false | step0|深度的价格聚合度,step0时无聚合,step1\2\3\4\5分别代表聚合度为报价精度*10\100\1000\10000\100000|step0|step0,step1,step2,step3,step4,step5
 
 
 > 响应数据:
@@ -330,7 +330,7 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/klines"
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |long| true | NA|交易对id|
 timeframe |string| true | |K线类型		|1m, 5m,15m,30m,1h,4h,1d,5d,1w,1M
-since |long| false |NA |K线开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+since |long| false |NA |K线开始时间(utc毫秒),如果不设置这个值,则默认获取从当前时刻向前的limit个记录	|
 limit |int| false |100 |返回数据的条数|[1,500]
 
 
@@ -378,7 +378,7 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/trades"
 参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 symbol |long| true | NA|交易对id|
-since |long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+since |long| false |NA |开始时间(utc毫秒),如果不设置这个值,则默认获取从当前时刻向前的limit个记录	|
 limit |int| false |100 |返回数据的条数|[1,500]
 
 
@@ -482,7 +482,7 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/all"
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |string| true | NA|user id|
 symbol |long| false | NA|交易对id|
-since |long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+since |long| false |NA |开始时间(utc毫秒),如果不设置这个值,则默认获取从当前时刻向前的limit个记录	|
 limit |int| false |100 |返回数据的条数|[1,500]
 
 
@@ -529,7 +529,7 @@ limit |int| false |100 |返回数据的条数|[1,500]
  status| string |订单状态(open/closed/cancelled)
  symbol| string |交易对id
  name| string |交易对名称
- type| string |订单类型，限价单:limit，市场价:market
+ type| string |订单类型,限价单:limit,市场价:market
  side| string |订单方向(sell/buy)
  price| string | 成交价(当市价单时成交价为"0")
  average| string |成交均价
@@ -567,7 +567,7 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/open"
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |string| true | NA|user id|
 symbol |long| false | NA|交易对id|
-since |long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+since |long| false |NA |开始时间(utc毫秒),如果不设置这个值,则默认获取从当前时刻向前的limit个记录	|
 limit |int| false |100 |返回数据的条数|[1,500]
 
 
@@ -614,7 +614,7 @@ limit |int| false |100 |返回数据的条数|[1,500]
  status| string |订单状态(open/closed/cancelled)
  symbol| string |交易对id
  name| string |交易对名称
- type| string |订单类型，限价单:limit，市场价:market
+ type| string |订单类型,限价单:limit,市场价:market
  side| string |订单方向(sell/buy)
  price| string | 成交价(当市价单时成交价为"0")
  average| string |成交均价
@@ -653,7 +653,7 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/closed"
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |string| true | NA|user id|
 symbol |long| false | NA|交易对id|
-since |long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+since |long| false |NA |开始时间(utc毫秒),如果不设置这个值,则默认获取从当前时刻向前的limit个记录	|
 limit |int| false |100 |返回数据的条数|[1,500]
 
 
@@ -700,7 +700,7 @@ limit |int| false |100 |返回数据的条数|[1,500]
   status| string |订单状态(open/closed/cancelled)
   symbol| string |交易对id
   name| string |交易对名称
-  type| string |订单类型，限价单:limit，市场价:market
+  type| string |订单类型,限价单:limit,市场价:market
   side| string |订单方向(sell/buy)
   price| string | 成交价(当市价单时成交价为"0")
   average| string |成交均价
@@ -740,7 +740,7 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/trades"
 userid |string| true | NA|user id|
 symbol |long| false | NA|交易对id|
 orderid |string| false | NA|order id|
-since |long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+since |long| false |NA |开始时间(utc毫秒),如果不设置这个值,则默认获取从当前时刻向前的limit个记录	|
 limit |int| false |100 |返回数据的条数|[1,500]
 
 
@@ -784,7 +784,7 @@ limit |int| false |100 |返回数据的条数|[1,500]
  symbol| string |交易对id
  name| string |交易对名称
  order| string |订单id
- type| string |订单类型，限价单:limit，市场价:market
+ type| string |订单类型,限价单:limit,市场价:market
  side| string |订单方向(sell/buy)
  price| string | 成交价
  average| string |成交均价
@@ -868,7 +868,7 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/withdrawals"
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |string| true | NA|user id|
 code |int| false | NA|currency的code	|
-since |long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+since |long| false |NA |开始时间(utc毫秒),如果不设置这个值,则默认获取从当前时刻向前的limit个记录	|
 limit |int| false |100 |返回数据的条数|[1,500]
 
 
@@ -946,7 +946,7 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/deposits"
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |string| true | NA|user id|
 code |int| false | NA|currency的code	|
-since |long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
+since |long| false |NA |开始时间(utc毫秒),如果不设置这个值,则默认获取从当前时刻向前的limit个记录	|
 limit |int| false |100 |返回数据的条数|[1,500]
 
 
@@ -1243,7 +1243,7 @@ bids | Array | 当前最新的卖单价和卖单量[[price,amount]]
    };
 ```
 
-用户鉴权，用户必须完成鉴权，才可以使用用户资产和用户余额的订阅
+用户鉴权,用户必须完成鉴权,才可以使用用户资产和用户余额的订阅
 
 ### 请求参数
 
@@ -1283,7 +1283,7 @@ status | string | server status
 ```
 
 
-订阅用户订单，只会推送订阅后的订单数据。
+订阅用户订单,只会推送订阅后的订单数据。
 <aside class="warning">
 必须先完成用户鉴权
 </aside>
@@ -1338,7 +1338,7 @@ deal_money | string | 已成交额
 deal_stock | string | 已成交量
 price | string | 价格
 left | string | 未成交数量
-type | int | 订单类型，限价单:limit，市场价:market
+type | int | 订单类型,限价单:limit,市场价:market
 side | int | 订单方向(sell或buy)
 amount | string | 订单数量
 ctime | string | 创建时间(秒)
@@ -1400,7 +1400,7 @@ asset |int| true |NA|asset id|
    };
 ```
 
-Websocket默认1小时断开连接，如果需要持续接收数据，请保持心跳。
+Websocket默认1小时断开连接,如果需要持续接收数据,请保持心跳。
 
 ### 请求参数
 
@@ -1430,7 +1430,7 @@ status | string | server status
 
 
 ## 取消订阅
-与订阅类型，只是将"method"里的"subscribe"改为"unsubscribe"，如取消最新成交：
+与订阅类型,只是将"method"里的"subscribe"改为"unsubscribe",如取消最新成交：
 
 ```javascript
    const webSocket = new WebSocket('wss://p2.byte-trade.com/ws/');
