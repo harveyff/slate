@@ -16,34 +16,30 @@ search: true
 
 # 说明
 
-Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoints。
+欢迎使用ByteTrade API！您可以访问我们的API来使用ByteTrade链上相关服务。
 
-We have language bindings in Shell, You can view code examples in the dark area to the right.
-
-
+在网页右侧有shell代码示例，您可以用代码示例进行测试。
 
 
 # 基础信息
 
-## Get all Supported Currencies
+## 获取所有币种
 
 ```shell
 curl "https://api-v2.byte-trade.com/currencies"
 ```
 
-This endpoint returns all ByteTrade's supported trading currencies.
-
+获取ByteTrade链上支持的所有币种
 
 ### HTTP Request
 
 `GET https://api-v2.bytetrade.com/currencies`
 
-### Request Parameters
+### 请求参数
 
-No parameter is needed for this endpoint.
+无
 
-
-> Response:
+> 响应数据:
 
 ```json
 [{
@@ -71,24 +67,24 @@ No parameter is needed for this endpoint.
 }...]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
-name | String | asset name
-code | String | asset id
-type | Int | chain type
-fullname |String| asset fullname
+name | String | 资产名
+code | String | 资产id
+type | Int | 链类型
+fullname |String| 资产全名
 active | Int |
 basePrecision | Int |  在ByteTrade链上，1个BTC将表示为1000000000000000000的整数
 transferPrecision | Int | 在ByteTrade链上，进行转账时，转账数量转成链上的整数后，最后8位(basePrecision-transferPrecision)为0,即至少转100000000的整数倍
 externalPrecision | Int | 在BTC的链上，最小单位为0.00000001
-fee | String | withdraw fee, only valid for BTC
+fee | String | 提现预估手续费汇率，仅适合BTC
 limits | Object | 
 
  * limits
  
- Parameter | Type |Description
+ 参数名 | 类型 |说明
  --------- | ------- | -----------
  deposit| Object | 充值的最小值和最大值，-1代表不限
  withdraw| Object | 提现的最小值和最大值，-1代表不限
@@ -96,26 +92,24 @@ limits | Object |
 
 
 
-## Get all Supported Symbols
+## 获取所有交易对
 
 ```shell
 curl "https://api-v2.byte-trade.com/symbols"
 ```
 
 
-This endpoint returns all ByteTrade's supported trading symbol.
-
+获取ByteTrade链上支持的所有交易对
 
 ### HTTP Request
 
 `GET https://api-v2.bytetrade.com/symbols`
 
-### Request Parameters
+### 请求参数
 
-No parameter is needed for this endpoint.
+无
 
-
-> Response:
+> 响应数据:
 
 ```json
 [{
@@ -146,33 +140,33 @@ No parameter is needed for this endpoint.
 }]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
-symbol | String |market symbol, unique
-name | String | market symbol name, non-unique
-base | String | base asset currency
-quote | String | quote asset currency
-marketStatus | Int | market status,0 is closed,1 is open
-baseName | String | base asset name
-quoteName | String | quote asset code
+symbol | String |交易对id，唯一
+name | String | 交易对名称，非唯一
+base | String | 基础货币id
+quote | String | 计价货币id
+marketStatus | Int | 市场状态。0:闭市，1:开市
+baseName | String | 基础货币名称
+quoteName | String | 计价货币名称
 active | Boolean | 
-maker | String | maker fee
-taker | String | taker fee
+maker | String | maker 手续费
+taker | String | taker 手续费
 precision | Object |
 limits | Object |
 
  * precision
  
- Parameter | Type |Description
+ 参数名 | 类型 |说明
  --------- | ------- | -----------
  amount| Int | 交易时，amount的精度，代表小数点后的最大位数
  price| Int | 交易时，price的精度，代表小数点后的最大位数
 
  * limits
  
- Parameter | Type |Description
+ 参数名 | 类型 |说明
  --------- | ------- | -----------
  amount| String | 限制base的最小值和最大值(当订单为限价买卖单或订单为市价卖单);限制quote的最小值和最大值(当订单为市价买单)
  price| String | 限制quote的最小值和最大值(当订单为限价买卖单或订单为市价卖单);限制base的最小值和最大值(当订单为市价买单)
@@ -187,20 +181,20 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/tickers"
 ```
 
 
-查询全部symbol或单个symbol的24小时的价格变化
+查询全部市场或单个市场的24小时的价格变化
 
 ### HTTP Request
 
 `GET https://api-v2.bytetrade.com/tickers`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| false | NA|symbol id|
+symbol |Long| false | NA|交易对id|
 
 
-> Response:
+> 响应数据:
 
 ```json
 [
@@ -216,7 +210,7 @@ symbol |Long| false | NA|symbol id|
         "open": "0.031009",                     
         "close": "0.031035",                    
         "last": "0.031035",                     
-        "change": "2.6e-05",                    
+        "change": "0.00654",                    
         "percentage": "0.084",                  
         "baseVolume": "209771.771",             
         "quoteVolume": "6519.97393184"          
@@ -224,25 +218,25 @@ symbol |Long| false | NA|symbol id|
 ]...]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
-symbol | String | unique id, unique
-name | String | string symbol of the market, non-unique
-base | String | base asset id
-quote | String | quote asset id
-timestamp | Long |(64-bit Unix Timestamp in milliseconds since Epoch 1 Jan 1970)
-datetime | Date | ISO8601 datetime string with milliseconds
-high | String | highest price
-low | String | lowest price
-open | String | opening price
-close | String | price of last trade (closing price for current period)
-last | String | same as `close`, duplicated for convenience
-change | String | absolute change, `last - open`
-percentage | String | relative change, `(change/open) * 100`
-baseVolume | String | volume of base currency traded for last 24 hours
-quoteVolume | String | volume of quote currency traded for last 24 hours
+symbol | String | 交易对id
+name | String | 交易对名称
+base | String | 基础货币id
+quote | String | 计价货币id
+timestamp | Long |时间戳(毫秒)
+datetime | Date | ISO格式的时间
+high | String | 本阶段最高价
+low | String | 本阶段最低价
+open | String | 本阶段开盘价
+close | String | 本阶段收盘价
+last | String | 本阶段收盘价
+change | String | 本阶段涨跌点(本阶段收盘价-本阶段开盘价)
+percentage | String | 本阶段涨跌百分比, 本阶段涨跌点*100
+baseVolume | String | 本阶段基础货币交易量
+quoteVolume | String | 本阶段计价货币交易量
 
 
 
@@ -258,16 +252,16 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/depth"
 
 `GET https://api-v2.bytetrade.com/depth?symbol=68719476706`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| true | NA|symbol id|
-limit |Int| false |20 |asks或bids个数|[1,100]
+symbol |Long| true | NA|交易对id|
+limit |Int| false |20 |买单或卖单个数|[1,100]
 type |String|false | step0|深度的价格聚合度，step0时无聚合，step1\2\3\4\5分别代表聚合度为报价精度*10\100\1000\10000\100000|step0|step0，step1，step2，step3，step4，step5
 
 
-> Response:
+> 响应数据:
 
 ```json
 {
@@ -307,9 +301,9 @@ type |String|false | step0|深度的价格聚合度，step0时无聚合，step1\
 }
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
 bids | Array | 当前最新的卖单价和卖单量[[price,amount]]
 asks | Array | 当前最新的买单价和买单量[[price,amount]]
@@ -330,17 +324,17 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/klines"
 
 `GET https://api-v2.bytetrade.com/klines?symbol=68719476706`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| true | NA|symbol id|
+symbol |Long| true | NA|交易对id|
 timeframe |String| true | |K线类型		|1m, 5m,15m,30m,1h,4h,1d,5d,1w,1M
 since |Long| false |NA |K线开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
 
 
-> Response:
+> 响应数据:
 
 ```json
 [
@@ -355,17 +349,17 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 ]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- | Long | UTC timestamp in milliseconds,
- | String | (O)pen price, String
- | String | (H)ighest price
- | String | (L)owest price
- | String | (C)losing price
- | String | (L)owest price
- | String | (V)olume (in terms of the base currency)
+ | Long | 时间戳(毫秒)
+ | String | (O)开盘价
+ | String | (H)最高价
+ | String | (L)最低价
+ | String | (C)收盘价
+ | String | (L)收盘价
+ | String | (V)基础货币成交量
 
 ## 市场最新交易
 
@@ -373,22 +367,22 @@ Parameter | Type |Description
 curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/trades"
 ```
 
-查询单个symbol的市场深度行情
+查询单个市场的最新成交信息
 
 ### HTTP Request
 
 `GET https://api-v2.bytetrade.com/klines?symbol=68719476706`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |Long| true | NA|symbol id|
+symbol |Long| true | NA|交易对id|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
 
 
-> Response:
+> 响应数据:
 
 ```json
 [
@@ -408,45 +402,45 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 ]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- id| String |  trade id
- txid| String | transaction id in bytetrade
- timestamp| Long | Unix timestamp in milliseconds
- datetime| String | ISO8601 datetime with milliseconds
- symbol| String | symbol id
- name| String | symbol name
- side| String | direction of the trade, "buy" or "sell"
- price| String | price in quote currency
- amount| String | amount of base currency
- cost| String |  amount of quote currency
+ id| String |  id
+ txid| String | 在ByteTrade链上的交易id
+ timestamp| Long | 交易时间(毫秒)
+ datetime| String | ISO时间
+ symbol| String | 交易对id
+ name| String | 交易对名称
+ side| String | 交易方向, buy或sell
+ price| String | 成交价
+ amount| String | 成交数量
+ cost| String |  成交额
 
 
 # 用户信息
 
-## 获取用户balance
+## 获取用户资产余额
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/balance"
 ```
 
-查询单个symbol的市场深度行情
+用户单个用户的资产余额
 
 ### HTTP Request
 
 `GET https://api-v2.bytetrade.com/balance?userid=test`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|user id|
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 [
@@ -460,15 +454,15 @@ userid |String| true | NA|user id|
 ]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- code| String | asset id
- name| String | asset name
- free| Long | money available for trading
- used| String | money on hold, locked, frozen or pending
- total| String | total balance (free + used)
+ code| String | 资产id
+ name| String | 资产名称
+ free| Long | 可用资产
+ used| String | 锁定资产
+ total| String | 所有资产 (可用资产+ 锁定资产)
 
 ## 获取用户的所有订单
 
@@ -482,18 +476,18 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/all"
 
 `GET https://api-v2.bytetrade.com/orders/all?userid=test`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|user id|
-symbol |Long| false | NA|symbol id|
+symbol |Long| false | NA|交易对id|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 [{
@@ -523,36 +517,36 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 }]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- id| String | order id
- txid| String | transaction id in bytetrade
- timestamp| Long | Unix timestamp in milliseconds
- datetime| String | ISO8601 datetime with milliseconds
- lastTradeTimestamp| Long | Unix timestamp of the most recent trade on this order
- status| String |order status(open/closed/cancelled)
- symbol| String |symbol id
- name| String |symbol name
- type| String |order type(market/limit)
- side| String |order side(sell/buy)
- price| String | float price in quote currency
- average| String |
- amount| String |ordered amount of base currency
- filled| String |filled amount of base currency
- remaining| String |remaining amount to fill
- cost| String |"filled" * "price" (filling price used where available)
+ id| String | 订单id
+ txid| String | ByteTrade链上的交易id
+ timestamp| Long | 创建时间(毫秒)
+ datetime| String | ISO时间
+ lastTradeTimestamp| Long | 最后交易时间(毫秒)
+ status| String |订单状态(open/closed/cancelled)
+ symbol| String |交易对id
+ name| String |交易对名称
+ type| String |订单类型，限价单:limit，市场价:market
+ side| String |订单方向(sell/buy)
+ price| String | 成交价(当市价单时成交价为"0")
+ average| String |成交均价
+ amount| String |订单amount
+ filled| String |已成交
+ remaining| String |未成交
+ cost| String |成交额(已成交*price)
  fee| Object |-
  
  * fee
  
- Parameter | Type |Description
+ 参数名 | 类型 |说明
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+  code| String |资产id
+  name| String |资产名称
+  cost| String |手续费
+  rate| String |手续费比例
 
 
 ## 获取用户的委托订单
@@ -567,18 +561,18 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/open"
 
 `GET https://api-v2.bytetrade.com/orders/open?userid=test`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|user id|
-symbol |Long| false | NA|symbol id|
+symbol |Long| false | NA|交易对id|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 [{
@@ -608,36 +602,36 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 }]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- id| String | order id
- txid| String | transaction id in bytetrade
- timestamp| Long | Unix timestamp in milliseconds
- datetime| String | ISO8601 datetime with milliseconds
- lastTradeTimestamp| Long | Unix timestamp of the most recent trade on this order
- status| String |order status(open/closed/cancelled)
- symbol| String |symbol id
- name| String |symbol name
- type| String |order type(market/limit)
- side| String |order side(sell/buy)
- price| String | float price in quote currency
- average| String |
- amount| String |ordered amount of base currency
- filled| String |filled amount of base currency
- remaining| String |remaining amount to fill
- cost| String |"filled" * "price" (filling price used where available)
+ id| String | 订单id
+ txid| String | ByteTrade链上的交易id
+ timestamp| Long | 创建时间(毫秒)
+ datetime| String | ISO时间
+ lastTradeTimestamp| Long | 最后交易时间(毫秒)
+ status| String |订单状态(open/closed/cancelled)
+ symbol| String |交易对id
+ name| String |交易对名称
+ type| String |订单类型，限价单:limit，市场价:market
+ side| String |订单方向(sell/buy)
+ price| String | 成交价(当市价单时成交价为"0")
+ average| String |成交均价
+ amount| String |订单amount
+ filled| String |已成交
+ remaining| String |未成交
+ cost| String |成交额(已成交*price)
  fee| Object |-
  
  * fee
  
- Parameter | Type |Description
+ 参数名 | 类型 |说明
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+  code| String |资产id
+  name| String |资产名称
+  cost| String |手续费
+  rate| String |手续费比例
 
 
 
@@ -653,18 +647,18 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/closed"
 
 `GET https://api-v2.bytetrade.com/orders/closed?userid=test`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|user id|
-symbol |Long| false | NA|symbol id|
+symbol |Long| false | NA|交易对id|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 [{
@@ -694,36 +688,36 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 }]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- id| String | order id
- txid| String | transaction id in bytetrade
- timestamp| Long | Unix timestamp in milliseconds
- datetime| String | ISO8601 datetime with milliseconds
- lastTradeTimestamp| Long | Unix timestamp of the most recent trade on this order
- status| String |order status(open/closed/cancelled)
- symbol| String |symbol id
- name| String |symbol name
- type| String |order type(market/limit)
- side| String |order side(sell/buy)
- price| String | float price in quote currency
- average| String |
- amount| String |ordered amount of base currency
- filled| String |filled amount of base currency
- remaining| String |remaining amount to fill
- cost| String |"filled" * "price" (filling price used where available)
- fee| Object |-
- 
- * fee
- 
- Parameter | Type |Description
- --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+  id| String | 订单id
+  txid| String | ByteTrade链上的交易id
+  timestamp| Long | 创建时间(毫秒)
+  datetime| String | ISO时间
+  lastTradeTimestamp| Long | 最后交易时间(毫秒)
+  status| String |订单状态(open/closed/cancelled)
+  symbol| String |交易对id
+  name| String |交易对名称
+  type| String |订单类型，限价单:limit，市场价:market
+  side| String |订单方向(sell/buy)
+  price| String | 成交价(当市价单时成交价为"0")
+  average| String |成交均价
+  amount| String |订单amount
+  filled| String |已成交
+  remaining| String |未成交
+  cost| String |成交额(已成交*price)
+  fee| Object |-
+  
+  * fee
+  
+  参数名 | 类型 |说明
+  --------- | ------- | -----------
+   code| String |资产id
+   name| String |资产名称
+   cost| String |手续费
+   rate| String |手续费比例
 
 
 
@@ -739,19 +733,19 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/orders/trades"
 
 `GET https://api-v2.bytetrade.com/orders/trades?userid=test`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|user id|
-symbol |Long| false | NA|symbol id|
+symbol |Long| false | NA|交易对id|
 orderid |String| false | NA|order id|
 since |Long| false |NA |开始时间(utc毫秒)，如果不设置这个值，则默认获取从当前时刻向前的limit个记录	|
 limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 [
@@ -779,58 +773,58 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 ]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- id| String | order id
- txid| String | transaction id in bytetrade
- timestamp| Long | Unix timestamp in milliseconds
- datetime| String | ISO8601 datetime with milliseconds
- symbol| String |symbol id
- name| String |symbol name
- order| String |order id
- type| String |order type(market/limit)
- side| String |order side(sell/buy)
- price| String | float price in quote currency
- average| String |
- amount| String |ordered amount of base currency
+ id| String | 成交id
+ txid| String | ByteTrade链上交易id
+ timestamp| Long | 成交时间(毫秒)
+ datetime| String | ISO时间
+ symbol| String |交易对id
+ name| String |交易对名称
+ order| String |订单id
+ type| String |订单类型，限价单:limit，市场价:market
+ side| String |订单方向(sell/buy)
+ price| String | 成交价
+ average| String |成交均价
+ amount| String |成交量
  takerOrMaker| String |taker/marker
- cost| String |"filled" * "price" (filling price used where available)
+ cost| String |成交额（amount*price）
  fee| Object |-
  
  * fee
  
- Parameter | Type |Description
+ 参数名 | 类型 |说明
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+   code| String |资产id
+   name| String |资产名称
+   cost| String |手续费
+   rate| String |手续费比例
 
 # 充值提现
 
-## 获取用户充提地址
+## 获取用户充值地址
 
 ```shell
 curl -d "userid=test" "https://api-v2.byte-trade.com/depositaddress"
 ```
 
-查询单个用户的成交明细
+查询单个用户的充值地址
 
 ### HTTP Request
 
 `GET https://api-v2.bytetrade.com/depositaddress?userid=test`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|user id|
-code |Int| false | NA|currency的code	|
+code |Int| false | NA|资产id	|
 
 
-> Response:
+> 响应数据:
 
 ```json
 [
@@ -844,14 +838,14 @@ code |Int| false | NA|currency的code	|
 ]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- code| String | asset id
- name| String | asset name
- chainType| String | chain type
- address| String |  address in terms of requested currency
+ code| String | 资产id
+ name| String | 资产名称
+ chainType| String | 链类型
+ address| String |  充值地址
  tag| String |
 
 
@@ -868,9 +862,9 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/withdrawals"
 
 `GET https://api-v2.bytetrade.com/withdrawals?userid=test`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|user id|
 code |Int| false | NA|currency的code	|
@@ -879,7 +873,7 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 [
@@ -907,31 +901,31 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 ]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- id| String | withdraw id
- txid| String | 
- timestamp| String | 
- datetime| String | 
- address| String |
+ id| String | id
+ txid| String | ByteTrade链上的交易id
+ timestamp| String | 创建时间(毫秒)
+ datetime| String | ISO时间
+ address| String | 提现地址
  tag| String |
- amount| String |
- code| String |
- name| String |
- status| String |Description of withdrawal status
- statusCode| Int |Code value of withdrawal status
+ amount| String | 提现数量
+ code| String | 资产id
+ name| String | 资产名称
+ status| String |提现状态说明
+ statusCode| Int |提现状态码(参考充提状态码)
  updated| String |
  fee| Object |
  * fee
  
- Parameter | Type |Description
+ 参数名 | 类型 |说明
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+   code| String |资产id
+   name| String |资产名称
+   cost| String |手续费
+   rate| String |手续费比例
 
 
 ## 获取用户充值记录
@@ -946,9 +940,9 @@ curl -d "userid=test" "https://api-v2.byte-trade.com/deposits"
 
 `GET https://api-v2.bytetrade.com/deposits?userid=test`
 
-### URL Parameters
+### 请求参数
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true | NA|user id|
 code |Int| false | NA|currency的code	|
@@ -957,7 +951,7 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 [
@@ -985,31 +979,32 @@ limit |Int| false |100 |返回数据的条数|[1,500]
 ]
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
  id| String | 
- txid| String | 
- timestamp| String | 
- datetime| String | 
- address| String |
+ txid| String | ByteTrade链上的交易id
+ timestamp| String | 创建时间(毫秒)
+ datetime| String | ISO时间
+ address| String |充值地址
  tag| String |
- amount| String |
- code| String |
- name| String |
- status| String |Description of deposit status
- statusCode| Int |Code value of deposit status
+ amount| String |充值数量
+ code| String | 资产id
+ name| String | 资产名称
+ status| String |充值状态说明
+ statusCode| Int |充值状态码(参考充提状态码)
  updated| String |
  fee| Object |
  * fee
  
- Parameter | Type |Description
+ 参数名 | 类型 |说明
  --------- | ------- | -----------
-  code| String | which currency the fee is (usually quote)
-  name| String | 
-  cost| String | the fee amount in that currency
-  rate| String | the fee rate (if available)
+   code| String |资产id
+   name| String |资产名称
+   cost| String |手续费
+   rate| String |手续费比例
+
 
 
 ## 充值提现状态说明
@@ -1060,11 +1055,11 @@ Parameter  |Description
 
 ### Params
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |String| true |NA|symbol id|
+symbol |String| true |NA|交易对id|
 
-> Response:
+> 响应数据:
 
 ```json
 {
@@ -1080,16 +1075,16 @@ symbol |String| true |NA|symbol id|
 }
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- method| String | subscribe method
- price| String | deal price
- time| Double | deal time
- id| String | deal id
- type| String | deal type(buy/sell)
- amount| String | deal amount
+ method| String | 订阅方式
+ price| String | 价格
+ time| Double | 时间
+ id| String | 
+ type| String | 成交方向(buy/sell)
+ amount| String | 成交数量
 
 ## 24小时成交涨跌
 
@@ -1105,11 +1100,11 @@ Parameter | Type |Description
 
 ### Params
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |String| true |NA|symbol id|
+symbol |String| true |NA|交易对id|
 
-> Response:
+> 响应数据:
 
 ```json
 {
@@ -1127,18 +1122,18 @@ symbol |String| true |NA|symbol id|
 }
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- method| String | subscribe method
- volume| String | volume currency traded for last 24 hours
- deal| String | deal currency traded for last 24 hours
- open| String | opening price
- change| String | relative change
- high| String | highest price
- last| String | same as `close`, duplicated for convenience
- low| String | lowest price
+ method| String | 
+ volume| String | 成交数量
+ deal| String | 成交额
+ open| String | 开盘价
+ change| String | 涨跌幅
+ high| String | 最高价
+ last| String | 收盘价
+ low| String | 收盘价
 
 
 ## K线数据
@@ -1156,13 +1151,13 @@ Parameter | Type |Description
 
 ### Params
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |String| true |NA|symbol id|
+symbol |String| true |NA|交易对id|
 period |Int| true |NA|k线周期|需要换算成秒。1min, 5min, 15min, 30min, 60min, 4hour, 1day, 1mon, 1week, 1year
 
 
-> Response:
+> 响应数据:
 
 ```json
 {
@@ -1174,19 +1169,19 @@ period |Int| true |NA|k线周期|需要换算成秒。1min, 5min, 15min, 30min, 
 }
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- | Long | UTC timestamp in milliseconds,
- | String | (O)pen price, String
- | String | (H)ighest price
- | String | (L)owest price
- | String | (C)losing price
- | String | (L)owest price
- | String | (V)olume (in terms of the base currency)
- | String | symbol name
- | Long | symbol id
+ | Long | 时间(秒)
+ | String | (O)开盘价
+ | String | (H)最高价
+ | String | (L)最低价
+ | String | (C)收盘价
+ | String | (L)收盘价
+ | String | (V)成交量
+ | String | 交易对名称
+ | Long | 交易对id
 
 
 
@@ -1204,14 +1199,14 @@ Parameter | Type |Description
 
 ### Params
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |String| true |NA|symbol id|
+symbol |String| true |NA|交易对id|
 limit |Int| true |NA|条数|
 step |String| true |NA|深度聚合度| 0(不聚合)/0.1/0.001/0.0001/0.00001
 
 
-> Response:
+> 响应数据:
 
 ```json
 {
@@ -1230,9 +1225,9 @@ step |String| true |NA|深度聚合度| 0(不聚合)/0.1/0.001/0.0001/0.00001
 }
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
 asks | Array | 当前最新的买单价和买单量[[price,amount]]
 bids | Array | 当前最新的卖单价和卖单量[[price,amount]]
@@ -1252,13 +1247,13 @@ bids | Array | 当前最新的卖单价和卖单量[[price,amount]]
 
 ### Params
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true |NA|user id|
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 {
@@ -1270,9 +1265,9 @@ userid |String| true |NA|user id|
 }
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
 status | String | server status
  
@@ -1294,13 +1289,13 @@ status | String | server status
 </aside>
 ### Params
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |String| true |NA|symbol id|
+symbol |String| true |NA|交易对id|
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 {
@@ -1309,47 +1304,47 @@ symbol |String| true |NA|symbol id|
 		"use_btt_as_fee": 0,
 		"deal_fee": "0",
 		"taker_fee": "0.0004",
-		"price": "0.000918", // float price in quote currency
+		"price": "0.000918", 
 		"source": "",
-		"deal_money": "0", //
-		"deal_stock": "0", //
-		"id": "3eef56799c81dfd0cf59eb49d65339d6435909e7",// order id
-		"left": "22",//amount not deal
+		"deal_money": "0", 
+		"deal_stock": "0", 
+		"id": "3eef56799c81dfd0cf59eb49d65339d6435909e7",
+		"left": "22",
 		"mtime": 1585640948.3282981,
-		"type": 1,// order type(market/limit)
-		"side": 2,// order side(sell/buy)
-		"market": "BHT/USDT",//symbol name
-		"tid": "db91c645b609e1733e43f5b00a99db5dbbca6d9d",// transaction id in bytetrade
+		"type": 1,
+		"side": 2,
+		"market": "BHT/USDT",
+		"tid": "db91c645b609e1733e43f5b00a99db5dbbca6d9d",
 		"freeze_btt_fee": 0.0,
-		"amount": "22",// order amount
-		"user": "test",// user id
+		"amount": "22",
+		"user": "test",
 		"ctime": 1585640948.3282981,
-		"maker_fee": "0.0004",// fee rate
-		"dapp": "Sagittarius",//dapp id
-		"market_id": 122406567923//symbol id
+		"maker_fee": "0.0004",
+		"dapp": "Sagittarius",
+		"market_id": 122406567923
 	}],
 	"id": null
 }
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
-id | String | 
-tid | String | 
-user | String | 
-deal_money | String | 
-deal_stock | String | 
-price | String | 
-left | String | 
-type | int | 
-side | int | 
-amount | String | 
-ctime | String | 
-maker_fee | String | 
+id | String | 订单id
+tid | String | ByteTrade链上的交易id
+user | String | 用户id
+deal_money | String | 已成交额
+deal_stock | String | 已成交量
+price | String | 价格
+left | String | 未成交数量
+type | int | 订单类型，限价单:limit，市场价:market
+side | int | 订单方向(sell或buy)
+amount | String | 订单数量
+ctime | String | 创建时间(秒)
+maker_fee | String | 手续费比例
 dapp | String | 
-market_id | String |
+market_id | String | 交易对id
  
  
 ## 用户余额
@@ -1368,13 +1363,13 @@ market_id | String |
 </aside>
 ### Params
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 asset |Int| true |NA|asset id|
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 {
@@ -1386,13 +1381,13 @@ asset |Int| true |NA|asset id|
 }
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
- | String | available
- | String | frozen
- | String | pledge
+ | String | 可用资产
+ | String | 冻结资产
+ | String | 抵押资产
 
 
 ## 心跳检测
@@ -1409,13 +1404,13 @@ Websocket默认1小时断开连接，如果需要持续接收数据，请保持�
 
 ### Params
 
-Parameter |Data Type	| Required |Default Value| Description|Value Range
+参数名|类型	| 是否必须 |默认值| 说明|取值范围
 --------- | ------- | -----------| ------- | -----------| -----------
 userid |String| true |NA|user id|
 
 
 
-> Response:
+> 响应数据:
 
 ```json
 {
@@ -1427,9 +1422,9 @@ userid |String| true |NA|user id|
 }
 ```
 
-### Response Content
+### 响应参数
 
-Parameter | Type |Description
+参数名 | 类型 |说明
 --------- | ------- | -----------
 status | String | server status
 
