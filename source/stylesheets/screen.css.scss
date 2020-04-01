@@ -34,7 +34,6 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
-  font-size: 13px;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -400,6 +399,7 @@ html, body {
   table {
     margin-bottom: 1em;
     overflow: auto;
+    font-size: 13px;
     th,td {
       text-align: left;
       vertical-align: top;
