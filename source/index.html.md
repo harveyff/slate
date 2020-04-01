@@ -1452,6 +1452,10 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 
 Here's how to create an order through JS Library.
 
+```shell
+    curl -d "trObj=..." "https://api-v2.byte-trade.com/transaction/createorder"
+```
+
 * introduce JS library, and then create a transaction object
 
 * Assign a value to the transaction object
@@ -1461,31 +1465,6 @@ Here's how to create an order through JS Library.
 * Get orderid and transactionid
 
 * Post transaction to server
-
-### Params
-
-Parameter |Data Type	| Description|Value Range
---------- | ------- | -----------| ------- 
-creator |string|order creator userid|
-side |int|order side,1:sell,2:buy|1,2
-order_type |int|order type,1:limit,2:market|1,2
-market_name |string|symbol name|
-amount |string||
-price |string||
-custom_no_btt_fee_rate |int||
-money_id |int|money id|
-stock_id |int|stock id|
-dapp |string|dapp id|
-
-
-> Response:
-
-```json
-{
-	"code": 0,
-	"id": "1585744349362229825"
-}
-```
 
 ```javascript
     const bytetrade_js = require('./bytetrade.min.js');
@@ -1518,6 +1497,34 @@ dapp |string|dapp id|
     var orderid = bytetrade_js.hash.get_orderid_from_txid(transactionid);
 ```  
 
-```shell
-    curl -d "trObj=..." "https://api-v2.byte-trade.com/transaction/createorder"
+### Params
+
+Parameter |Data Type	| Description|Value Range
+--------- | ------- | -----------| ------- 
+creator |string|order creator userid|
+side |int|order side,1:sell,2:buy|1,2
+order_type |int|order type,1:limit,2:market|1,2
+market_name |string|symbol name|
+amount |string||
+price |string||
+custom_no_btt_fee_rate |int||
+money_id |int|money id|
+stock_id |int|stock id|
+dapp |string|dapp id|
+
+
+> Response:
+
+```json
+{
+	"code": 0,
+	"id": "1585744349362229825"
+}
 ```
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+ id| string | order id
+ 
+ 
