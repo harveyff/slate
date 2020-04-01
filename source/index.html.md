@@ -7,7 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://doc.byte-trade.com'>English</a>
-  - <a href='https://doc.byte-trade.com/cn'>中文</a>
+  - <a href='https://doc.byte-trade.com/index-cn.html'>中文</a>
 includes:
   - errors
 
