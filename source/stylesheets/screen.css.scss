@@ -34,6 +34,7 @@ html, body {
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
+  font-size: 13px;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -417,6 +418,7 @@ html, body {
     td {
       padding: 10px;
       border-bottom:1px solid #E6ECF2;
+      min-width: 90px;
     }
 
     tr:last-child {
