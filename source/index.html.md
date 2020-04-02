@@ -1698,6 +1698,102 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 ```javascript
      {id: 12345, method: 'deals.unsubscribe', params: []}
 ```
+# Explorer
 
+Explorer URL:`https://explorer.byte-trade.com`
+
+Through the ByteTrade explorer, you can query block/transaction/user/asset/market and other information.
  
  
+## Get Last Blocks
+ 
+### HTTP Request
+ 
+`GET https://explorer.byte-trade.com/block.html`
+ 
+## Get Last Transaction
+  
+### HTTP Request
+  
+`GET https://explorer.byte-trade.com/transaction.html`
+
+## Get Block By BlockNo
+
+### HTTP Request
+
+`GET https://explorer.byte-trade.com/block-info.html?blockType=1&blockNum=49766235`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+blockType |int| true | NA|block type|1:settlement chain,2:match chain,3:content chain
+blockNum |long| true | NA|block height|
+
+
+
+## Get Transactions By BlockHash
+
+### HTTP Request
+
+`GET https://explorer.byte-trade.com/transaction-for-block.html?blockId=02f7610c4878dfd15382553a3990c7e1315126ac`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+blockId |int| true | NA|block hash|
+
+
+## Get All Assets
+
+### HTTP Request
+
+`GET https://explorer.byte-trade.com/asset.html`
+
+
+## Get All Symbols
+
+### HTTP Request
+
+`GET https://explorer.byte-trade.com/market.html`
+
+
+## Get User Balances
+
+### HTTP Request
+
+`GET https://explorer.byte-trade.com/address.html?userId=test`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userId |string| true | NA|user id|
+
+
+## Get User Transactions
+
+### HTTP Request
+
+`GET https://explorer.byte-trade.com/address.html?userId=test&type=transaction`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userId |string| true | NA|user id|
+
+
+## Get Transaction By Id
+
+### HTTP Request
+
+`GET hhttps://explorer.byte-trade.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1`
+
+### URL Parameters
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+userId |string| true | NA|user id|
+blockType |int| true | NA|block type|1:settlement chain,2:match chain,3:content chain
