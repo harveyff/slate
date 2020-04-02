@@ -1456,16 +1456,6 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 
 Please use CCXT for order creation, which is more convenient and quick. The official [JS version](https://github.com/ccxt/ccxt/blob/master/examples/js/create-order-with-retry.js) is an example.
 
-### Params
-
-Parameter |Data Type	| Required |Default Value| Description|Value Range
---------- | ------- | -----------| ------- | -----------| -----------
-symbol |string| true |NA|symbol name|'BTC/USDT','ETH/USDT'...
-type |string| true |NA|order type|'limit','market'
-side |string| true |NA|order side|'sell','buy'
-amount |double| true |NA|order amount|
-price |double| true |NA|order price|
-
 > CCXT example:
 
 ```javascript
@@ -1487,6 +1477,18 @@ price |double| true |NA|order price|
     })
     
 ```
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |string| true |NA|symbol name|'BTC/USDT','ETH/USDT'...
+type |string| true |NA|order type|'limit','market'
+side |string| true |NA|order side|'sell','buy'
+amount |double| true |NA|order amount|
+price |double| true |NA|order price|
+
+
 
 
 
