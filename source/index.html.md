@@ -457,7 +457,7 @@ Parameter | Type |Description
 # Account
 ## Create Account
 
-To create an account, please click "create" in the upper right corner of [ByteTrade](https://www.byte-trade.com/) website. 
+To create an account, please click "create" in the upper right corner of [https://www.byte-trade.com](https://www.byte-trade.com) website. 
 
 <aside class="warning">
 Please save your private key after creation.
@@ -855,8 +855,10 @@ Parameter | Type |Description
 Please use [CCXT](https://github.com/ccxt/ccxt) for order creation, which is more convenient and quick. The official [JS version](https://github.com/ccxt/ccxt/blob/master/examples/js/create-order-with-retry.js) is an example.
 
 <aside class="warning">
-Please note the minimum precision of price and amount: [minimum trade precision](#get-all-supported-symbols)
+Please note the minimum precision of price and amount.
 </aside>
+
+[minimum trade precision](#get-all-supported-symbols)
 
 > CCXT javascript example:
 
@@ -980,8 +982,9 @@ Please use [CCXT](https://github.com/ccxt/ccxt) for transfer, which is more conv
 
 <aside class="warning">
 Please note that the amount cannot be less than the minimum transfer value. Minimum transfer value = asset.transferPrecision / asset.basePrecision.
- [asset](#get-all-supported-currencies)
 </aside>
+
+[asset](#get-all-supported-currencies)
 
 > CCXT javascript example:
 
@@ -1088,8 +1091,10 @@ Parameter | Type |Description
 Please use [CCXT](https://github.com/ccxt/ccxt) for order creation, which is more convenient and quick. The official [JS version](https://github.com/ccxt/ccxt/blob/master/examples/js/hitbtc2-withdraw.js) is an example.
 
 <aside class="warning">
-Please note that the amount cannot be less than the [minimum withdrawal amount](#get-all-supported-currencies).
+Please note that the amount cannot be less than the minimum withdrawal amount.
 </aside>
+
+[minimum withdrawal amount](#get-all-supported-currencies).
 
 > CCXT javascript example:
 
