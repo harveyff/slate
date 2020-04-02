@@ -1090,7 +1090,7 @@ Code  |Description
 ## Market Trades
 
 ```shell
-    {id: 12345, method: 'deals.subscribe', params: ['122406567911']}
+  {id: 12345, method: 'deals.subscribe', params: ['122406567911']}
 ```
 
 This topic sends the latest trades in a single market.
@@ -1131,7 +1131,7 @@ Parameter | Type |Description
 ## Last 24h Market Summary
 
 ```shell
-    {id: 12345, method: 'today.update', params: ['4294967329','4294967297']}
+  {id: 12345, method: 'today.update', params: ['4294967329','4294967297']}
 ```
 
 This topic sends the rise or fall of 24-hour deals in a single or multiple markets.
@@ -1177,7 +1177,7 @@ Parameter | Type |Description
 ## Kline Data
 
 ```shell
-    {id: 12345, method: 'kline.subscribe', params: ['4294967329',60]}
+  {id: 12345, method: 'kline.subscribe', params: ['4294967329',60]}
 ```
 
 This topic sends the Kline data of a single market.
@@ -1221,7 +1221,7 @@ period |int| true |NA|kline period|need to be converted into seconds。1min, 5mi
 ## Market Depth
 
 ```shell
-    {id: 12345, method: 'depth.subscribe', params: ['4294967329',10,"0.001"]}
+  {id: 12345, method: 'depth.subscribe', params: ['4294967329',10,"0.001"]}
 ```
 
 This topic sends the latest market by price order book.
@@ -1265,7 +1265,7 @@ bids | Array | current latest sell order price and order amount[[price,amount]]
 ## User Auth
 
 ```shell
-    {id: 12345, method: 'server.sign', params: ['test']}
+  {id: 12345, method: 'server.sign', params: ['test']}
 ```
 
 User appraises right,users must complete authentication before they can use subscriptions for user assets and user balances.
@@ -1300,7 +1300,7 @@ status | string | server status
 ## User Order
 
 ```shell
-    {id: 12345, method: 'order.subscribe', params: ['122406567923']}
+  {id: 12345, method: 'order.subscribe', params: ['122406567923']}
 ```
 
 This topic sends user orders, only the order data after the subscription is pushed.
@@ -1370,7 +1370,7 @@ market_id | string | symbol id
 ## User Balance
 
 ```shell
-    {id: 12345, method: 'asset.subscribe2', params: [2,3]}
+  {id: 12345, method: 'asset.subscribe2', params: [2,3]}
 ```
 
 This topic sends the changes in the balance of one or more assets of the user.
@@ -1410,7 +1410,7 @@ Parameter | Type |Description
 ## Heartbeat Detection
 
 ```shell
-    {id: 12345, method: 'server.ping', params: []}
+  {id: 12345, method: 'server.ping', params: []}
 ```
 
 Websocket will disconnect by default for 1 hour. If need to continuously receive data, please keep the heartbeat.
@@ -1489,6 +1489,18 @@ amount |double| true |NA|order amount|
 price |double| true |NA|order price|
 
 
+> Response:
+
+```json
+
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+asks | Array |
+bids | Array | 
 
 
 
