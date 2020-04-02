@@ -1467,14 +1467,15 @@ Please use CCXT for order creation, which is more convenient and quick. The offi
             'secret': '' // your account private key
         }
     );
-    const symbol = 'BHT/USDT';
+    const symbol = 'BTP/USDT';
     const type = 'limit';
     const side = 'buy';
-    const amount = 22;
-    const price = 0.00096;
-    const params = {};
-    bytetrade.createOrder (symbol, type, side, amount, price, params,function(err,data){
-    })
+    const amount = 20.5;
+    const price = 0.000939;
+    const params = {dappId:'Sagittarius'};
+   ;(async () => {
+       const res = await exchange.createOrder (symbol, type, side, amount, price, params)
+   }) ()
     
 ```
 
@@ -1487,7 +1488,13 @@ type |string| true |NA|order type|'limit','market'
 side |string| true |NA|order side|'sell','buy'
 amount |double| true |NA|order amount|
 price |double| true |NA|order price|
+params |object| false |NA||
 
+* params
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+  dappId| string |fee reward user id
 
 > Response:
 
@@ -1499,8 +1506,18 @@ price |double| true |NA|order price|
 
 Parameter | Type |Description
 --------- | ------- | -----------
-asks | Array |
-bids | Array | 
+info | object |
+id | string | orderid 
+
+* info
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+  code| int |response code,0 is succeed, others are failed
+                           
+
+
+
 
 
 
