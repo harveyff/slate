@@ -5,7 +5,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   
 toc_footers:
-  - <a href='https://doc.byte-trade.com'>English</a>
+  - <a href='https://www.byte-trade.com'>Exchange</a>
+  - <a href='https://explorer.byte-trade.com'>Explorer</a>
 
 search: true
 ---
@@ -14,7 +15,7 @@ search: true
 
 Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoints.
 
-At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a JavaScript / Python / PHP library,if you use these languages, you can use them easily,it supports more interfaces, such as withdraw.
+At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a JavaScript / Python / PHP library,if you use these languages, you can use them easily,it supports more interfaces.
 
 ## Access URLs
 * REST API
