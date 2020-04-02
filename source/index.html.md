@@ -56,7 +56,7 @@ Parameter | Description
 
 # Basic Information
 
-## Get all Supported Currencies
+## Get All Supported Currencies
 
 ```shell
 curl "https://api-v2.byte-trade.com/currencies"
@@ -127,7 +127,7 @@ limits | object |
 
 
 
-## Get all Supported Symbols
+## Get All Supported Symbols
 
 ```shell
 curl "https://api-v2.byte-trade.com/symbols"
@@ -1700,7 +1700,7 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 ```
 # Explorer
 
-Explorer URL:`https://explorer.byte-trade.com`
+[Explorer](https://explorer.byte-trade.com) URL : `https://explorer.byte-trade.com`
 
 Through the ByteTrade explorer, you can query block/transaction/user/asset/market and other information.
  
@@ -1709,19 +1709,19 @@ Through the ByteTrade explorer, you can query block/transaction/user/asset/marke
  
 ### HTTP Request
  
-`GET https://explorer.byte-trade.com/block.html`
+[https://explorer.byte-trade.com/block.html](https://explorer.byte-trade.com/block.html)
  
 ## Get Last Transaction
   
 ### HTTP Request
   
-`GET https://explorer.byte-trade.com/transaction.html`
+[https://explorer.byte-trade.com/transaction.html](https://explorer.byte-trade.com/transaction.html)
 
 ## Get Block By BlockNo
 
 ### HTTP Request
 
-`GET https://explorer.byte-trade.com/block-info.html?blockType=1&blockNum=49766235`
+[https://explorer.byte-trade.com/block-info.html?blockType=1&blockNum=49766235](https://explorer.byte-trade.com/block-info.html?blockType=1&blockNum=49766235)
 
 ### URL Parameters
 
@@ -1736,7 +1736,7 @@ blockNum |long| true | NA|block height|
 
 ### HTTP Request
 
-`GET https://explorer.byte-trade.com/transaction-for-block.html?blockId=02f7610c4878dfd15382553a3990c7e1315126ac`
+[https://explorer.byte-trade.com/transaction-for-block.html?blockId=02f7610c4878dfd15382553a3990c7e1315126ac](https://explorer.byte-trade.com/transaction-for-block.html?blockId=02f7610c4878dfd15382553a3990c7e1315126ac)
 
 ### URL Parameters
 
@@ -1749,21 +1749,21 @@ blockId |int| true | NA|block hash|
 
 ### HTTP Request
 
-`GET https://explorer.byte-trade.com/asset.html`
+[https://explorer.byte-trade.com/asset.html](https://explorer.byte-trade.com/asset.html)
 
 
 ## Get All Symbols
 
 ### HTTP Request
 
-`GET https://explorer.byte-trade.com/market.html`
+[https://explorer.byte-trade.com/market.html](https://explorer.byte-trade.com/market.html)
 
 
 ## Get User Balances
 
 ### HTTP Request
 
-`GET https://explorer.byte-trade.com/address.html?userId=test`
+[https://explorer.byte-trade.com/address.html?userId=test](https://explorer.byte-trade.com/address.html?userId=test)
 
 ### URL Parameters
 
@@ -1776,7 +1776,7 @@ userId |string| true | NA|user id|
 
 ### HTTP Request
 
-`GET https://explorer.byte-trade.com/address.html?userId=test&type=transaction`
+[https://explorer.byte-trade.com/address.html?userId=test&type=transaction](https://explorer.byte-trade.com/address.html?userId=test&type=transaction)
 
 ### URL Parameters
 
@@ -1789,7 +1789,7 @@ userId |string| true | NA|user id|
 
 ### HTTP Request
 
-`GET hhttps://explorer.byte-trade.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1`
+[https://explorer.byte-trade.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1](https://explorer.byte-trade.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1)
 
 ### URL Parameters
 
