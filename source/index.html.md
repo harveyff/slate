@@ -847,6 +847,195 @@ Parameter | Type |Description
   cost| string | the fee amount in that currency
   rate| string | the fee rate (if available)
 
+
+# Transaction
+
+## Create Order
+
+Please use [CCXT](https://github.com/ccxt/ccxt) for order creation, which is more convenient and quick. The official [JS version](https://github.com/ccxt/ccxt/blob/master/examples/js/create-order-with-retry.js) is an example.
+
+<aside class="warning">
+Please note the minimum precision of price and amount: [minimum trade precision](#get-all-supported-symbols)
+</aside>
+
+> CCXT javascript example:
+
+```javascript
+    "use strict";
+    const ccxt = require ('ccxt');
+    var bytetrade = new ccxt.bytetrade(
+        {
+            'apiKey': '', // your account userid
+            'secret': '' // your account private key
+        }
+    );
+    const symbol = 'BTP/USDT';
+    const type = 'limit';
+    const side = 'buy';
+    const amount = 20.5;
+    const price = 0.000939;
+    const params = {dappId:'Sagittarius'};
+   ;(async () => {
+       const res = await bytetrade.createOrder (symbol, type, side, amount, price, params)
+   }) ()
+    
+```
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |string| true |NA|symbol name|'BTC/USDT','ETH/USDT'...
+type |string| true |NA|order type|'limit','market'
+side |string| true |NA|order side|'sell','buy'
+amount |double| true |NA|order amount|
+price |double| true |NA|order price|
+params |object| false |NA||
+
+* params
+ 
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+  dappId| string |false|NA|fee reward user id|
+
+> Response:
+
+```json
+{
+	"info": {
+		"code": 0
+	},
+	"id": "7a122e2ccaafb484d71d2a2e0e57afd5eee7648f"
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+info | object |
+id | string | orderid 
+
+* info
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+ code| int |response code,0 is succeed, others are failed
+                           
+## Order Cancel
+
+Please use [CCXT](https://github.com/ccxt/ccxt) for order cancel, which is more convenient and quick.
+
+> CCXT javascript example:
+
+```javascript
+    "use strict";
+    const ccxt = require ('ccxt');
+    var bytetrade = new ccxt.bytetrade(
+        {
+            'apiKey': '', // your account userid
+            'secret': '' // your account private key
+        }
+    );
+    const symbol = 'BTP/USDT';
+    const orderid = '46fa911d2ba717edcad6e409337bc136edbc3abe'; 
+   ;(async () => {
+       const res = await bytetrade.cancelOrder (orderid,symbol)
+   }) ()
+    
+```
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+orderid |string| true |NA|order id|
+symbol |string| true |NA|symbol name|'BTC/USDT','ETH/USDT'...
+
+> Response:
+
+```json
+{
+	"info": {
+		"code": 0
+	}
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+info | object |
+* info
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+ code| int |response code,0 is succeed, others are failed
+  
+
+## Transfer
+
+Please use [CCXT](https://github.com/ccxt/ccxt) for transfer, which is more convenient and quick.
+
+<aside class="warning">
+Please note that the amount cannot be less than the minimum transfer value. Minimum transfer value = asset.transferPrecision / asset.basePrecision.
+ [asset](#get-all-supported-currencies)
+</aside>
+
+> CCXT javascript example:
+
+```javascript
+    "use strict";
+    const ccxt = require ('ccxt');
+    var bytetrade = new ccxt.bytetrade(
+        {
+            'apiKey': '', // your account userid
+            'secret': '' // your account private key
+        }
+    );
+    const asset = 'BTP';
+    const amount = '0.01'; 
+    const userid = 'test'; 
+    const message = 'just test transfer'; 
+   ;(async () => {
+       const res = await bytetrade.transfer (asset,amount,userid,message);
+   }) ()
+    
+```
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+code |string| true |NA|asset name|
+userid |string| true |NA|userid of received transfer account|
+amount |string| true |NA|transfer amount|
+message |string| false |NA|transfer message, maximum length cannot exceed 128 characters|
+
+> Response:
+
+```json
+{
+	"info": {
+		"code": 0
+	}
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+info | object |
+* info
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+ code| int |response code,0 is succeed, others are failed
+  
+  
+  
 # Deposit And Withdraw
 
 ## Get Deposit Address
@@ -896,7 +1085,62 @@ Parameter | Type |Description
 
 ## Withdraw
 
-Please use [ccxt] (https://github.com/ccxt/ccxt) for user withdrawal, because we have a lot of chaintypes and assets, it is more convenient and quick to use ccxt without paying attention to these details.
+Please use [CCXT](https://github.com/ccxt/ccxt) for order creation, which is more convenient and quick. The official [JS version](https://github.com/ccxt/ccxt/blob/master/examples/js/hitbtc2-withdraw.js) is an example.
+
+<aside class="warning">
+Please note that the amount cannot be less than the [minimum withdrawal amount](#get-all-supported-currencies).
+</aside>
+
+> CCXT javascript example:
+
+```javascript
+    "use strict";
+    const ccxt = require ('ccxt');
+    var bytetrade = new ccxt.bytetrade(
+        {
+            'apiKey': '', // your account userid
+            'secret': '' // your account private key
+        }
+    );
+    const asset = 'BTP';
+    const amount = '0.01'; 
+    const address = '0xF79Ca9a450E17fcB0f2c662778fcdfC11f4178Db'; 
+   ;(async () => {
+       const res = await bytetrade.withdraw (asset,amount,address);
+   }) ()
+    
+```
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+asset |string| true |NA|asset name|
+amount |string| true |NA|withdraw amount|
+address |string| false |NA|address to receive withdrawal|
+
+> Response:
+
+```json
+{
+	"info": {
+		"code": 0
+	}
+}
+```
+
+### Response Content
+
+Parameter | Type |Description
+--------- | ------- | -----------
+info | object |
+* info
+ 
+ Parameter | Type |Description
+ --------- | ------- | -----------
+ code| int |response code,0 is succeed, others are failed
+ msg| string |if the code is not 0, the error description will be displayed here
+
 
 ## Get Withdraw History
 
@@ -1448,84 +1692,6 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 ```javascript
      {id: 12345, method: 'deals.unsubscribe', params: []}
 ```
-
-
-# Transaction
-
-## Create Order
-
-Please use CCXT for order creation, which is more convenient and quick. The official [JS version](https://github.com/ccxt/ccxt/blob/master/examples/js/create-order-with-retry.js) is an example.
-
-> CCXT example:
-
-```javascript
-    "use strict";
-    const ccxt = require ('ccxt');
-    var bytetrade = new ccxt.bytetrade(
-        {
-            'apiKey': '', // your account userid
-            'secret': '' // your account private key
-        }
-    );
-    const symbol = 'BTP/USDT';
-    const type = 'limit';
-    const side = 'buy';
-    const amount = 20.5;
-    const price = 0.000939;
-    const params = {dappId:'Sagittarius'};
-   ;(async () => {
-       const res = await exchange.createOrder (symbol, type, side, amount, price, params)
-   }) ()
-    
-```
-
-### Params
-
-Parameter |Data Type	| Required |Default Value| Description|Value Range
---------- | ------- | -----------| ------- | -----------| -----------
-symbol |string| true |NA|symbol name|'BTC/USDT','ETH/USDT'...
-type |string| true |NA|order type|'limit','market'
-side |string| true |NA|order side|'sell','buy'
-amount |double| true |NA|order amount|
-price |double| true |NA|order price|
-params |object| false |NA||
-
-* params
- 
- Parameter | Type |Description
- --------- | ------- | -----------
-  dappId| string |fee reward user id
-
-> Response:
-
-```json
-
-```
-
-### Response Content
-
-Parameter | Type |Description
---------- | ------- | -----------
-info | object |
-id | string | orderid 
-
-* info
- 
- Parameter | Type |Description
- --------- | ------- | -----------
-  code| int |response code,0 is succeed, others are failed
-                           
-
-
-
-
-
-
-## Order Cancel
-
-
-## Transfer
-
 
  
  
