@@ -1446,17 +1446,48 @@ status | string | server status
 And subscription type, just change "subscribe" in "method" to "unsubscribe", such as canceling the latest transaction：
 
 ```javascript
-   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
-   webSocket.onopen = function(event) {
-       var params={id: 12345, method: 'deals.unsubscribe', params: []};
-       webSocket.send(JSON.stringify(params));
-   };
+     {id: 12345, method: 'deals.unsubscribe', params: []}
 ```
 
 
 # Transaction
 
 ## Create Order
+
+Please use CCXT for order creation, which is more convenient and quick. The official [JS version](https://github.com/ccxt/ccxt/blob/master/examples/js/create-order-with-retry.js) is an example.
+
+### Params
+
+Parameter |Data Type	| Required |Default Value| Description|Value Range
+--------- | ------- | -----------| ------- | -----------| -----------
+symbol |string| true |NA|symbol name|'BTC/USDT','ETH/USDT'...
+type |string| true |NA|order type|'limit','market'
+side |string| true |NA|order side|'sell','buy'
+amount |double| true |NA|order amount|
+price |double| true |NA|order price|
+
+> CCXT example:
+
+```javascript
+    "use strict";
+    const ccxt = require ('ccxt');
+    var bytetrade = new ccxt.bytetrade(
+        {
+            'apiKey': '', // your account userid
+            'secret': '' // your account private key
+        }
+    );
+    const symbol = 'BHT/USDT';
+    const type = 'limit';
+    const side = 'buy';
+    const amount = 22;
+    const price = 0.00096;
+    const params = {};
+    bytetrade.createOrder (symbol, type, side, amount, price, params,function(err,data){
+    })
+    
+```
+
 
 
 ## Order Cancel
