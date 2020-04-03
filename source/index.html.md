@@ -1727,7 +1727,7 @@ Through the ByteTrade explorer, you can query block/transaction/user/asset/marke
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-blockType |int| true | NA|block type|1:settlement chain,2:match chain,3:content chain
+blockType |int| true | NA|block type|1 : settlement chain , 2 : match chain , 3 : content chain
 blockNum |long| true | NA|block height|
 
 
@@ -1796,4 +1796,4 @@ userId |string| true | NA|user id|
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
 userId |string| true | NA|user id|
-blockType |int| true | NA|block type|1:settlement chain,2:match chain,3:content chain
+blockType |int| true | NA|block type| 1 : settlement chain , 2 : match chain , 3 : content chain
