@@ -1,6 +1,6 @@
 # Error http status
 
-The ByteTrade API uses the following error codes:
+The Silgonex API uses the following error codes:
 
 状态码 | 含义
 ---------- | -------
