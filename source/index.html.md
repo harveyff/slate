@@ -5,9 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   
 toc_footers:
-  - <a href='https://www.byte-trade.com'>Exchange</a>
-  - <a href='https://explorer.byte-trade.com'>Explorer</a>
-
+  - <a href='https://www.silgonex.io'>Exchange</a>
 search: true
 ---
 
@@ -20,11 +18,11 @@ At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a
 ## Access URLs
 * REST API
 
-  `https://api-v2.byte-trade.com`
+  `https://api-v2.silgonex.com`
   
 * Websocket Feed       
 
-  `https://api.byte-trade.com/ws/`                                                                                                                                                            
+  `https://api.silgonex.io/ws/`                                                                                                                                                            
 
 ## Rate Limiting Rule
 * Each IP is limited to 10 times per second
@@ -59,7 +57,7 @@ Parameter | Description
 ## Get All Supported Currencies
 
 ```shell
-curl "https://api-v2.byte-trade.com/currencies"
+curl "https://api-v2.silgonex.com/currencies"
 ```
 
 This endpoint returns all ByteTrade's supported trading currencies.
@@ -67,7 +65,7 @@ This endpoint returns all ByteTrade's supported trading currencies.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/currencies`
+`GET https://api-v2.silgonex.com/currencies`
 
 ### Request Parameters
 
@@ -130,7 +128,7 @@ limits | object |
 ## Get All Supported Symbols
 
 ```shell
-curl "https://api-v2.byte-trade.com/symbols"
+curl "https://api-v2.silgonex.com/symbols"
 ```
 
 
@@ -139,7 +137,7 @@ This endpoint returns all ByteTrade's supported trading symbol.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/symbols`
+`GET https://api-v2.silgonex.com/symbols`
 
 ### Request Parameters
 
@@ -214,7 +212,7 @@ limits | object |
 ## Get the Last 24h Market Summary
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/tickers"
+curl -d "symbol=68719476706" "https://api-v2.silgonex.com/tickers"
 ```
 
 This endpoint retrieves the summary of trading in the market for the last 24 hours.
@@ -222,7 +220,7 @@ This endpoint retrieves the summary of trading in the market for the last 24 hou
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/tickers`
+`GET https://api-v2.silgonex.com/tickers`
 
 ### URL Parameters
 
@@ -280,14 +278,14 @@ quoteVolume | string | volume of quote currency traded for last 24 hours
 ## Get Market Depth
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/depth"
+curl -d "symbol=68719476706" "https://api-v2.silgonex.com/depth"
 ```
 
 This endpoint retrieves the current order book of a specific pair.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/depth?symbol=68719476706`
+`GET https://api-v2.silgonex.com/depth?symbol=68719476706`
 
 ### URL Parameters
 
@@ -352,14 +350,14 @@ datetime | string |
 ## Get Kline(Candles)
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/klines"
+curl -d "symbol=68719476706" "https://api-v2.silgonex.com/klines"
 ```
 
 This endpoint retrieves all klines in a specific range.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/klines?symbol=68719476706`
+`GET https://api-v2.silgonex.com/klines?symbol=68719476706`
 
 ### URL Parameters
 
@@ -401,14 +399,14 @@ limit |int| false |100 |number of returned data|[1,500]
 ## Get the Last Trade
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/trades"
+curl -d "symbol=68719476706" "https://api-v2.silgonex.com/trades"
 ```
 
 This endpoint retrieves market last trades of a single symbol.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/klines?symbol=68719476706`
+`GET https://api-v2.silgonex.com/klines?symbol=68719476706`
 
 ### URL Parameters
 
@@ -468,14 +466,14 @@ Please save your private key after creation.
 ## Get Account Balance
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/balance"
+curl -d "userid=test" "https://api-v2.silgonex.com/balance"
 ```
 
 This endpoint returns the balance of an account specified by account id.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/balance?userid=test`
+`GET https://api-v2.silgonex.com/balance?userid=test`
 
 ### URL Parameters
 
@@ -512,14 +510,14 @@ Parameter | Type |Description
 ## Get All Orders
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/all"
+curl -d "userid=test" "https://api-v2.silgonex.com/orders/all"
 ```
 
 This endpoint retrieves all orders of a single user.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/all?userid=test`
+`GET https://api-v2.silgonex.com/orders/all?userid=test`
 
 ### URL Parameters
 
@@ -558,7 +556,7 @@ limit |int| false |100 |number of returned data|[1,500]
 		"code": 57,
 		"name": "USDT"
 	},
-	"name": "BHT/USDT"
+	"name": "BTC/ZCN"
 }]
 ```
 
@@ -597,7 +595,7 @@ Parameter | Type |Description
 ## Get All Open Orders
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/open"
+curl -d "userid=test" "https://api-v2.silgonex.com/orders/open"
 ```
 
 This endpoint returns all open orders which have not been filled completely.
@@ -605,7 +603,7 @@ This endpoint returns all open orders which have not been filled completely.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/open?userid=test`
+`GET https://api-v2.silgonex.com/orders/open?userid=test`
 
 ### URL Parameters
 
@@ -644,7 +642,7 @@ limit |int| false |100 |number of returned data|[1,500]
 		"code": 57,
 		"name": "USDT"
 	},
-	"name": "BHT/USDT"
+	"name": "BTC/ZCN"
 }]
 ```
 
@@ -684,14 +682,14 @@ Parameter | Type |Description
 ## Get History Orders
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/closed"
+curl -d "userid=test" "https://api-v2.silgonex.com/orders/closed"
 ```
 
 This endpoint retrieves history orders of a single user.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/closed?userid=test`
+`GET https://api-v2.silgonex.com/orders/closed?userid=test`
 
 ### URL Parameters
 
@@ -730,7 +728,7 @@ limit |int| false |100 |number of returned data|[1,500]
 		"code": 57,
 		"name": "USDT"
 	},
-	"name": "BHT/USDT"
+	"name": "BTC/ZCN"
 }]
 ```
 
@@ -770,14 +768,14 @@ Parameter | Type |Description
 ## Get User Trades
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/trades"
+curl -d "userid=test" "https://api-v2.silgonex.com/orders/trades"
 ```
 
 This endpoint get user order trade details.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/trades?userid=test`
+`GET https://api-v2.silgonex.com/orders/trades?userid=test`
 
 ### URL Parameters
 
@@ -866,20 +864,20 @@ Please note the minimum precision of price and amount.
 ```javascript
     "use strict";
     const ccxt = require ('ccxt');
-    var bytetrade = new ccxt.bytetrade(
+    var silgonex = new ccxt.silgonex(
         {
             'apiKey': '', // your account userid
             'secret': '' // your account private key
         }
     );
-    const symbol = 'BTP/USDT';
+    const symbol = 'BTC/ZCN';
     const type = 'limit';
     const side = 'buy';
     const amount = 20.5;
     const price = 0.000939;
-    const params = {dappId:'Sagittarius'};
+    const params = {dappId:''};
    ;(async () => {
-       const res = await bytetrade.createOrder (symbol, type, side, amount, price, params)
+       const res = await silgonex.createOrder (symbol, type, side, amount, price, params)
    }) ()
     
 ```
@@ -934,16 +932,16 @@ Please use [CCXT](https://github.com/ccxt/ccxt) for order cancel, which is more 
 ```javascript
     "use strict";
     const ccxt = require ('ccxt');
-    var bytetrade = new ccxt.bytetrade(
+    var silgonex = new ccxt.silgonex(
         {
             'apiKey': '', // your account userid
             'secret': '' // your account private key
         }
     );
-    const symbol = 'BTP/USDT';
+    const symbol = 'BTC/ZCN';
     const orderid = '46fa911d2ba717edcad6e409337bc136edbc3abe'; 
    ;(async () => {
-       const res = await bytetrade.cancelOrder (orderid,symbol)
+       const res = await silgonex.cancelOrder (orderid,symbol)
    }) ()
     
 ```
@@ -992,18 +990,18 @@ Please note that the amount cannot be less than the minimum transfer value. Mini
 ```javascript
     "use strict";
     const ccxt = require ('ccxt');
-    var bytetrade = new ccxt.bytetrade(
+    var silgonex = new ccxt.silgonex(
         {
             'apiKey': '', // your account userid
             'secret': '' // your account private key
         }
     );
-    const asset = 'BTP';
+    const asset = 'ZCN';
     const amount = '0.01'; 
-    const userid = 'test'; 
+    const userid = 'test2301'; 
     const message = 'just test transfer'; 
    ;(async () => {
-       const res = await bytetrade.transfer (asset,amount,userid,message);
+       const res = await silgonex.transfer (asset,amount,userid,message);
    }) ()
     
 ```
@@ -1045,14 +1043,14 @@ info | object |
 ## Get Deposit Address
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/depositaddress"
+curl -d "userid=test" "https://api-v2.silgonex.com/depositaddress"
 ```
 
 This endpoint retrieves deposit address of a user.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/depositaddress?userid=test`
+`GET https://api-v2.silgonex.com/depositaddress?userid=test`
 
 ### URL Parameters
 
@@ -1102,17 +1100,17 @@ Please note that the amount cannot be less than the minimum withdrawal amount.
 ```javascript
     "use strict";
     const ccxt = require ('ccxt');
-    var bytetrade = new ccxt.bytetrade(
+    var silgonex = new ccxt.silgonex(
         {
             'apiKey': '', // your account userid
             'secret': '' // your account private key
         }
     );
-    const asset = 'BTP';
+    const asset = 'ZCN';
     const amount = '0.01'; 
     const address = '0xF79Ca9a450E17fcB0f2c662778fcdfC11f4178Db'; 
    ;(async () => {
-       const res = await bytetrade.withdraw (asset,amount,address);
+       const res = await silgonex.withdraw (asset,amount,address);
    }) ()
     
 ```
@@ -1151,14 +1149,14 @@ info | object |
 ## Get Withdraw History
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/withdrawals"
+curl -d "userid=test" "https://api-v2.silgonex.com/withdrawals"
 ```
 
 This endpoint retrieves withdrawal history of a user.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/withdrawals?userid=test`
+`GET https://api-v2.silgonex.com/withdrawals?userid=test`
 
 ### URL Parameters
 
@@ -1229,14 +1227,14 @@ Parameter | Type |Description
 ## Get Deposit History
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/deposits"
+curl -d "userid=test" "https://api-v2.silgonex.com/deposits"
 ```
 
 This endpoint retrieves deposit record of a user.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/deposits?userid=test`
+`GET https://api-v2.silgonex.com/deposits?userid=test`
 
 ### URL Parameters
 
@@ -1583,7 +1581,7 @@ symbol |string| true |NA|symbol id|
 		"mtime": 1585640948.3282981,
 		"type": 1,
 		"side": 2,
-		"market": "BHT/USDT",
+		"market": "BTC/ZCN",
 		"tid": "db91c645b609e1733e43f5b00a99db5dbbca6d9d",
 		"freeze_btt_fee": 0.0,
 		"amount": "22",
