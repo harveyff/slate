@@ -22,7 +22,7 @@ At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a
   
 * Websocket Feed       
 
-  `https://api.silgonex.io/ws/`                                                                                                                                                            
+  `wss://api.silgonex.io/ws/`                                                                                                                                                            
 
 ## Rate Limiting Rule
 * Each IP is limited to 10 times per second
