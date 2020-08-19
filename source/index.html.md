@@ -24,7 +24,7 @@ At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a
   
 * Websocket Feed       
 
-  `https://api.byte-trade.com/ws/`                                                                                                                                                            
+  `wss://dex-api.coss.io/ws/`                                                                                                                                                            
 
 ## Rate Limiting Rule
 * Each IP is limited to 10 times per second
