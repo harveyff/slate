@@ -20,11 +20,11 @@ At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a
 ## Access URLs
 * REST API
 
-  `https://api-v2.byte-trade.com`
+  `https://api-v2.bttcdn.com`
   
 * Websocket Feed       
 
-  `https://api.byte-trade.com/ws/`                                                                                                                                                            
+  `wss://api.bttcdn.com/ws/`                                                                                                                                                            
 
 ## Rate Limiting Rule
 * Each IP is limited to 10 times per second
@@ -59,7 +59,7 @@ Parameter | Description
 ## Get All Supported Currencies
 
 ```shell
-curl "https://api-v2.byte-trade.com/currencies"
+curl "https://api-v2.bttcdn.com/currencies"
 ```
 
 This endpoint returns all ByteTrade's supported trading currencies.
@@ -67,7 +67,7 @@ This endpoint returns all ByteTrade's supported trading currencies.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/currencies`
+`GET https://api-v2.bttcdn.com/currencies`
 
 ### Request Parameters
 
@@ -130,7 +130,7 @@ limits | object |
 ## Get All Supported Symbols
 
 ```shell
-curl "https://api-v2.byte-trade.com/symbols"
+curl "https://api-v2.bttcdn.com/symbols"
 ```
 
 
@@ -139,7 +139,7 @@ This endpoint returns all ByteTrade's supported trading symbol.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/symbols`
+`GET https://api-v2.bttcdn.com/symbols`
 
 ### Request Parameters
 
@@ -214,7 +214,7 @@ limits | object |
 ## Get the Last 24h Market Summary
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/tickers"
+curl -d "symbol=68719476706" "https://api-v2.bttcdn.com/tickers"
 ```
 
 This endpoint retrieves the summary of trading in the market for the last 24 hours.
@@ -222,7 +222,7 @@ This endpoint retrieves the summary of trading in the market for the last 24 hou
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/tickers`
+`GET https://api-v2.bttcdn.com/tickers`
 
 ### URL Parameters
 
@@ -280,14 +280,14 @@ quoteVolume | string | volume of quote currency traded for last 24 hours
 ## Get Market Depth
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/depth"
+curl -d "symbol=68719476706" "https://api-v2.bttcdn.com/depth"
 ```
 
 This endpoint retrieves the current order book of a specific pair.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/depth?symbol=68719476706`
+`GET https://api-v2.bttcdn.com/depth?symbol=68719476706`
 
 ### URL Parameters
 
@@ -352,14 +352,14 @@ datetime | string |
 ## Get Kline(Candles)
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/klines"
+curl -d "symbol=68719476706" "https://api-v2.bttcdn.com/klines"
 ```
 
 This endpoint retrieves all klines in a specific range.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/klines?symbol=68719476706`
+`GET https://api-v2.bttcdn.com/klines?symbol=68719476706`
 
 ### URL Parameters
 
@@ -401,14 +401,14 @@ limit |int| false |100 |number of returned data|[1,500]
 ## Get the Last Trade
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/trades"
+curl -d "symbol=68719476706" "https://api-v2.bttcdn.com/trades"
 ```
 
 This endpoint retrieves market last trades of a single symbol.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/klines?symbol=68719476706`
+`GET https://api-v2.bttcdn.com/klines?symbol=68719476706`
 
 ### URL Parameters
 
@@ -468,14 +468,14 @@ Please save your private key after creation.
 ## Get Account Balance
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/balance"
+curl -d "userid=test" "https://api-v2.bttcdn.com/balance"
 ```
 
 This endpoint returns the balance of an account specified by account id.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/balance?userid=test`
+`GET https://api-v2.bttcdn.com/balance?userid=test`
 
 ### URL Parameters
 
@@ -512,14 +512,14 @@ Parameter | Type |Description
 ## Get All Orders
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/all"
+curl -d "userid=test" "https://api-v2.bttcdn.com/orders/all"
 ```
 
 This endpoint retrieves all orders of a single user.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/all?userid=test`
+`GET https://api-v2.bttcdn.com/orders/all?userid=test`
 
 ### URL Parameters
 
@@ -539,7 +539,7 @@ limit |int| false |100 |number of returned data|[1,500]
 	"id": "3b50925018eef574e7b113a49aa515dc7249fe28",
 	"txid": "d8b5cfcdf55f52c11fd85d6573d0b6c753cd7e35",
 	"timestamp": 1585205369822,
-	"userid": "harvey1712",
+	"userid": "test",
 	"datetime": "2020-03-26T06:49:29.822Z",
 	"lastTradeTimestamp": 1585205369822,
 	"status": "closed",
@@ -597,7 +597,7 @@ Parameter | Type |Description
 ## Get All Open Orders
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/open"
+curl -d "userid=test" "https://api-v2.bttcdn.com/orders/open"
 ```
 
 This endpoint returns all open orders which have not been filled completely.
@@ -605,7 +605,7 @@ This endpoint returns all open orders which have not been filled completely.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/open?userid=test`
+`GET https://api-v2.bttcdn.com/orders/open?userid=test`
 
 ### URL Parameters
 
@@ -625,7 +625,7 @@ limit |int| false |100 |number of returned data|[1,500]
 	"id": "3b50925018eef574e7b113a49aa515dc7249fe28",
 	"txid": "d8b5cfcdf55f52c11fd85d6573d0b6c753cd7e35",
 	"timestamp": 1585205369822,
-	"userid": "harvey1712",
+	"userid": "test",
 	"datetime": "2020-03-26T06:49:29.822Z",
 	"lastTradeTimestamp": 1585205369822,
 	"status": "closed",
@@ -684,14 +684,14 @@ Parameter | Type |Description
 ## Get History Orders
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/closed"
+curl -d "userid=test" "https://api-v2.bttcdn.com/orders/closed"
 ```
 
 This endpoint retrieves history orders of a single user.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/closed?userid=test`
+`GET https://api-v2.bttcdn.com/orders/closed?userid=test`
 
 ### URL Parameters
 
@@ -711,7 +711,7 @@ limit |int| false |100 |number of returned data|[1,500]
 	"id": "3b50925018eef574e7b113a49aa515dc7249fe28",
 	"txid": "d8b5cfcdf55f52c11fd85d6573d0b6c753cd7e35",
 	"timestamp": 1585205369822,
-	"userid": "harvey1712",
+	"userid": "test",
 	"datetime": "2020-03-26T06:49:29.822Z",
 	"lastTradeTimestamp": 1585205369822,
 	"status": "closed",
@@ -770,14 +770,14 @@ Parameter | Type |Description
 ## Get User Trades
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/trades"
+curl -d "userid=test" "https://api-v2.bttcdn.com/orders/trades"
 ```
 
 This endpoint get user order trade details.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/trades?userid=test`
+`GET https://api-v2.bttcdn.com/orders/trades?userid=test`
 
 ### URL Parameters
 
@@ -1045,14 +1045,14 @@ info | object |
 ## Get Deposit Address
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/depositaddress"
+curl -d "userid=test" "https://api-v2.bttcdn.com/depositaddress"
 ```
 
 This endpoint retrieves deposit address of a user.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/depositaddress?userid=test`
+`GET https://api-v2.bttcdn.com/depositaddress?userid=test`
 
 ### URL Parameters
 
@@ -1151,14 +1151,14 @@ info | object |
 ## Get Withdraw History
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/withdrawals"
+curl -d "userid=test" "https://api-v2.bttcdn.com/withdrawals"
 ```
 
 This endpoint retrieves withdrawal history of a user.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/withdrawals?userid=test`
+`GET https://api-v2.bttcdn.com/withdrawals?userid=test`
 
 ### URL Parameters
 
@@ -1229,14 +1229,14 @@ Parameter | Type |Description
 ## Get Deposit History
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/deposits"
+curl -d "userid=test" "https://api-v2.bttcdn.com/deposits"
 ```
 
 This endpoint retrieves deposit record of a user.
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/deposits?userid=test`
+`GET https://api-v2.bttcdn.com/deposits?userid=test`
 
 ### URL Parameters
 
@@ -1515,7 +1515,7 @@ bids | Array | current latest sell order price and order amount[[price,amount]]
 ## User Auth
 
 ```shell
-  {id: 12345, method: 'server.sign', params: ['test']}
+  {id: 1574929415000, method: 'server.sign', params: ['test']}
 ```
 
 User appraises right,users must complete authentication before they can use subscriptions for user assets and user balances.
@@ -1536,7 +1536,7 @@ userid |string| true |NA|user id|
 	"result": {
 		"status": "success"
 	},
-	"id": 12345
+	"id": 1574929415000
 }
 ```
 
@@ -1550,7 +1550,7 @@ status | string | server status
 ## User Order
 
 ```shell
-  {id: 12345, method: 'order.subscribe', params: ['122406567923']}
+  {id: 1574929415000, method: 'order.subscribe', params: ['122406567923']}
 ```
 
 This topic sends user orders, only the order data after the subscription is pushed.
@@ -1620,7 +1620,7 @@ market_id | string | symbol id
 ## User Balance
 
 ```shell
-  {id: 12345, method: 'asset.subscribe2', params: [2,3]}
+  {id: 1574929415000, method: 'asset.subscribe2', params: [2,3]}
 ```
 
 This topic sends the changes in the balance of one or more assets of the user.
@@ -1643,7 +1643,7 @@ asset |int| true |NA|asset id|
 	"method": "asset.update",
 	"params": [{
 		"2": ["0.001644065", "0.0026325", "0"]
-	}, "harvey1712", 2],
+	}, "test", 2],
 	"id": null
 }
 ```
@@ -1660,7 +1660,7 @@ Parameter | Type |Description
 ## Heartbeat Detection
 
 ```shell
-  {id: 12345, method: 'server.ping', params: []}
+  {id: 1574929415000, method: 'server.ping', params: []}
 ```
 
 Websocket will disconnect by default for 1 hour. If need to continuously receive data, please keep the heartbeat.
@@ -1681,7 +1681,7 @@ userid |string| true |NA|user id|
 	"result": {
 		"status": "success"
 	},
-	"id": 12345
+	"id": 1574929415000
 }
 ```
 
@@ -1696,7 +1696,7 @@ status | string | server status
 And subscription type, just change "subscribe" in "method" to "unsubscribe", such as canceling the latest transaction：
 
 ```javascript
-     {id: 12345, method: 'deals.unsubscribe', params: []}
+     {id: 1574929415000, method: 'deals.unsubscribe', params: []}
 ```
 # Explorer
 
