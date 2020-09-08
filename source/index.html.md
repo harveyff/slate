@@ -352,14 +352,14 @@ datetime | string |
 ## Get Kline(Candles)
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.bttcdn.com/klines"
+curl -d "symbol=68719476706&timeframe=15m" "https://api-v2.bttcdn.com/klines"
 ```
 
 This endpoint retrieves all klines in a specific range.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/klines?symbol=68719476706`
+`GET https://api-v2.bttcdn.com/klines?symbol=68719476706&timeframe=15m`
 
 ### URL Parameters
 
