@@ -7,6 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
   - <a href='https://dex.coss.io'>Exchange</a>
   - <a href='https://explorer.coss.io'>Explorer</a>
+  - <a href='https://https://mydexlog.com/'>MyDexLog</a>
 
 search: true
 ---
@@ -352,14 +353,14 @@ datetime | string |
 ## Get Kline(Candles)
 
 ```shell
-curl -d "symbol=68719476706" "https://dex-api.coss.io/klines"
+curl -d "symbol=68719476706&timeframe=15m" "https://dex-api.coss.io/klines"
 ```
 
 This endpoint retrieves all klines in a specific range.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/klines?symbol=68719476706`
+`GET https://dex-api.coss.io/klines?symbol=68719476706&timeframe=15m`
 
 ### URL Parameters
 
@@ -401,14 +402,14 @@ limit |int| false |100 |number of returned data|[1,500]
 ## Get the Last Trade
 
 ```shell
-curl -d "symbol=68719476706" "https://dex-api.coss.io/trades"
+curl -d "symbol=68719476706&limit=1" "https://dex-api.coss.io/trades"
 ```
 
 This endpoint retrieves market last trades of a single symbol.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/klines?symbol=68719476706`
+`GET https://dex-api.coss.io/trades?symbol=68719476706&limit=1`
 
 ### URL Parameters
 
