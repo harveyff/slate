@@ -1,6 +1,6 @@
 # Error http status
 
-The COSS API uses the following error codes:
+The SIKIX API uses the following error codes:
 
 状态码 | 含义
 ---------- | -------

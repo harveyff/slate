@@ -1,31 +1,29 @@
 ---
-title: COSS API Reference
+title: SIKIX API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   
 toc_footers:
-  - <a href='https://dex.coss.io'>Exchange</a>
-  - <a href='https://explorer.coss.io'>Explorer</a>
-  - <a href='https://https://mydexlog.com/'>MyDexLog</a>
+  - <a href='https://www.sikix.io'>Exchange</a>
 
 search: true
 ---
 
 # Description
 
-Welcome to the COSS API! You can use our API to access COSS API endpoints.
+Welcome to the SIKIX API! You can use our API to access SIKIX API endpoints.
 
 At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a JavaScript / Python / PHP library,if you use these languages, you can use them easily,it supports more interfaces.
 
 ## Access URLs
 * REST API
 
-  `https://dex-api.coss.io`
+  `https://api.sikix.io`
   
 * Websocket Feed       
 
-  `wss://dex-api.coss.io/ws/`                                                                                                                                                            
+  `wss://api.sikix.io/ws/`                                                                                                                                                            
 
 ## Rate Limiting Rule
 * Each IP is limited to 10 times per second
@@ -39,7 +37,7 @@ The API is restful and there are two method: GET and POST.
 
 ## Error Http Status
 
-The COSS API use the following error http status:
+The SIKIX API use the following error http status:
 
 Parameter | Description
 ---------- | -------
@@ -60,15 +58,15 @@ Parameter | Description
 ## Get All Supported Currencies
 
 ```shell
-curl "https://dex-api.coss.io/currencies"
+curl "https://api.sikix.io/currencies"
 ```
 
-This endpoint returns all COSS's supported trading currencies.
+This endpoint returns all SIKIX's supported trading currencies.
 
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/currencies`
+`GET https://api.sikix.io/currencies`
 
 ### Request Parameters
 
@@ -112,8 +110,8 @@ code | string | asset id
 type | int | chain type
 fullname |string| asset fullname
 active | int |
-basePrecision | int |  On COSS blockchain, 1 BTC will be represented as an integer of 1000000000000000000
-transferPrecision | int | On COSS blockchain, when transferring, after the amount of transfer is converted to an integer on the chain, and the last 8 bits (basePrecision-transferPrecision) are 0, so need to transfer at least a multiple of 100000000
+basePrecision | int |  On SIKIX blockchain, 1 BTC will be represented as an integer of 1000000000000000000
+transferPrecision | int | On SIKIX blockchain, when transferring, after the amount of transfer is converted to an integer on the chain, and the last 8 bits (basePrecision-transferPrecision) are 0, so need to transfer at least a multiple of 100000000
 externalPrecision | int | On BTC blockchain, the minimum unit is 0.00000001
 fee | string | withdraw fee, only valid for BTC
 limits | object | 
@@ -131,16 +129,16 @@ limits | object |
 ## Get All Supported Symbols
 
 ```shell
-curl "https://dex-api.coss.io/symbols"
+curl "https://api.sikix.io/symbols"
 ```
 
 
-This endpoint returns all COSS's supported trading symbol.
+This endpoint returns all SIKIX's supported trading symbol.
 
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/symbols`
+`GET https://api.sikix.io/symbols`
 
 ### Request Parameters
 
@@ -215,7 +213,7 @@ limits | object |
 ## Get the Last 24h Market Summary
 
 ```shell
-curl -d "symbol=68719476706" "https://dex-api.coss.io/tickers"
+curl -d "symbol=68719476706" "https://api.sikix.io/tickers"
 ```
 
 This endpoint retrieves the summary of trading in the market for the last 24 hours.
@@ -223,7 +221,7 @@ This endpoint retrieves the summary of trading in the market for the last 24 hou
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/tickers`
+`GET https://api.sikix.io/tickers`
 
 ### URL Parameters
 
@@ -281,14 +279,14 @@ quoteVolume | string | volume of quote currency traded for last 24 hours
 ## Get Market Depth
 
 ```shell
-curl -d "symbol=68719476706" "https://dex-api.coss.io/depth"
+curl -d "symbol=68719476706" "https://api.sikix.io/depth"
 ```
 
 This endpoint retrieves the current order book of a specific pair.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/depth?symbol=68719476706`
+`GET https://api.sikix.io/depth?symbol=68719476706`
 
 ### URL Parameters
 
@@ -353,14 +351,14 @@ datetime | string |
 ## Get Kline(Candles)
 
 ```shell
-curl -d "symbol=68719476706&timeframe=15m" "https://dex-api.coss.io/klines"
+curl -d "symbol=68719476706&timeframe=15m" "https://api.sikix.io/klines"
 ```
 
 This endpoint retrieves all klines in a specific range.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/klines?symbol=68719476706&timeframe=15m`
+`GET https://api.sikix.io/klines?symbol=68719476706&timeframe=15m`
 
 ### URL Parameters
 
@@ -402,14 +400,14 @@ limit |int| false |100 |number of returned data|[1,500]
 ## Get the Last Trade
 
 ```shell
-curl -d "symbol=68719476706&limit=1" "https://dex-api.coss.io/trades"
+curl -d "symbol=68719476706&limit=1" "https://api.sikix.io/trades"
 ```
 
 This endpoint retrieves market last trades of a single symbol.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/trades?symbol=68719476706&limit=1`
+`GET https://api.sikix.io/trades?symbol=68719476706&limit=1`
 
 ### URL Parameters
 
@@ -445,7 +443,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string |  trade id
- txid| string | transaction id in COSS
+ txid| string | transaction id in SIKIX
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  symbol| string | symbol id
@@ -469,14 +467,14 @@ Please save your private key after creation.
 ## Get Account Balance
 
 ```shell
-curl -d "userid=test" "https://dex-api.coss.io/balance"
+curl -d "userid=test" "https://api.sikix.io/balance"
 ```
 
 This endpoint returns the balance of an account specified by account id.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/balance?userid=test`
+`GET https://api.sikix.io/balance?userid=test`
 
 ### URL Parameters
 
@@ -513,14 +511,14 @@ Parameter | Type |Description
 ## Get All Orders
 
 ```shell
-curl -d "userid=test" "https://dex-api.coss.io/orders/all"
+curl -d "userid=test" "https://api.sikix.io/orders/all"
 ```
 
 This endpoint retrieves all orders of a single user.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/orders/all?userid=test`
+`GET https://api.sikix.io/orders/all?userid=test`
 
 ### URL Parameters
 
@@ -568,7 +566,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in COSS
+ txid| string | transaction id in SIKIX
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
@@ -598,7 +596,7 @@ Parameter | Type |Description
 ## Get All Open Orders
 
 ```shell
-curl -d "userid=test" "https://dex-api.coss.io/orders/open"
+curl -d "userid=test" "https://api.sikix.io/orders/open"
 ```
 
 This endpoint returns all open orders which have not been filled completely.
@@ -606,7 +604,7 @@ This endpoint returns all open orders which have not been filled completely.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/orders/open?userid=test`
+`GET https://api.sikix.io/orders/open?userid=test`
 
 ### URL Parameters
 
@@ -654,7 +652,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in COSS
+ txid| string | transaction id in SIKIX
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
@@ -685,14 +683,14 @@ Parameter | Type |Description
 ## Get History Orders
 
 ```shell
-curl -d "userid=test" "https://dex-api.coss.io/orders/closed"
+curl -d "userid=test" "https://api.sikix.io/orders/closed"
 ```
 
 This endpoint retrieves history orders of a single user.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/orders/closed?userid=test`
+`GET https://api.sikix.io/orders/closed?userid=test`
 
 ### URL Parameters
 
@@ -740,7 +738,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in COSS
+ txid| string | transaction id in SIKIX
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
@@ -771,14 +769,14 @@ Parameter | Type |Description
 ## Get User Trades
 
 ```shell
-curl -d "userid=test" "https://dex-api.coss.io/orders/trades"
+curl -d "userid=test" "https://api.sikix.io/orders/trades"
 ```
 
 This endpoint get user order trade details.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/orders/trades?userid=test`
+`GET https://api.sikix.io/orders/trades?userid=test`
 
 ### URL Parameters
 
@@ -825,7 +823,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in COSS
+ txid| string | transaction id in SIKIX
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  symbol| string |symbol id
@@ -1046,14 +1044,14 @@ info | object |
 ## Get Deposit Address
 
 ```shell
-curl -d "userid=test" "https://dex-api.coss.io/depositaddress"
+curl -d "userid=test" "https://api.sikix.io/depositaddress"
 ```
 
 This endpoint retrieves deposit address of a user.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/depositaddress?userid=test`
+`GET https://api.sikix.io/depositaddress?userid=test`
 
 ### URL Parameters
 
@@ -1152,14 +1150,14 @@ info | object |
 ## Get Withdraw History
 
 ```shell
-curl -d "userid=test" "https://dex-api.coss.io/withdrawals"
+curl -d "userid=test" "https://api.sikix.io/withdrawals"
 ```
 
 This endpoint retrieves withdrawal history of a user.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/withdrawals?userid=test`
+`GET https://api.sikix.io/withdrawals?userid=test`
 
 ### URL Parameters
 
@@ -1205,7 +1203,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | withdraw id
- txid| string | transaction id in COSS
+ txid| string | transaction id in SIKIX
  timestamp| string | creation time (ms)
  datetime| string | ISO format time
  address| string | withdraw address
@@ -1230,14 +1228,14 @@ Parameter | Type |Description
 ## Get Deposit History
 
 ```shell
-curl -d "userid=test" "https://dex-api.coss.io/deposits"
+curl -d "userid=test" "https://api.sikix.io/deposits"
 ```
 
 This endpoint retrieves deposit record of a user.
 
 ### HTTP Request
 
-`GET https://dex-api.coss.io/deposits?userid=test`
+`GET https://api.sikix.io/deposits?userid=test`
 
 ### URL Parameters
 
@@ -1282,7 +1280,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | deposit id
- txid| string |  transaction id in COSS
+ txid| string |  transaction id in SIKIX
  timestamp| string | creation time (ms)
  datetime| string | ISO format time
  address| string | deposit address
@@ -1603,7 +1601,7 @@ symbol |string| true |NA|symbol id|
 Parameter | Type |Description
 --------- | ------- | -----------
 id | string | order id
-tid | string | transaction id in COSS
+tid | string | transaction id in SIKIX
 user | string | user id
 deal_money | string | deal money
 deal_stock | string | deal stock 
@@ -1703,7 +1701,7 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 
 [Explorer](https://explorer.coss.io) URL : `https://explorer.coss.io`
 
-Through the COSS explorer, you can query block/transaction/user/asset/market and other information.
+Through the SIKIX explorer, you can query block/transaction/user/asset/market and other information.
  
 ## Get Transaction By Id
 
