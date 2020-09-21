@@ -457,7 +457,7 @@ Parameter | Type |Description
 # Account
 ## Create Account
 
-To create an account, please click "create" in the upper right corner of [https://dex.coss.io](https://dex.coss.io) website. 
+To create an account, please click "create" in the upper right corner of [https://www.sikix.io](https://www.sikix.io) website. 
 
 <aside class="warning">
 Please save your private key after creation.
@@ -865,7 +865,7 @@ Please note the minimum precision of price and amount.
 ```javascript
     "use strict";
     const ccxt = require ('ccxt');
-    var coss = new ccxt.coss(
+    var bytetrade = new ccxt.bytetrade(
         {
             'apiKey': '', // your account userid
             'secret': '' // your account private key
@@ -878,7 +878,7 @@ Please note the minimum precision of price and amount.
     const price = 0.000939;
     const params = {dappId:''};
    ;(async () => {
-       const res = await coss.createOrder (symbol, type, side, amount, price, params)
+       const res = await bytetrade.createOrder (symbol, type, side, amount, price, params)
    }) ()
     
 ```
@@ -933,7 +933,7 @@ Please use [CCXT](https://github.com/ccxt/ccxt) for order cancel, which is more 
 ```javascript
     "use strict";
     const ccxt = require ('ccxt');
-    var coss = new ccxt.coss(
+    var bytetrade = new ccxt.bytetrade(
         {
             'apiKey': '', // your account userid
             'secret': '' // your account private key
@@ -942,7 +942,7 @@ Please use [CCXT](https://github.com/ccxt/ccxt) for order cancel, which is more 
     const symbol = 'ETH/USDT';
     const orderid = '46fa911d2ba717edcad6e409337bc136edbc3abe'; 
    ;(async () => {
-       const res = await coss.cancelOrder (orderid,symbol)
+       const res = await bytetrade.cancelOrder (orderid,symbol)
    }) ()
     
 ```
@@ -991,7 +991,7 @@ Please note that the amount cannot be less than the minimum transfer value. Mini
 ```javascript
     "use strict";
     const ccxt = require ('ccxt');
-    var coss = new ccxt.coss(
+    var bytetrade = new ccxt.bytetrade(
         {
             'apiKey': '', // your account userid
             'secret': '' // your account private key
@@ -1002,7 +1002,7 @@ Please note that the amount cannot be less than the minimum transfer value. Mini
     const userid = 'test'; 
     const message = 'just test transfer'; 
    ;(async () => {
-       const res = await coss.transfer (asset,amount,userid,message);
+       const res = await bytetrade.transfer (asset,amount,userid,message);
    }) ()
     
 ```
@@ -1101,7 +1101,7 @@ Please note that the amount cannot be less than the minimum withdrawal amount.
 ```javascript
     "use strict";
     const ccxt = require ('ccxt');
-    var coss = new ccxt.coss(
+    var bytetrade = new ccxt.bytetrade(
         {
             'apiKey': '', // your account userid
             'secret': '' // your account private key
@@ -1111,7 +1111,7 @@ Please note that the amount cannot be less than the minimum withdrawal amount.
     const amount = '0.01'; 
     const address = '0xF79Ca9a450E17fcB0f2c662778fcdfC11f4178Db'; 
    ;(async () => {
-       const res = await coss.withdraw (asset,amount,address);
+       const res = await bytetrade.withdraw (asset,amount,address);
    }) ()
     
 ```
@@ -1699,7 +1699,7 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 ```
 # Explorer
 
-[Explorer](https://explorer.coss.io) URL : `https://explorer.coss.io`
+[Explorer](https://explorer.byte-trade.com) URL : `https://explorer.byte-trade.com`
 
 Through the SIKIX explorer, you can query block/transaction/user/asset/market and other information.
  
@@ -1707,7 +1707,7 @@ Through the SIKIX explorer, you can query block/transaction/user/asset/market an
 
 ### HTTP Request
 
-[https://explorer.coss.io/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1](https://explorer.coss.io/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1)
+[https://explorer.byte-trade.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1](https://explorer.byte-trade.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1)
 
 ### URL Parameters
 
