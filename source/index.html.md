@@ -14,8 +14,6 @@ search: true
 
 Welcome to the SIKIX API! You can use our API to access SIKIX API endpoints.
 
-At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a JavaScript / Python / PHP library,if you use these languages, you can use them easily,it supports more interfaces.
-
 ## Access URLs
 * REST API
 
@@ -1084,67 +1082,6 @@ Parameter | Type |Description
  chainType| string | chain type
  address| string |  address in terms of requested currency
  tag| string |
-
-
-## Withdraw
-
-Please use [CCXT](https://github.com/ccxt/ccxt) for order creation, which is more convenient and quick. The official [JS version](https://github.com/ccxt/ccxt/blob/master/examples/js/hitbtc2-withdraw.js) is an example.
-
-<aside class="warning">
-Please note that the amount cannot be less than the minimum withdrawal amount.
-</aside>
-
-[minimum withdrawal amount](#get-all-supported-currencies).
-
-> CCXT javascript example:
-
-```javascript
-    "use strict";
-    const ccxt = require ('ccxt');
-    var bytetrade = new ccxt.bytetrade(
-        {
-            'apiKey': '', // your account userid
-            'secret': '' // your account private key
-        }
-    );
-    const asset = 'ETH';
-    const amount = '0.01'; 
-    const address = '0xF79Ca9a450E17fcB0f2c662778fcdfC11f4178Db'; 
-   ;(async () => {
-       const res = await bytetrade.withdraw (asset,amount,address);
-   }) ()
-    
-```
-
-### Params
-
-Parameter |Data Type	| Required |Default Value| Description|Value Range
---------- | ------- | -----------| ------- | -----------| -----------
-asset |string| true |NA|asset name|
-amount |string| true |NA|withdraw amount|
-address |string| false |NA|address to receive withdrawal|
-
-> Response:
-
-```json
-{
-	"info": {
-		"code": 0
-	}
-}
-```
-
-### Response Content
-
-Parameter | Type |Description
---------- | ------- | -----------
-info | object |
-* info
- 
- Parameter | Type |Description
- --------- | ------- | -----------
- code| int |response code,0 is succeed, others are failed
- msg| string |if the code is not 0, the error description will be displayed here
 
 
 ## Get Withdraw History
