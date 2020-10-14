@@ -408,7 +408,7 @@ This endpoint retrieves market last trades of a single symbol.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/klines?symbol=68719476706`
+`GET https://api-v2.bttcdn.com/trades?symbol=68719476706`
 
 ### URL Parameters
 
