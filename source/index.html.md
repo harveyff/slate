@@ -1,19 +1,19 @@
 ---
-title: ByteTrade API Reference
+title: CTCoin API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   
 toc_footers:
-  - <a href='https://www.byte-trade.com'>Exchange</a>
-  - <a href='https://explorer.byte-trade.com'>Explorer</a>
+  - <a href='http://ctc.controltraders.com/'>Exchange</a>
+  - <a href='http://explorer.controltraders.com/'>Explorer</a>
 
 search: true
 ---
 
 # Description
 
-Welcome to the ByteTrade API! You can use our API to access ByteTrade API endpoints.
+Welcome to the CTCoin API! You can use our API to access CTCoin API endpoints.
 
 At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a JavaScript / Python / PHP library,if you use these languages, you can use them easily,it supports more interfaces.
 
@@ -38,7 +38,7 @@ The API is restful and there are two method: GET and POST.
 
 ## Error Http Status
 
-The ByteTrade API use the following error http status:
+The CTCoin API use the following error http status:
 
 Parameter | Description
 ---------- | -------
@@ -62,7 +62,7 @@ Parameter | Description
 curl "https://api-v2.bttcdn.com/currencies"
 ```
 
-This endpoint returns all ByteTrade's supported trading currencies.
+This endpoint returns all CTCoin's supported trading currencies.
 
 
 ### HTTP Request
@@ -111,8 +111,8 @@ code | string | asset id
 type | int | chain type
 fullname |string| asset fullname
 active | int |
-basePrecision | int |  On ByteTrade blockchain, 1 BTC will be represented as an integer of 1000000000000000000
-transferPrecision | int | On ByteTrade blockchain, when transferring, after the amount of transfer is converted to an integer on the chain, and the last 8 bits (basePrecision-transferPrecision) are 0, so need to transfer at least a multiple of 100000000
+basePrecision | int |  On CTCoin blockchain, 1 BTC will be represented as an integer of 1000000000000000000
+transferPrecision | int | On CTCoin blockchain, when transferring, after the amount of transfer is converted to an integer on the chain, and the last 8 bits (basePrecision-transferPrecision) are 0, so need to transfer at least a multiple of 100000000
 externalPrecision | int | On BTC blockchain, the minimum unit is 0.00000001
 fee | string | withdraw fee, only valid for BTC
 limits | object | 
@@ -134,7 +134,7 @@ curl "https://api-v2.bttcdn.com/symbols"
 ```
 
 
-This endpoint returns all ByteTrade's supported trading symbol.
+This endpoint returns all CTCoin's supported trading symbol.
 
 
 ### HTTP Request
@@ -444,7 +444,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string |  trade id
- txid| string | transaction id in ByteTrade
+ txid| string | transaction id in CTCoin
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  symbol| string | symbol id
@@ -567,7 +567,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in ByteTrade
+ txid| string | transaction id in CTCoin
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
@@ -653,7 +653,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in ByteTrade
+ txid| string | transaction id in CTCoin
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
@@ -739,7 +739,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in ByteTrade
+ txid| string | transaction id in CTCoin
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
@@ -824,7 +824,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in ByteTrade
+ txid| string | transaction id in CTCoin
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  symbol| string |symbol id
@@ -1204,7 +1204,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | withdraw id
- txid| string | transaction id in ByteTrade
+ txid| string | transaction id in CTCoin
  timestamp| string | creation time (ms)
  datetime| string | ISO format time
  address| string | withdraw address
@@ -1281,7 +1281,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | deposit id
- txid| string |  transaction id in ByteTrade
+ txid| string |  transaction id in CTCoin
  timestamp| string | creation time (ms)
  datetime| string | ISO format time
  address| string | deposit address
@@ -1602,7 +1602,7 @@ symbol |string| true |NA|symbol id|
 Parameter | Type |Description
 --------- | ------- | -----------
 id | string | order id
-tid | string | transaction id in ByteTrade
+tid | string | transaction id in CTCoin
 user | string | user id
 deal_money | string | deal money
 deal_stock | string | deal stock 
@@ -1702,7 +1702,7 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 
 [Explorer](https://explorer.byte-trade.com) URL : `https://explorer.byte-trade.com`
 
-Through the ByteTrade explorer, you can query block/transaction/user/asset/market and other information.
+Through the CTCoin explorer, you can query block/transaction/user/asset/market and other information.
  
 ## Get Transaction By Id
 
