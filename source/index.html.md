@@ -1340,7 +1340,8 @@ Code  |Description
 ## Market Trades
 
 ```shell
-  {id: 12345, method: 'deals.subscribe', params: ['122406567911']}
+  {id: 1574929415000, method: 'deals.subscribe', params: ['122406567881','122406567911']}
+  # id needs a numeric random number, such as the current timestamp.
 ```
 
 This topic sends the latest trades in a single market.
@@ -1349,7 +1350,7 @@ This topic sends the latest trades in a single market.
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |string| true |NA|symbol id|
+symbol |string| true |NA|symbol id,Multiple symbols are supported in an array|
 
 > Response:
 
@@ -1381,7 +1382,7 @@ Parameter | Type |Description
 ## Last 24h Market Summary
 
 ```shell
-  {id: 12345, method: 'today.update', params: ['4294967329','4294967297']}
+  {id: 1574929415000, method: 'today.update', params: ['122406567881','122406567911']}
 ```
 
 This topic sends the rise or fall of 24-hour deals in a single or multiple markets.
@@ -1390,7 +1391,7 @@ This topic sends the rise or fall of 24-hour deals in a single or multiple marke
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |string| true |NA|symbol id|
+symbol |string| true |NA|symbol id,Multiple symbols are supported in an array|
 
 > Response:
 
@@ -1427,7 +1428,7 @@ Parameter | Type |Description
 ## Kline Data
 
 ```shell
-  {id: 12345, method: 'kline.subscribe', params: ['4294967329',60]}
+  {id: 1574929415000, method: 'kline.subscribe', params: ['122406567881',60]}
 ```
 
 This topic sends the Kline data of a single market.
@@ -1471,7 +1472,7 @@ period |int| true |NA|kline period|need to be converted into seconds。1min, 5mi
 ## Market Depth
 
 ```shell
-  {id: 12345, method: 'depth.subscribe', params: ['4294967329',10,"0.001"]}
+  {id: 1574929415000, method: 'depth.subscribe', params: ['122406567881',10,"0.001"]}
 ```
 
 This topic sends the latest market by price order book.
@@ -1550,7 +1551,7 @@ status | string | server status
 ## User Order
 
 ```shell
-  {id: 1574929415000, method: 'order.subscribe', params: ['122406567923']}
+  {id: 1574929415000, method: 'order.subscribe', params: ['122406567881','122406567911']}
 ```
 
 This topic sends user orders, only the order data after the subscription is pushed.
@@ -1563,7 +1564,7 @@ must complete appraises right firstly
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-symbol |string| true |NA|symbol id|
+symbol |string| true |NA|symbol id,Multiple symbols are supported in an array|
 
 > Response:
 
@@ -1620,7 +1621,7 @@ market_id | string | symbol id
 ## User Balance
 
 ```shell
-  {id: 1574929415000, method: 'asset.subscribe2', params: [2,3]}
+  {id: 1574929415000, method: 'asset.subscribe2', params: [2,3,57,32]}
 ```
 
 This topic sends the changes in the balance of one or more assets of the user.
@@ -1632,7 +1633,7 @@ must complete appraises right firstly
 
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
-asset |int| true |NA|asset id|
+asset |int| true |NA|asset id,Multiple assets are supported in an array|
 
 
 
@@ -1661,9 +1662,10 @@ Parameter | Type |Description
 
 ```shell
   {id: 1574929415000, method: 'server.ping', params: []}
+  # id needs a numeric random number, such as the current timestamp.
 ```
 
-Websocket will disconnect by default for 1 hour. If need to continuously receive data, please keep the heartbeat.
+Websocket will disconnect by default for 1 hour. If need to continuously receive data, please keep the heartbeat,it is recommended to request Ping every 1 minute.
 
 ### Params
 
