@@ -1383,6 +1383,7 @@ Parameter | Type |Description
 
 ```shell
   {id: 1574929415000, method: 'today.update', params: ['122406567881','122406567911']}
+  # id needs a numeric random number, such as the current timestamp.
 ```
 
 This topic sends the rise or fall of 24-hour deals in a single or multiple markets.
@@ -1429,6 +1430,7 @@ Parameter | Type |Description
 
 ```shell
   {id: 1574929415000, method: 'kline.subscribe', params: ['122406567881',60]}
+  # id needs a numeric random number, such as the current timestamp.
 ```
 
 This topic sends the Kline data of a single market.
@@ -1473,6 +1475,7 @@ period |int| true |NA|kline period|need to be converted into seconds。1min, 5mi
 
 ```shell
   {id: 1574929415000, method: 'depth.subscribe', params: ['122406567881',10,"0.001"]}
+  # id needs a numeric random number, such as the current timestamp.
 ```
 
 This topic sends the latest market by price order book.
@@ -1517,6 +1520,7 @@ bids | Array | current latest sell order price and order amount[[price,amount]]
 
 ```shell
   {id: 1574929415000, method: 'server.sign', params: ['test']}
+  # id needs a numeric random number, such as the current timestamp.
 ```
 
 User appraises right,users must complete authentication before they can use subscriptions for user assets and user balances.
@@ -1552,6 +1556,7 @@ status | string | server status
 
 ```shell
   {id: 1574929415000, method: 'order.subscribe', params: ['122406567881','122406567911']}
+  # id needs a numeric random number, such as the current timestamp.
 ```
 
 This topic sends user orders, only the order data after the subscription is pushed.
@@ -1622,6 +1627,7 @@ market_id | string | symbol id
 
 ```shell
   {id: 1574929415000, method: 'asset.subscribe2', params: [2,3,57,32]}
+  # id needs a numeric random number, such as the current timestamp.
 ```
 
 This topic sends the changes in the balance of one or more assets of the user.
