@@ -900,6 +900,8 @@ params |object| false |NA||
 Parameter |Data Type	| Required |Default Value| Description|Value Range
 --------- | ------- | -----------| ------- | -----------| -----------
   dappId| string |false|NA|fee reward user id|
+  totalFeeRate| int |false|NA|The total fee rate, if the value is 8, represents 8/10000|
+  chainFeeRate| int |false|NA|The fee rate of the chain, if the value is 1, represents 1/10000,It also means that the remaining 7/10000 is get by dappId|
 
 > Response:
 
