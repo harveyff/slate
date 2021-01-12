@@ -59,7 +59,7 @@ Parameter | Description
 ## Get All Supported Currencies
 
 ```shell
-curl "https://api-v2.bttcdn.com/currencies"
+curl "https://api.bloxxwop.com/currencies"
 ```
 
 This endpoint returns all BloxXwop's supported trading currencies.
@@ -67,7 +67,7 @@ This endpoint returns all BloxXwop's supported trading currencies.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/currencies`
+`GET https://api.bloxxwop.com/currencies`
 
 ### Request Parameters
 
@@ -130,7 +130,7 @@ limits | object |
 ## Get All Supported Symbols
 
 ```shell
-curl "https://api-v2.bttcdn.com/symbols"
+curl "https://api.bloxxwop.com/symbols"
 ```
 
 
@@ -139,7 +139,7 @@ This endpoint returns all BloxXwop's supported trading symbol.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/symbols`
+`GET https://api.bloxxwop.com/symbols`
 
 ### Request Parameters
 
@@ -214,7 +214,7 @@ limits | object |
 ## Get the Last 24h Market Summary
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.bttcdn.com/tickers"
+curl -d "symbol=68719476706" "https://api.bloxxwop.com/tickers"
 ```
 
 This endpoint retrieves the summary of trading in the market for the last 24 hours.
@@ -222,7 +222,7 @@ This endpoint retrieves the summary of trading in the market for the last 24 hou
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/tickers`
+`GET https://api.bloxxwop.com/tickers`
 
 ### URL Parameters
 
@@ -280,14 +280,14 @@ quoteVolume | string | volume of quote currency traded for last 24 hours
 ## Get Market Depth
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.bttcdn.com/depth"
+curl -d "symbol=68719476706" "https://api.bloxxwop.com/depth"
 ```
 
 This endpoint retrieves the current order book of a specific pair.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/depth?symbol=68719476706`
+`GET https://api.bloxxwop.com/depth?symbol=68719476706`
 
 ### URL Parameters
 
@@ -352,14 +352,14 @@ datetime | string |
 ## Get Kline(Candles)
 
 ```shell
-curl -d "symbol=68719476706&timeframe=15m" "https://api-v2.bttcdn.com/klines"
+curl -d "symbol=68719476706&timeframe=15m" "https://api.bloxxwop.com/klines"
 ```
 
 This endpoint retrieves all klines in a specific range.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/klines?symbol=68719476706&timeframe=15m`
+`GET https://api.bloxxwop.com/klines?symbol=68719476706&timeframe=15m`
 
 ### URL Parameters
 
@@ -401,14 +401,14 @@ limit |int| false |100 |number of returned data|[1,500]
 ## Get the Last Trade
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.bttcdn.com/trades"
+curl -d "symbol=68719476706" "https://api.bloxxwop.com/trades"
 ```
 
 This endpoint retrieves market last trades of a single symbol.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/trades?symbol=68719476706`
+`GET https://api.bloxxwop.com/trades?symbol=68719476706`
 
 ### URL Parameters
 
@@ -468,14 +468,14 @@ Please save your private key after creation.
 ## Get Account Balance
 
 ```shell
-curl -d "userid=test" "https://api-v2.bttcdn.com/balance"
+curl -d "userid=test" "https://api.bloxxwop.com/balance"
 ```
 
 This endpoint returns the balance of an account specified by account id.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/balance?userid=test`
+`GET https://api.bloxxwop.com/balance?userid=test`
 
 ### URL Parameters
 
@@ -512,14 +512,14 @@ Parameter | Type |Description
 ## Get All Orders
 
 ```shell
-curl -d "userid=test" "https://api-v2.bttcdn.com/orders/all"
+curl -d "userid=test" "https://api.bloxxwop.com/orders/all"
 ```
 
 This endpoint retrieves all orders of a single user.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/orders/all?userid=test`
+`GET https://api.bloxxwop.com/orders/all?userid=test`
 
 ### URL Parameters
 
@@ -597,7 +597,7 @@ Parameter | Type |Description
 ## Get All Open Orders
 
 ```shell
-curl -d "userid=test" "https://api-v2.bttcdn.com/orders/open"
+curl -d "userid=test" "https://api.bloxxwop.com/orders/open"
 ```
 
 This endpoint returns all open orders which have not been filled completely.
@@ -605,7 +605,7 @@ This endpoint returns all open orders which have not been filled completely.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/orders/open?userid=test`
+`GET https://api.bloxxwop.com/orders/open?userid=test`
 
 ### URL Parameters
 
@@ -684,14 +684,14 @@ Parameter | Type |Description
 ## Get History Orders
 
 ```shell
-curl -d "userid=test" "https://api-v2.bttcdn.com/orders/closed"
+curl -d "userid=test" "https://api.bloxxwop.com/orders/closed"
 ```
 
 This endpoint retrieves history orders of a single user.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/orders/closed?userid=test`
+`GET https://api.bloxxwop.com/orders/closed?userid=test`
 
 ### URL Parameters
 
@@ -770,14 +770,14 @@ Parameter | Type |Description
 ## Get User Trades
 
 ```shell
-curl -d "userid=test" "https://api-v2.bttcdn.com/orders/trades"
+curl -d "userid=test" "https://api.bloxxwop.com/orders/trades"
 ```
 
 This endpoint get user order trade details.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/orders/trades?userid=test`
+`GET https://api.bloxxwop.com/orders/trades?userid=test`
 
 ### URL Parameters
 
@@ -1047,14 +1047,14 @@ info | object |
 ## Get Deposit Address
 
 ```shell
-curl -d "userid=test" "https://api-v2.bttcdn.com/depositaddress"
+curl -d "userid=test" "https://api.bloxxwop.com/depositaddress"
 ```
 
 This endpoint retrieves deposit address of a user.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/depositaddress?userid=test`
+`GET https://api.bloxxwop.com/depositaddress?userid=test`
 
 ### URL Parameters
 
@@ -1153,14 +1153,14 @@ info | object |
 ## Get Withdraw History
 
 ```shell
-curl -d "userid=test" "https://api-v2.bttcdn.com/withdrawals"
+curl -d "userid=test" "https://api.bloxxwop.com/withdrawals"
 ```
 
 This endpoint retrieves withdrawal history of a user.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/withdrawals?userid=test`
+`GET https://api.bloxxwop.com/withdrawals?userid=test`
 
 ### URL Parameters
 
@@ -1231,14 +1231,14 @@ Parameter | Type |Description
 ## Get Deposit History
 
 ```shell
-curl -d "userid=test" "https://api-v2.bttcdn.com/deposits"
+curl -d "userid=test" "https://api.bloxxwop.com/deposits"
 ```
 
 This endpoint retrieves deposit record of a user.
 
 ### HTTP Request
 
-`GET https://api-v2.bttcdn.com/deposits?userid=test`
+`GET https://api.bloxxwop.com/deposits?userid=test`
 
 ### URL Parameters
 
