@@ -458,7 +458,7 @@ Parameter | Type |Description
 # Account
 ## Create Account
 
-To create an account, please click "create" in the upper right corner of [https://www.byte-trade.com](https://www.byte-trade.com) website. 
+To create an account, please click "create" in the upper right corner of [https://www.bloxxwop.com](https://www.bloxxwop.com) website. 
 
 <aside class="warning">
 Please save your private key after creation.
@@ -1710,7 +1710,7 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 ```
 # Explorer
 
-[Explorer](https://explorer.byte-trade.com) URL : `https://explorer.byte-trade.com`
+[Explorer](https://explorer.bloxxwop.com) URL : `https://explorer.bloxxwop.com`
 
 Through the BloxXwop explorer, you can query block/transaction/user/asset/market and other information.
  
@@ -1718,7 +1718,7 @@ Through the BloxXwop explorer, you can query block/transaction/user/asset/market
 
 ### HTTP Request
 
-[https://explorer.byte-trade.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1](https://explorer.byte-trade.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1)
+[https://explorer.bloxxwop.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1](https://explorer.bloxxwop.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1)
 
 ### URL Parameters
 
