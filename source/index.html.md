@@ -468,14 +468,14 @@ Please save your private key after creation.
 ## Get Account Balance
 
 ```shell
-curl -d "userid=test" "https://api.bloxxwop.com/balance"
+curl -d "userid=test-account" "https://api.bloxxwop.com/balance"
 ```
 
 This endpoint returns the balance of an account specified by account id.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/balance?userid=test`
+`GET https://api.bloxxwop.com/balance?userid=test-account`
 
 ### URL Parameters
 
@@ -512,14 +512,14 @@ Parameter | Type |Description
 ## Get All Orders
 
 ```shell
-curl -d "userid=test" "https://api.bloxxwop.com/orders/all"
+curl -d "userid=test-account" "https://api.bloxxwop.com/orders/all"
 ```
 
 This endpoint retrieves all orders of a single user.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/orders/all?userid=test`
+`GET https://api.bloxxwop.com/orders/all?userid=test-account`
 
 ### URL Parameters
 
@@ -597,7 +597,7 @@ Parameter | Type |Description
 ## Get All Open Orders
 
 ```shell
-curl -d "userid=test" "https://api.bloxxwop.com/orders/open"
+curl -d "userid=test-account" "https://api.bloxxwop.com/orders/open"
 ```
 
 This endpoint returns all open orders which have not been filled completely.
@@ -605,7 +605,7 @@ This endpoint returns all open orders which have not been filled completely.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/orders/open?userid=test`
+`GET https://api.bloxxwop.com/orders/open?userid=test-account`
 
 ### URL Parameters
 
@@ -684,14 +684,14 @@ Parameter | Type |Description
 ## Get History Orders
 
 ```shell
-curl -d "userid=test" "https://api.bloxxwop.com/orders/closed"
+curl -d "userid=test-account" "https://api.bloxxwop.com/orders/closed"
 ```
 
 This endpoint retrieves history orders of a single user.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/orders/closed?userid=test`
+`GET https://api.bloxxwop.com/orders/closed?userid=test-account`
 
 ### URL Parameters
 
@@ -770,14 +770,14 @@ Parameter | Type |Description
 ## Get User Trades
 
 ```shell
-curl -d "userid=test" "https://api.bloxxwop.com/orders/trades"
+curl -d "userid=test-account" "https://api.bloxxwop.com/orders/trades"
 ```
 
 This endpoint get user order trade details.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/orders/trades?userid=test`
+`GET https://api.bloxxwop.com/orders/trades?userid=test-account`
 
 ### URL Parameters
 
@@ -1047,14 +1047,14 @@ info | object |
 ## Get Deposit Address
 
 ```shell
-curl -d "userid=test" "https://api.bloxxwop.com/depositaddress"
+curl -d "userid=test-account" "https://api.bloxxwop.com/depositaddress"
 ```
 
 This endpoint retrieves deposit address of a user.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/depositaddress?userid=test`
+`GET https://api.bloxxwop.com/depositaddress?userid=test-account`
 
 ### URL Parameters
 
@@ -1153,14 +1153,14 @@ info | object |
 ## Get Withdraw History
 
 ```shell
-curl -d "userid=test" "https://api.bloxxwop.com/withdrawals"
+curl -d "userid=test-account" "https://api.bloxxwop.com/withdrawals"
 ```
 
 This endpoint retrieves withdrawal history of a user.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/withdrawals?userid=test`
+`GET https://api.bloxxwop.com/withdrawals?userid=test-account`
 
 ### URL Parameters
 
@@ -1231,14 +1231,14 @@ Parameter | Type |Description
 ## Get Deposit History
 
 ```shell
-curl -d "userid=test" "https://api.bloxxwop.com/deposits"
+curl -d "userid=test-account" "https://api.bloxxwop.com/deposits"
 ```
 
 This endpoint retrieves deposit record of a user.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/deposits?userid=test`
+`GET https://api.bloxxwop.com/deposits?userid=test-account`
 
 ### URL Parameters
 
