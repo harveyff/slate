@@ -5,7 +5,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   
 toc_footers:
-  - <a href='https://www.infinithub.com'>Exchange</a>
+  - <a href='https://exchange.infinithub.com'>Exchange</a>
   - <a href='https://explorer.infinithub.com'>Explorer</a>
 
 search: true
