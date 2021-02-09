@@ -1,5 +1,5 @@
 ---
-title: ByteTrade API Reference
+title: CTCoin API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -26,14 +26,14 @@ search: true
 ## 获取所有币种
 
 ```shell
-curl "https://api-v2.byte-trade.com/currencies"
+curl "https://dex-api.coss.io/currencies"
 ```
 
 获取ByteTrade链上支持的所有币种
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/currencies`
+`GET https://dex-api.coss.io/currencies`
 
 ### 请求参数
 
@@ -95,7 +95,7 @@ limits | object |
 ## 获取所有交易对
 
 ```shell
-curl "https://api-v2.byte-trade.com/symbols"
+curl "https://dex-api.coss.io/symbols"
 ```
 
 
@@ -103,7 +103,7 @@ curl "https://api-v2.byte-trade.com/symbols"
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/symbols`
+`GET https://dex-api.coss.io/symbols`
 
 ### 请求参数
 
@@ -177,7 +177,7 @@ limits | object |
 ## 市场行情
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/tickers"
+curl -d "symbol=68719476706" "https://dex-api.coss.io/tickers"
 ```
 
 
@@ -185,7 +185,7 @@ curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/tickers"
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/tickers`
+`GET https://dex-api.coss.io/tickers`
 
 ### 请求参数
 
@@ -243,14 +243,14 @@ quoteVolume | string | 本阶段计价货币交易量
 ## 深度
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/depth"
+curl -d "symbol=68719476706" "https://dex-api.coss.io/depth"
 ```
 
 查询单个symbol的市场深度行情
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/depth?symbol=68719476706`
+`GET https://dex-api.coss.io/depth?symbol=68719476706`
 
 ### 请求参数
 
@@ -315,14 +315,14 @@ datetime | string |
 ## K线数据(蜡烛图)
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/klines"
+curl -d "symbol=68719476706" "https://dex-api.coss.io/klines"
 ```
 
 查询单个symbol的市场深度行情
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/klines?symbol=68719476706`
+`GET https://dex-api.coss.io/klines?symbol=68719476706`
 
 ### 请求参数
 
@@ -364,14 +364,14 @@ limit |int| false |100 |返回数据的条数|[1,500]
 ## 市场最新交易
 
 ```shell
-curl -d "symbol=68719476706" "https://api-v2.byte-trade.com/trades"
+curl -d "symbol=68719476706" "https://dex-api.coss.io/trades"
 ```
 
 查询单个市场的最新成交信息
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/klines?symbol=68719476706`
+`GET https://dex-api.coss.io/klines?symbol=68719476706`
 
 ### 请求参数
 
@@ -423,14 +423,14 @@ limit |int| false |100 |返回数据的条数|[1,500]
 ## 获取用户资产余额
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/balance"
+curl -d "userid=test" "https://dex-api.coss.io/balance"
 ```
 
 用户单个用户的资产余额
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/balance?userid=test`
+`GET https://dex-api.coss.io/balance?userid=test`
 
 ### 请求参数
 
@@ -467,14 +467,14 @@ userid |string| true | NA|user id|
 ## 获取用户的所有订单
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/all"
+curl -d "userid=test" "https://dex-api.coss.io/orders/all"
 ```
 
 查询单个用户的所有订单
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/all?userid=test`
+`GET https://dex-api.coss.io/orders/all?userid=test`
 
 ### 请求参数
 
@@ -494,7 +494,7 @@ limit |int| false |100 |返回数据的条数|[1,500]
 	"id": "3b50925018eef574e7b113a49aa515dc7249fe28",
 	"txid": "d8b5cfcdf55f52c11fd85d6573d0b6c753cd7e35",
 	"timestamp": 1585205369822,
-	"userid": "harvey1712",
+	"userid": "test",
 	"datetime": "2020-03-26T06:49:29.822Z",
 	"lastTradeTimestamp": 1585205369822,
 	"status": "closed",
@@ -552,14 +552,14 @@ limit |int| false |100 |返回数据的条数|[1,500]
 ## 获取用户的委托订单
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/open"
+curl -d "userid=test" "https://dex-api.coss.io/orders/open"
 ```
 
 查询单个用户的委托订单
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/open?userid=test`
+`GET https://dex-api.coss.io/orders/open?userid=test`
 
 ### 请求参数
 
@@ -579,7 +579,7 @@ limit |int| false |100 |返回数据的条数|[1,500]
 	"id": "3b50925018eef574e7b113a49aa515dc7249fe28",
 	"txid": "d8b5cfcdf55f52c11fd85d6573d0b6c753cd7e35",
 	"timestamp": 1585205369822,
-	"userid": "harvey1712",
+	"userid": "test",
 	"datetime": "2020-03-26T06:49:29.822Z",
 	"lastTradeTimestamp": 1585205369822,
 	"status": "closed",
@@ -638,14 +638,14 @@ limit |int| false |100 |返回数据的条数|[1,500]
 ## 获取用户的已成交订单
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/closed"
+curl -d "userid=test" "https://dex-api.coss.io/orders/closed"
 ```
 
 查询单个用户的已成交订单
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/closed?userid=test`
+`GET https://dex-api.coss.io/orders/closed?userid=test`
 
 ### 请求参数
 
@@ -665,7 +665,7 @@ limit |int| false |100 |返回数据的条数|[1,500]
 	"id": "3b50925018eef574e7b113a49aa515dc7249fe28",
 	"txid": "d8b5cfcdf55f52c11fd85d6573d0b6c753cd7e35",
 	"timestamp": 1585205369822,
-	"userid": "harvey1712",
+	"userid": "test",
 	"datetime": "2020-03-26T06:49:29.822Z",
 	"lastTradeTimestamp": 1585205369822,
 	"status": "closed",
@@ -724,14 +724,14 @@ limit |int| false |100 |返回数据的条数|[1,500]
 ## 用户成交明细
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/orders/trades"
+curl -d "userid=test" "https://dex-api.coss.io/orders/trades"
 ```
 
 查询单个用户的成交明细
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/orders/trades?userid=test`
+`GET https://dex-api.coss.io/orders/trades?userid=test`
 
 ### 请求参数
 
@@ -807,14 +807,14 @@ limit |int| false |100 |返回数据的条数|[1,500]
 ## 获取用户充值地址
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/depositaddress"
+curl -d "userid=test" "https://dex-api.coss.io/depositaddress"
 ```
 
 查询单个用户的充值地址
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/depositaddress?userid=test`
+`GET https://dex-api.coss.io/depositaddress?userid=test`
 
 ### 请求参数
 
@@ -853,14 +853,14 @@ code |int| false | NA|资产id	|
 ## 获取用户提现记录
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/withdrawals"
+curl -d "userid=test" "https://dex-api.coss.io/withdrawals"
 ```
 
 查询单个用户的提现记录
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/withdrawals?userid=test`
+`GET https://dex-api.coss.io/withdrawals?userid=test`
 
 ### 请求参数
 
@@ -931,14 +931,14 @@ limit |int| false |100 |返回数据的条数|[1,500]
 ## 获取用户充值记录
 
 ```shell
-curl -d "userid=test" "https://api-v2.byte-trade.com/deposits"
+curl -d "userid=test" "https://dex-api.coss.io/deposits"
 ```
 
 查询单个用户的充值记录
 
 ### HTTP Request
 
-`GET https://api-v2.byte-trade.com/deposits?userid=test`
+`GET https://dex-api.coss.io/deposits?userid=test`
 
 ### 请求参数
 
@@ -1044,7 +1044,7 @@ limit |int| false |100 |返回数据的条数|[1,500]
 ## 市场最新成交
 
 ```javascript
-   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.silgonex.io/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'deals.subscribe', params: ['122406567911']};
        webSocket.send(JSON.stringify(params));
@@ -1089,7 +1089,7 @@ symbol |string| true |NA|交易对id|
 ## 24小时成交涨跌
 
 ```javascript
-   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.silgonex.io/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'today.update', params: ['4294967329','4294967297']};
        webSocket.send(JSON.stringify(params));
@@ -1140,7 +1140,7 @@ symbol |string| true |NA|交易对id|
 
 
 ```javascript
-   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.silgonex.io/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'kline.subscribe', params: ['4294967329',60]};
        webSocket.send(JSON.stringify(params));
@@ -1188,7 +1188,7 @@ period |int| true |NA|k线周期|需要换算成秒。1min, 5min, 15min, 30min, 
 ## 市场深度
 
 ```javascript
-   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.silgonex.io/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'depth.subscribe', params: ['4294967329',10,"0.001"]};
        webSocket.send(JSON.stringify(params));
@@ -1236,7 +1236,7 @@ bids | Array | 当前最新的卖单价和卖单量[[price,amount]]
 ## 用户鉴权
 
 ```javascript
-   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.silgonex.io/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'server.sign', params: ['test']};
        webSocket.send(JSON.stringify(params));
@@ -1275,7 +1275,7 @@ status | string | server status
 ## 用户订单
 
 ```javascript
-   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.silgonex.io/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'order.subscribe', params: ['122406567923']};
        webSocket.send(JSON.stringify(params));
@@ -1350,7 +1350,7 @@ market_id | string | 交易对id
 ## 用户余额
 
 ```javascript
-   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.silgonex.io/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'asset.subscribe2', params: [2,3]};
        webSocket.send(JSON.stringify(params));
@@ -1376,7 +1376,7 @@ asset |int| true |NA|asset id|
 	"method": "asset.update",
 	"params": [{
 		"2": ["0.001644065", "0.0026325", "0"]
-	}, "harvey1712", 2],
+	}, "test", 2],
 	"id": null
 }
 ```
@@ -1393,7 +1393,7 @@ asset |int| true |NA|asset id|
 ## 心跳检测
 
 ```javascript
-   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.silgonex.io/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'server.ping', params: []};
        webSocket.send(JSON.stringify(params));
@@ -1433,7 +1433,7 @@ status | string | server status
 与订阅类型,只是将"method"里的"subscribe"改为"unsubscribe",如取消最新成交：
 
 ```javascript
-   const webSocket = new WebSocket('wss://api.byte-trade.com/ws/');
+   const webSocket = new WebSocket('wss://api.silgonex.io/ws/');
    webSocket.onopen = function(event) {
        var params={id: 12345, method: 'deals.unsubscribe', params: []};
        webSocket.send(JSON.stringify(params));

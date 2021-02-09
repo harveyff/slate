@@ -1,30 +1,30 @@
 ---
-title: BloxXwop API Reference
+title: Infinithub API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   
 toc_footers:
-  - <a href='https://www.bloxxwop.com'>Exchange</a>
-  - <a href='https://explorer.bloxxwop.com'>Explorer</a>
+  - <a href='https://www.infinithub.com'>Exchange</a>
+  - <a href='https://explorer.infinithub.com'>Explorer</a>
 
 search: true
 ---
 
 # Description
 
-Welcome to the BloxXwop API! You can use our API to access BloxXwop API endpoints.
+Welcome to the Infinithub API! You can use our API to access Infinithub API endpoints.
 
 At the same time, we have access to [CCXT](https://github.com/ccxt/ccxt), it's a JavaScript / Python / PHP library,if you use these languages, you can use them easily,it supports more interfaces.
 
 ## Access URLs
 * REST API
 
-  `https://api.bloxxwop.com`
+  `https://api.infinithub.com`
   
 * Websocket Feed       
 
-  `wss://api.bloxxwop.com/ws/`                                                                                                                                                            
+  `wss://api.infinithub.com/ws/`                                                                                                                                                            
 
 ## Rate Limiting Rule
 * Each IP is limited to 10 times per second
@@ -38,7 +38,7 @@ The API is restful and there are two method: GET and POST.
 
 ## Error Http Status
 
-The BloxXwop API use the following error http status:
+The Infinithub API use the following error http status:
 
 Parameter | Description
 ---------- | -------
@@ -59,15 +59,15 @@ Parameter | Description
 ## Get All Supported Currencies
 
 ```shell
-curl "https://api.bloxxwop.com/currencies"
+curl "https://api.infinithub.com/currencies"
 ```
 
-This endpoint returns all BloxXwop's supported trading currencies.
+This endpoint returns all Infinithub's supported trading currencies.
 
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/currencies`
+`GET https://api.infinithub.com/currencies`
 
 ### Request Parameters
 
@@ -111,8 +111,8 @@ code | string | asset id
 type | int | chain type
 fullname |string| asset fullname
 active | int |
-basePrecision | int |  On BloxXwop blockchain, 1 BTC will be represented as an integer of 1000000000000000000
-transferPrecision | int | On BloxXwop blockchain, when transferring, after the amount of transfer is converted to an integer on the chain, and the last 8 bits (basePrecision-transferPrecision) are 0, so need to transfer at least a multiple of 100000000
+basePrecision | int |  On Infinithub blockchain, 1 BTC will be represented as an integer of 1000000000000000000
+transferPrecision | int | On Infinithub blockchain, when transferring, after the amount of transfer is converted to an integer on the chain, and the last 8 bits (basePrecision-transferPrecision) are 0, so need to transfer at least a multiple of 100000000
 externalPrecision | int | On BTC blockchain, the minimum unit is 0.00000001
 fee | string | withdraw fee, only valid for BTC
 limits | object | 
@@ -130,16 +130,16 @@ limits | object |
 ## Get All Supported Symbols
 
 ```shell
-curl "https://api.bloxxwop.com/symbols"
+curl "https://api.infinithub.com/symbols"
 ```
 
 
-This endpoint returns all BloxXwop's supported trading symbol.
+This endpoint returns all Infinithub's supported trading symbol.
 
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/symbols`
+`GET https://api.infinithub.com/symbols`
 
 ### Request Parameters
 
@@ -214,7 +214,7 @@ limits | object |
 ## Get the Last 24h Market Summary
 
 ```shell
-curl -d "symbol=68719476706" "https://api.bloxxwop.com/tickers"
+curl -d "symbol=68719476706" "https://api.infinithub.com/tickers"
 ```
 
 This endpoint retrieves the summary of trading in the market for the last 24 hours.
@@ -222,7 +222,7 @@ This endpoint retrieves the summary of trading in the market for the last 24 hou
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/tickers`
+`GET https://api.infinithub.com/tickers`
 
 ### URL Parameters
 
@@ -280,14 +280,14 @@ quoteVolume | string | volume of quote currency traded for last 24 hours
 ## Get Market Depth
 
 ```shell
-curl -d "symbol=68719476706" "https://api.bloxxwop.com/depth"
+curl -d "symbol=68719476706" "https://api.infinithub.com/depth"
 ```
 
 This endpoint retrieves the current order book of a specific pair.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/depth?symbol=68719476706`
+`GET https://api.infinithub.com/depth?symbol=68719476706`
 
 ### URL Parameters
 
@@ -352,14 +352,14 @@ datetime | string |
 ## Get Kline(Candles)
 
 ```shell
-curl -d "symbol=68719476706&timeframe=15m" "https://api.bloxxwop.com/klines"
+curl -d "symbol=68719476706&timeframe=15m" "https://api.infinithub.com/klines"
 ```
 
 This endpoint retrieves all klines in a specific range.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/klines?symbol=68719476706&timeframe=15m`
+`GET https://api.infinithub.com/klines?symbol=68719476706&timeframe=15m`
 
 ### URL Parameters
 
@@ -401,14 +401,14 @@ limit |int| false |100 |number of returned data|[1,500]
 ## Get the Last Trade
 
 ```shell
-curl -d "symbol=68719476706" "https://api.bloxxwop.com/trades"
+curl -d "symbol=68719476706" "https://api.infinithub.com/trades"
 ```
 
 This endpoint retrieves market last trades of a single symbol.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/trades?symbol=68719476706`
+`GET https://api.infinithub.com/trades?symbol=68719476706`
 
 ### URL Parameters
 
@@ -444,7 +444,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string |  trade id
- txid| string | transaction id in BloxXwop
+ txid| string | transaction id in Infinithub
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  symbol| string | symbol id
@@ -458,7 +458,7 @@ Parameter | Type |Description
 # Account
 ## Create Account
 
-To create an account, please click "create" in the upper right corner of [https://www.bloxxwop.com](https://www.bloxxwop.com) website. 
+To create an account, please click "create" in the upper right corner of [https://www.infinithub.com](https://www.infinithub.com) website. 
 
 <aside class="warning">
 Please save your private key after creation.
@@ -468,14 +468,14 @@ Please save your private key after creation.
 ## Get Account Balance
 
 ```shell
-curl -d "userid=test-account" "https://api.bloxxwop.com/balance"
+curl -d "userid=test-account" "https://api.infinithub.com/balance"
 ```
 
 This endpoint returns the balance of an account specified by account id.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/balance?userid=test-account`
+`GET https://api.infinithub.com/balance?userid=test-account`
 
 ### URL Parameters
 
@@ -512,14 +512,14 @@ Parameter | Type |Description
 ## Get All Orders
 
 ```shell
-curl -d "userid=test-account" "https://api.bloxxwop.com/orders/all"
+curl -d "userid=test-account" "https://api.infinithub.com/orders/all"
 ```
 
 This endpoint retrieves all orders of a single user.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/orders/all?userid=test-account`
+`GET https://api.infinithub.com/orders/all?userid=test-account`
 
 ### URL Parameters
 
@@ -567,7 +567,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in BloxXwop
+ txid| string | transaction id in Infinithub
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
@@ -597,7 +597,7 @@ Parameter | Type |Description
 ## Get All Open Orders
 
 ```shell
-curl -d "userid=test-account" "https://api.bloxxwop.com/orders/open"
+curl -d "userid=test-account" "https://api.infinithub.com/orders/open"
 ```
 
 This endpoint returns all open orders which have not been filled completely.
@@ -605,7 +605,7 @@ This endpoint returns all open orders which have not been filled completely.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/orders/open?userid=test-account`
+`GET https://api.infinithub.com/orders/open?userid=test-account`
 
 ### URL Parameters
 
@@ -653,7 +653,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in BloxXwop
+ txid| string | transaction id in Infinithub
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
@@ -684,14 +684,14 @@ Parameter | Type |Description
 ## Get History Orders
 
 ```shell
-curl -d "userid=test-account" "https://api.bloxxwop.com/orders/closed"
+curl -d "userid=test-account" "https://api.infinithub.com/orders/closed"
 ```
 
 This endpoint retrieves history orders of a single user.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/orders/closed?userid=test-account`
+`GET https://api.infinithub.com/orders/closed?userid=test-account`
 
 ### URL Parameters
 
@@ -739,7 +739,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in BloxXwop
+ txid| string | transaction id in Infinithub
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  lastTradeTimestamp| long | Unix timestamp of the most recent trade on this order
@@ -770,14 +770,14 @@ Parameter | Type |Description
 ## Get User Trades
 
 ```shell
-curl -d "userid=test-account" "https://api.bloxxwop.com/orders/trades"
+curl -d "userid=test-account" "https://api.infinithub.com/orders/trades"
 ```
 
 This endpoint get user order trade details.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/orders/trades?userid=test-account`
+`GET https://api.infinithub.com/orders/trades?userid=test-account`
 
 ### URL Parameters
 
@@ -824,7 +824,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | order id
- txid| string | transaction id in BloxXwop
+ txid| string | transaction id in Infinithub
  timestamp| long | Unix timestamp in milliseconds
  datetime| string | ISO8601 datetime with milliseconds
  symbol| string |symbol id
@@ -1047,14 +1047,14 @@ info | object |
 ## Get Deposit Address
 
 ```shell
-curl -d "userid=test-account" "https://api.bloxxwop.com/depositaddress"
+curl -d "userid=test-account" "https://api.infinithub.com/depositaddress"
 ```
 
 This endpoint retrieves deposit address of a user.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/depositaddress?userid=test-account`
+`GET https://api.infinithub.com/depositaddress?userid=test-account`
 
 ### URL Parameters
 
@@ -1153,14 +1153,14 @@ info | object |
 ## Get Withdraw History
 
 ```shell
-curl -d "userid=test-account" "https://api.bloxxwop.com/withdrawals"
+curl -d "userid=test-account" "https://api.infinithub.com/withdrawals"
 ```
 
 This endpoint retrieves withdrawal history of a user.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/withdrawals?userid=test-account`
+`GET https://api.infinithub.com/withdrawals?userid=test-account`
 
 ### URL Parameters
 
@@ -1206,7 +1206,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | withdraw id
- txid| string | transaction id in BloxXwop
+ txid| string | transaction id in Infinithub
  timestamp| string | creation time (ms)
  datetime| string | ISO format time
  address| string | withdraw address
@@ -1231,14 +1231,14 @@ Parameter | Type |Description
 ## Get Deposit History
 
 ```shell
-curl -d "userid=test-account" "https://api.bloxxwop.com/deposits"
+curl -d "userid=test-account" "https://api.infinithub.com/deposits"
 ```
 
 This endpoint retrieves deposit record of a user.
 
 ### HTTP Request
 
-`GET https://api.bloxxwop.com/deposits?userid=test-account`
+`GET https://api.infinithub.com/deposits?userid=test-account`
 
 ### URL Parameters
 
@@ -1283,7 +1283,7 @@ limit |int| false |100 |number of returned data|[1,500]
 Parameter | Type |Description
 --------- | ------- | -----------
  id| string | deposit id
- txid| string |  transaction id in BloxXwop
+ txid| string |  transaction id in Infinithub
  timestamp| string | creation time (ms)
  datetime| string | ISO format time
  address| string | deposit address
@@ -1610,7 +1610,7 @@ symbol |string| true |NA|symbol id,Multiple symbols are supported in an array|
 Parameter | Type |Description
 --------- | ------- | -----------
 id | string | order id
-tid | string | transaction id in BloxXwop
+tid | string | transaction id in Infinithub
 user | string | user id
 deal_money | string | deal money
 deal_stock | string | deal stock 
@@ -1710,15 +1710,15 @@ And subscription type, just change "subscribe" in "method" to "unsubscribe", suc
 ```
 # Explorer
 
-[Explorer](https://explorer.bloxxwop.com) URL : `https://explorer.bloxxwop.com`
+[Explorer](https://explorer.infinithub.com) URL : `https://explorer.infinithub.com`
 
-Through the BloxXwop explorer, you can query block/transaction/user/asset/market and other information.
+Through the Infinithub explorer, you can query block/transaction/user/asset/market and other information.
  
 ## Get Transaction By Id
 
 ### HTTP Request
 
-[https://explorer.bloxxwop.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1](https://explorer.bloxxwop.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1)
+[https://explorer.infinithub.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1](https://explorer.infinithub.com/transaction-info.html?id=aeca1315db297402fd3c83370cb573bbdd5a5763&blockType=1)
 
 ### URL Parameters
 

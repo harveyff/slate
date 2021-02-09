@@ -1,6 +1,6 @@
 # Error http status
 
-The BloxXwop API uses the following error codes:
+The Infinithub API uses the following error codes:
 
 状态码 | 含义
 ---------- | -------
