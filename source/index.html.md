@@ -1384,7 +1384,7 @@ Parameter | Type |Description
 ## Last 24h Market Summary
 
 ```shell
-  {id: 1574929415000, method: 'today.update', params: ['122406567881','122406567911']}
+  {id: 1574929415000, method: 'today.subscribe', params: ['122406567881','122406567911']}
   # id needs a numeric random number, such as the current timestamp.
 ```
 
